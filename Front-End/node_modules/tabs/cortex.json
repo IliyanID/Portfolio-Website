@@ -1,0 +1,19 @@
+{
+  "name": "tabs",
+  "version": "0.2.0",
+  "description": "pure javascript implementation that quickly makes the markup tabbable",
+  "main": "index.js",
+  "repository": "git://github.com/ltebean/tabs.git",
+  "keywords": [
+    "tabs","tabbable","browser","tab"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "ltebean",
+    "email": "yucong1118@gmail.com"
+  },
+  "bugs": {
+    "url": "http://github.com/ltebean/tabs"
+  },
+  "homepage": "http://github.com/ltebean/tabs"
+}

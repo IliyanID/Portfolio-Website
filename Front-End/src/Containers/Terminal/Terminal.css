@@ -1,4 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=VT323&display=swap");
+@font-face {
+    font-family: '2 Lines Regular';
+    font-style: normal;
+    font-weight: normal;
+    src:url('../../Resources/2_lines.woff') format('woff');
+    }
 
 *{
     margin:0px;
@@ -6,40 +11,59 @@
     border:none 0px;
     background:none;
     outline:none;
-    font:VT323, monospace;
-    
+    font-family:monospace;
+    font-size:15px;
+    letter-spacing:2px;  
+   
     cursor:default;
 }
 
 #main{
     background-color:#000;
     position:absolute;
-    background-image:linear-gradient(0deg, #000,#34ace054);
+    background-image:linear-gradient(300deg, #000,#01014a);
     width:80%;
     height:80%;
     color:#00FF7F;
 
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-   
-    border-radius:20px;
 
+    left:50%;
+    transform:translate(-50%,0%);
+   
+    border:2px solid #000;
+    border-radius:0px 0px 10px 10px;;
+    
     padding:20px;
+    margin-top:99px;
+ 
+   overflow: auto;
+
+   z-index:1;
 
 }
 
-
-
+::-webkit-scrollbar {
+    width: 0px;
+  }
 #command-line{
+   
     display:relative;
     list-style-type: none;
 }
-
+h2{
+    font-size:70px;
+    font-family:'2 Lines Regular',monospace;
+    color:#da015b;
+}
+h3{
+    font-size:20px;
+}
 input{
     color:transparent;   
     text-shadow: 0 0 0 #00FF7F;
     width:100%;
+    font-family:monospace;
+    
 }
 
 
