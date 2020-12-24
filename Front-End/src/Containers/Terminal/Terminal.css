@@ -1,3 +1,18 @@
+:root{
+    /*Animations*/
+    --typingSpeed:2s;
+    --delay:2s;
+    --steps:50;
+
+    /*Colors*/
+    --darkBlue:#01014a;
+    --darkColor:#000;
+    --crymson:#da015b;
+    --yellow:#ffdf00;
+    --terminalGreen:#00FF7F;
+
+}
+
 @font-face {
     font-family: '2 Lines Regular';
     font-style: normal;
@@ -19,18 +34,18 @@
 }
 
 #main{
-    background-color:#000;
+    background-color:var(--darkColor);
     position:absolute;
-    background-image:linear-gradient(300deg, #000,#01014a);
+    background-image:linear-gradient(300deg, var(--darkColor),var(--darkBlue));
     width:80%;
-    height:80%;
-    color:#00FF7F;
+    height:75%;
+    color:var(--terminalGreen);
 
 
     left:50%;
     transform:translate(-50%,0%);
    
-    border:2px solid #000;
+    border:2px solid var(--darkColor);
     border-radius:0px 0px 10px 10px;;
     
     padding:20px;
@@ -50,11 +65,124 @@
     display:relative;
     list-style-type: none;
 }
+
 h2{
     font-size:70px;
     font-family:'2 Lines Regular',monospace;
-    color:#da015b;
+    color:var(--crymson);
 }
+.attention{
+    font-size:130%;
+}
+.I{
+    color:var(--yellow);
+}
+
+@keyframes typewriter {
+    from {width:0;height:0;}
+    1%{opacity:1; height:auto;}
+    to{width:100%;opacity:1;height:auto;}
+    99%{white-space: nowrap;}
+    100%{white-space: normal;}
+  }
+.css-typing h2:nth-child(1){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+ 
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+    animation-fill-mode:forwards;
+}
+.css-typing h3:nth-child(2){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+ 
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+    animation-delay:calc(var(--delay));
+    animation-fill-mode:forwards;
+}
+.css-typing p:nth-child(3){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 2);
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(4){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 3);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(5){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 4);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(6){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 5);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(7){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 5);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(8){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 5);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(9){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 5);;
+    animation-fill-mode: forwards;   
+}
+.css-typing p:nth-child(10){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriter var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 5);;
+    animation-fill-mode: forwards;   
+}
+
 h3{
     font-size:20px;
 }
