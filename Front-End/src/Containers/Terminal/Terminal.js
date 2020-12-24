@@ -1,16 +1,29 @@
-import React, {useState, Fragment, useEffect } from 'react';
+import React, {useState, Fragment, useEffect, forwardRef, useImperativeHandle } from 'react';
 import './Terminal.css'
-const Terminal  = (props) => {
+const Terminal = forwardRef((props, ref) => {
     const [getTerLine,setTerLine] = useState({Value:"iliyan@dimitrov:~$ ▮",blink:true});
+
+
+    useImperativeHandle(
+        ref,
+        () => ({
+            sendCommand(command) {
+                clearTimeout(timeoutID);
+                getTerLine.Value = "iliyan@dimitrov:~$ " + command;
+                updateContent();
+            }
+         }),
+     )
+
 
     const N = () =>{return (<Fragment><br/>⠀</Fragment>);}
 
     const starterArr = [
         (<h2>Iliyan Dimitrov</h2>),
-        (<h3>This is a Fully Interactive Portfolio Page with a Simulated Linux Terminal{N()}</h3>),
+        (<h3>This is a Fully Interactive Portfolio Page with a Linux Insprired Terminal{N()}</h3>),
 
-        (<p>To Explore the Portfolio Either <u className="attention">Use the Navigation</u></p>),
-        (<p>Or <u className="attention">Explore the Command Promt</u>{N()}</p>),
+        (<p>To Use the Portfolio Either <u className="attention">Use the Navigation</u></p>),
+        (<p>Or <u className="attention">Explore the Terminal</u>{N()}</p>),
 
         (<p>To Begin, Type:</p>),
         (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[1]</b> or <b className="I">[open aboutMe]</b>: Opens about me</p>),
@@ -32,6 +45,7 @@ const Terminal  = (props) => {
 
     const updateTerminalLine = (e) =>{
         clearTimeout(timeoutID);
+    
         setTerLine({Value:("iliyan@dimitrov:~$ "  + parseString(e.target.value)),blink:true});
     }
 
@@ -49,6 +63,7 @@ const Terminal  = (props) => {
 
 
     const parseString = (input)=>{
+        
         let bufferIndex = 19;
         if(input !== undefined)
             return input.substring(bufferIndex).replaceAll("▮","");
@@ -88,6 +103,7 @@ const Terminal  = (props) => {
     const parseCommand = (command) =>{
         clearTimeout(timeoutID);
 
+        //console.log("Entered Parse");
         let commandSelector = command.split(" ")
 
         let tempArr = [...content.arr];
@@ -116,6 +132,7 @@ const Terminal  = (props) => {
                     tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀clear: clears command window</p>);
                     tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀ls: list all files</p>);
                     tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀run [argument]: run a specific program</p>);
+                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀close [argument]: close a specific  program or file</p>);
                     tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀open [argument]: open a specific document<br/>⠀</p>);
                 }
                 else{ 
@@ -217,6 +234,72 @@ const Terminal  = (props) => {
                 break;
             }
 
+            case "close":{
+                let argument = commandSelector[1];
+
+                if(commandSelector.length <= 1)
+                    tempArr.push(<p>Error Expected Argument close [argument]<br/>⠀</p>);
+
+                else{ 
+
+                    switch(argument){
+                        case "aboutMe":{
+                            if(props.removeTab("About"))
+                                tempArr.push(<p>aboutMe has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>aboutMe is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        case "experience":{
+                            if(props.removeTab("Experience"))
+                                tempArr.push(<p>experience has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>experence is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        case "work":{
+                            if(props.removeTab("Work"))
+                                tempArr.push(<p>work has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>work is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        case "contactMe":{
+                            if(props.removeTab("Terminal"))
+                                tempArr.push(<p>contactMe has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>contactMe is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        case "snakeGame":{
+                            if(props.removeTab("Terminal"))
+                                tempArr.push(<p>snakeGame has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>snakeGame is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        case "terminal":{
+                            if(props.removeTab("Terminal"))
+                                tempArr.push(<p>Terminal has been closed<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>New Terminal Tab is not open<br/>⠀</p>);
+                            break;
+                        }
+
+                        default:{
+                            tempArr.push(<p>{argument} does not exist<br/>⠀</p>);
+                        }
+                    }
+                    
+                }
+                break;
+            }
+
             default:
                 tempArr.push(<p>{parseString()} is not a recognized command</p>);
                 tempArr.push(<p>Type "help" for list of commands<br/>⠀</p>);                
@@ -225,6 +308,9 @@ const Terminal  = (props) => {
 
         setContent({arr:tempArr});
     }
+
+
+   
 
 
     return (
@@ -239,5 +325,5 @@ const Terminal  = (props) => {
     );
 
     
-}
+})
 export default Terminal;

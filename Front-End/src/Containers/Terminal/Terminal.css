@@ -6,7 +6,7 @@
 
     /*Colors*/
     --darkBlue:#01014a;
-    --darkColor:#000;
+    --darkColor:#da015b5b;
     --crymson:#da015b;
     --yellow:#ffdf00;
     --terminalGreen:#00FF7F;
@@ -36,7 +36,7 @@
 #main{
     background-color:var(--darkColor);
     position:absolute;
-    background-image:linear-gradient(300deg, var(--darkColor),var(--darkBlue));
+    background-image:linear-gradient(300deg, #000,var(--darkBlue));
     width:80%;
     height:75%;
     color:var(--terminalGreen);
@@ -48,6 +48,8 @@
     border:2px solid var(--darkColor);
     border-radius:0px 0px 10px 10px;;
     
+    border-top:none;
+
     padding:20px;
     margin-top:99px;
  

@@ -1,7 +1,7 @@
 :root{
     --crymson: #da015b;
     --lightGray: #ffffff70;
-    --borderColor:#000;
+    --borderColor:#da015b5b;
     --backgroundColor:#172a45;
     --fontColor:#e6f1ff;
     --yellow:#ffdf00;
@@ -53,7 +53,7 @@
     background-color:var(--borderColor);
     width:80%;
     border:2px solid var(--borderColor);
-    padding:5px 20px 0px 20px;
+    padding:3px 20px 0px 20px;
 
     left:50%;
     transform:translate(-50%,0);
@@ -66,7 +66,7 @@
     #tabs li{
         display:inline-block;
         margin:0px 5px;
-        font-size:17px;
+        font-size:19px;
     }
 
 
@@ -90,19 +90,19 @@
     padding:5px 15px;
     border-left:2px solid var(--crymson);
     border-right:2px solid var(--crymson);
-    border-bottom:2px solid transparent;
-    border-top:2px solid transparent; 
+    border-bottom:2px solid var(--crymson);
+    border-top:2px solid var(--crymson);
+    background-color:var(--crymson);
+    border-radius:5px 5px 0px 0px;
+    opacity:.8;
 
-    transition: background-color .2s, border-color .2s;
+    transition: opacity .2s;
 }
     .indTab:hover{
-        border-bottom:2px solid var(--crymson);
-        border-top:2px solid var(--crymson);
-        border-color:var(--crymson);
-        background-color:var(--crymson);
-        border-radius:5px 5px 0px 0px;
+        opacity:1;
     }
     .selectedTab{
+        opacity:1;
         border-bottom:2px solid var(--darkBlue);
         border-top:2px solid var(--darkBlue);
         border-color:var(--darkBlue);
