@@ -27,11 +27,11 @@ const Terminal = forwardRef((props, ref) => {
         (<p>Or <u className="attention">Explore the Terminal</u>{N()}</p>),
 
         (<p>To Begin, Type:</p>),
-        (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[1]</b> or <b className="I">[open aboutMe]</b>: Opens about me</p>),
-        (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[2]</b> or <b className="I">[open experience]</b>: Opens my previous work experience</p>),
-        (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[3]</b> or <b className="I">[open work]</b>: Opens previous projects on GitHub</p>),
-        (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[4]</b> or <b className="I">[run contactMe]</b>: Runs contact me program in terminal</p>),
-        (<p>⠀⠀⠀⠀⠀⠀⠀<b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game{N()}</p>)
+        (<p className="indented"><b className="I">[1]</b> or <b className="I">[open aboutMe]</b>: Opens about me</p>),
+        (<p className="indented"><b className="I">[2]</b> or <b className="I">[open experience]</b>: Opens my previous work experience</p>),
+        (<p className="indented"><b className="I">[3]</b> or <b className="I">[open work]</b>: Opens previous projects on GitHub</p>),
+        (<p className="indented"><b className="I">[4]</b> or <b className="I">[run contactMe]</b>: Runs contact me program in terminal</p>),
+        (<p className="indented"><b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game{N()}</p>)
     ]
     let[content,setContent] = useState({
         arr:starterArr
@@ -128,11 +128,11 @@ const Terminal = forwardRef((props, ref) => {
 
             case "help":{
                 if(commandSelector.length <= 1){
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀clear: clears command window</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀ls: list all files</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀run [argument]: run a specific program</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀close [argument]: close a specific  program or file</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀open [argument]: open a specific document<br/>⠀</p>);
+                    tempArr.push(<p  className="indented"><b className="I">[clear]</b>: clears command window</p>);
+                    tempArr.push(<p  className="indented"><b className="I">[ls]</b>: list all files</p>);
+                    tempArr.push(<p  className="indented"><b className="I">[run argument]</b>: run a specific program</p>);
+                    tempArr.push(<p  className="indented"><b className="I">[close argument]</b>: close a specific  program or file</p>);
+                    tempArr.push(<p  className="indented"><b className="I">[open argument]</b>: open a specific document<br/>⠀</p>);
                 }
                 else{ 
                     tempArr.push(<p>Unknown Argument: {commandSelector[1]}<br/>⠀</p>);                   
@@ -143,10 +143,10 @@ const Terminal = forwardRef((props, ref) => {
 
             case "ls":{
                 if(commandSelector.length <= 1){
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀File: aboutMe</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀File: experience</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀File: work</p>);
-                    tempArr.push(<p>⠀⠀⠀⠀⠀⠀⠀Program: snakeGame<br/>⠀</p>);
+                    tempArr.push(<p  className="indented">File: aboutMe</p>);
+                    tempArr.push(<p  className="indented">File: experience</p>);
+                    tempArr.push(<p  className="indented">File: work</p>);
+                    tempArr.push(<p  className="indented">Program: snakeGame<br/>⠀</p>);
                 }
                 else{ 
                     tempArr.push(<p>Unknown Argument: {commandSelector[1]}<br/>⠀</p>);                   

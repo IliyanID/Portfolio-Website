@@ -1,6 +1,7 @@
 import React, { PureComponent , useRef} from 'react';
 import ReactTooltip from 'react-tooltip'
-import './App.css';
+import classNames from 'classnames/bind';
+import styles from './App.css';
 
 import {ReactComponent as Github} from "../Resources/github.svg";
 import {ReactComponent as Linkedin} from "../Resources/linkedin.svg";
@@ -21,7 +22,7 @@ class App extends PureComponent {
 
   state = {
     tabs:[],
-    buttons:null
+    id:0
   };
 
   
@@ -82,9 +83,17 @@ class App extends PureComponent {
       else{
       tempTabs.splice(index, 1);
     }
-    
+   
     this.setState({tabs:tempTabs})
+    console.log("id " +this.state.id);
     return true;
+  }
+
+  selectTab = (id) =>{
+    if(timeoutID !== null)
+      clearTimeout(timeoutID);
+    console.log("id: " + id +"\nselectedTab: " + this.state.id)
+    this.setState({id:id});
   }
 
   render () {
@@ -92,11 +101,15 @@ class App extends PureComponent {
 
 
     let id = 0;
+    let cx = classNames.bind(styles);
+    let classes = cx('indTab',{selectedTab:id===this.state.id});
     const allTabs = (
       <li id="tabs">
-        <li className="indTab selectedTab">Terminal</li>
+        <li id={id} onClick={()=>this.selectTab(0)} className={classes}>Terminal</li>
         {this.state.tabs.map((tab) =>{
-          return (<li className="indTab" key={id++}>{tab}<b onClick={()=> {
+          id++;
+          classes = cx('indTab',{selectedTab:id===this.state.id});
+          return (<li onClick={()=>this.selectTab(id)} className={classes} key={id}>{tab}<b onClick={()=> {
             if(tab === "About")
               this.terminal.current.sendCommand("close aboutMe");
             else
@@ -108,8 +121,7 @@ class App extends PureComponent {
     );
 
     
-
-    return (
+    return (      
     <div id="app">
       <ol id="navBar">
         <li onClick={()=> this.terminal.current.sendCommand("open aboutMe")}>About</li>
@@ -119,11 +131,11 @@ class App extends PureComponent {
       </ol>
       
       <ul className="links">
-        <li><a href="https://github.com/IliyanID" target="_blank"><Github className="svg"></Github></a></li>
-        <li><a><Instagram className="svg"></Instagram></a></li>
-        <li><a><Twitter className="svg"></Twitter></a></li>
-        <li><a><Linkedin className="svg"></Linkedin></a></li>
-        <li><a><Codepen className="svg"></Codepen></a></li>
+        <li><a href="https://github.com/IliyanID" target="_blank"><Github className="svg" title=""></Github></a></li>
+        <li><a href="https://www.instagram.com/iliyanid2000/" target="_blank"><Instagram className="svg" title=""></Instagram></a></li>
+        <li><a href="https://twitter.com/UnknownUnoticed" target="_blank"><Twitter className="svg" title=""></Twitter></a></li>
+        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-43b520202/" target="_blank"><Linkedin className="svg" title=""></Linkedin></a></li>
+        <li><a href="https://codepen.io/iliyanid" target="_blank"><Codepen className="svg" title=""></Codepen></a></li>
       </ul>
 
       <div className="emailLine">
@@ -138,7 +150,7 @@ class App extends PureComponent {
         setTimeoutId = {this.setTimeoutId}>   
       </Terminal>
       
-      <div id="footer">Created and Designed by Iliyan Dimitrov</div>
+      <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer">Created and Designed by Iliyan Dimitrov</a>
     </div>
     );
   }
