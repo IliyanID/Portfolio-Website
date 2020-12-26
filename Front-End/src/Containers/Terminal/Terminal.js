@@ -18,6 +18,7 @@ const Terminal = forwardRef((props, ref) => {
 
     const N = () =>{return (<Fragment><br/>⠀</Fragment>);}
 
+
     const starterArr = [
         (<h2>Iliyan Dimitrov</h2>),
         (<h3>This is a Fully Interactive Portfolio Page with a Linux Insprired Terminal{N()}</h3>),
@@ -45,7 +46,6 @@ const Terminal = forwardRef((props, ref) => {
 
     const updateTerminalLine = (e) =>{
         clearTimeout(timeoutID);
-    
         setTerLine({Value:("iliyan@dimitrov:~$ "  + parseString(e.target.value)),blink:true});
     }
 
@@ -83,11 +83,11 @@ const Terminal = forwardRef((props, ref) => {
     props.setTimeoutId(timeoutID);
 
 
-    let num = 0;
+    let key = 0;
     const allTerminalText = (       
         <div className="css-typing">           
             {content.arr.map((item)=>{
-                return <Fragment key={num++}>{item}</Fragment>;
+                return <Fragment key={key++}>{item}</Fragment>;
             })}
         </div>
     )
@@ -103,7 +103,6 @@ const Terminal = forwardRef((props, ref) => {
     const parseCommand = (command) =>{
         clearTimeout(timeoutID);
 
-        //console.log("Entered Parse");
         let commandSelector = command.split(" ")
 
         let tempArr = [...content.arr];
@@ -223,6 +222,24 @@ const Terminal = forwardRef((props, ref) => {
                             break;
                         }
 
+                        case "contactMe":{
+                            if(props.addTab("Terminal"))
+                                tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                            
+                            break;
+                        }
+
+                        case "terminal":{
+                            if(props.addTab("Terminal"))
+                                tempArr.push(<p>Opening new {commandSelector[1]} tab ...<br/>⠀</p>);
+                            else
+                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                            
+                            break;
+                        }
+
                         default:{
                             tempArr.push(<p>Couldn't Find file: {commandSelector[1]}<br/>⠀</p>);
                             break;
@@ -317,13 +334,10 @@ const Terminal = forwardRef((props, ref) => {
         <div id="main">
             {allTerminalText}
             <form onSubmit={updateContent}>
-                <input id="command-line" type="text"  autoFocus spellCheck="false" autoComplete="off" value={getTerLine.Value} onChange={updateTerminalLine}/>     
+                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={getTerLine.Value} onChange={updateTerminalLine}/>     
                 <p>⠀</p>  
             </form>
-        </div>
-        
+        </div>       
     );
-
-    
 })
 export default Terminal;

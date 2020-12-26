@@ -1,8 +1,27 @@
+@media only screen and (max-width: 650px) {/*Smaller than 750px*/
+    #main{
+        width:100vw;
+        height:94vh;
+        margin-top:0px;
+    }
+    h2{
+        margin-top:60px;
+    }
+}
+@media only screen and (min-width: 651px) {/*Larger than 751px*/
+    #main{
+        width:calc(80vw - 40px);
+        height:calc(80% - 20px);
+        margin-top:99px;
+    }
+}
+
+
 :root{
     /*Animations*/
     --typingSpeed:2s;
     --delay:2s;
-    --steps:50;
+    --steps:40;
 
     /*Colors*/
     --darkBlue:#01014a;
@@ -35,10 +54,10 @@
 
 #main{
     background-color:var(--darkColor);
-    position:absolute;
+    position:fixed;
     background-image:linear-gradient(300deg, #000,var(--darkBlue));
-    width:80%;
-    height:75%;
+
+
     color:var(--terminalGreen);
 
 
@@ -48,10 +67,10 @@
     border:2px solid var(--darkColor);
     border-radius:0px 0px 10px 10px;;
     
-    border-top:none;
+    border-top:0px solid transparent;
 
     padding:20px;
-    margin-top:99px;
+
  
    overflow: auto;
 
@@ -87,6 +106,10 @@ h2{
     99%{white-space: nowrap;}
     100%{white-space: normal;}
   }
+  .css-typing{
+      counter-reset:count;
+      counter-increment: count 2;
+  }
 .css-typing h2:nth-child(1){
     height:0;
     overflow: hidden;
@@ -104,6 +127,7 @@ h2{
     animation-delay:calc(var(--delay));
     animation-fill-mode:forwards;
 }
+
 .css-typing p:nth-child(3){
     height:0;
     overflow: hidden;
@@ -114,6 +138,7 @@ h2{
     animation-delay:calc(var(--delay) * 2);
     animation-fill-mode: forwards;   
 }
+
 .css-typing p:nth-child(4){
     height:0;
     overflow: hidden;

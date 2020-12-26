@@ -1,3 +1,38 @@
+
+@media only screen and (max-width: 650px) {/*Smaller than 750px*/
+    .links{
+        display:none;
+    }
+    .email{
+        display:none;
+    }
+    #tabs{
+        width:93%;
+        position:fixed;
+        margin-top:0px;
+    }
+    #footer{
+        display:none;
+    }
+    #navBar{
+        display:none;
+    }
+}
+@media only screen and (min-width: 651px) {/*Larger than 751px*/
+    #tabs{
+        width:calc(80vw - 40px);
+        margin-top:57px;
+    }
+    
+}
+@media only screen and (max-height: 651px) {/*Larger than 751px*/
+    #footer{
+        display:none;
+    }
+    
+}
+
+
 :root{
     --crymson: #da015b;
     --lightGray: #ffffff70;
@@ -9,12 +44,15 @@
 }
 
 #app{
-    color:var(--fontColor);
-    width:100%;
     height:100vh;
+    color:var(--fontColor);
+    
+ 
     background-color:var(--backgroundColor);
     margin:0px;
     padding:0px;
+
+    overflow-y: hidden;
 }
 
 
@@ -25,6 +63,8 @@
     counter-reset:header;
 }
     #navBar li{
+        cursor:pointer;
+
         color:#e6f1ff;
         counter-increment: item 1;
         display:inline-block;
@@ -44,23 +84,103 @@
             color:#ffdf00;;
         }
 
+.links{
+    position:fixed;
+    float:left;
+    bottom:10px;
+    
+}
+a{
+    text-decoration: none;
+    cursor:pointer;
+    
+}
+.svg{
+    cursor:pointer;
+    fill:var(--fontColor);
+    width:30px;
+    margin:7px 20px;
+    padding-top:3.5px;
+    padding-bottom:3.5px;
 
+    text-overflow: none;
+
+    transition:padding .3s, fill .3s;
+
+    
+}
+    .svg:hover{
+        cursor:pointer;
+        padding-bottom:7px !important;
+        padding-top:0px !important;
+        fill:var(--yellow) !important;
+    }
+  
+.links::after{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 200px;
+    margin: 0px auto;
+    background-color: var(--fontColor);
+    margin-top:7px;
+}
+
+.emailLine{
+    position: fixed;
+    
+    left: auto;
+    right: 20px;
+    bottom:10px;
+    
+}
+.emailLine::after{
+
+    content: "";
+    display: block;
+ 
+    width: 1px;
+    height: 200px;
+    margin: 0px auto;
+    background-color: var(--fontColor);
+
+
+
+}
+.email{
+    cursor:pointer;
+    
+    width: 40px;
+    position:block;
+    
+    margin-bottom:280px;
+    color: var(--light-slate);
+    transform:rotate(90deg);
+
+    transition:margin .3s, color .3s;
+}
+    .email:hover{
+        margin-bottom:287px;
+        color:var(--yellow);
+    }
+.email a{
+    letter-spacing: 5px;
+}
 
 
 #tabs{
-    position:absolute;
+    position:fixed;
     list-style:none;
     background-color:var(--borderColor);
-    width:80%;
+
     border:2px solid var(--borderColor);
     padding:3px 20px 0px 20px;
 
     left:50%;
     transform:translate(-50%,0);
 
-    z-index:1;
+    z-index:2;
 
-    margin-top:60px;
     border-radius:10px 10px 0px 0px;
 }
     #tabs li{
@@ -72,21 +192,26 @@
 
 
 .closeX{
+    cursor:pointer;
     border:1px solid transparent;
     margin-left:10px;
     margin-right:-10px;
     padding:2px 5px 2px 6px;
     border-radius:50%;
     font-weight: lighter;
+
+    transition: border-color .2s, background-color .2s;
 }
     .closeX:hover{
-        border-color:var(--lightGray);
-        background-color:var(--lightGray);
+        border-color:var(--fontColor);
+        background-color:trasnparent;
     }
 
 
 
 .indTab{
+    cursor:pointer;
+
     padding:5px 15px;
     border-left:2px solid var(--crymson);
     border-right:2px solid var(--crymson);
@@ -102,6 +227,7 @@
         opacity:1;
     }
     .selectedTab{
+        cursor:default;
         opacity:1;
         border-bottom:2px solid var(--darkBlue);
         border-top:2px solid var(--darkBlue);
@@ -114,26 +240,36 @@
 
 
 #addTab{
+    cursor:pointer;
+
     display:inline-block;
-    border:2px solid transparent;
+    border:1px solid transparent;
     border-color:transparent;
     font-size:2px;
     color:var(--fontColor);
     padding:0px 4px 1px 5px;
+    border-radius:50%;
+
+    transition: border-color .2s, background-color .2s;
 }
     #addTab:hover{
-        border:1px solid var(--lightGray);
-        background-color:var(--lightGray);
-        border-radius:50%;
+        border-color: var(--fontColor);
+        background-color:transparent;
     }
 
 
 
 #footer{
     font-size:13px;
-    width:100%;
     text-align: center;
     position:absolute;
     bottom:15px;
+    transition:color .2s;
 
+    left:50%;
+    transform:translate(-50%,0%);
+}
+#footer:hover{
+    color:var(--yellow);
+    cursor:pointer;
 }

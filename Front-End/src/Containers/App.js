@@ -1,5 +1,13 @@
 import React, { PureComponent , useRef} from 'react';
+import ReactTooltip from 'react-tooltip'
 import './App.css';
+
+import {ReactComponent as Github} from "../Resources/github.svg";
+import {ReactComponent as Linkedin} from "../Resources/linkedin.svg";
+import {ReactComponent as Twitter} from "../Resources/twitter.svg";
+import {ReactComponent as Instagram} from "../Resources/instagram.svg";
+import {ReactComponent as Codepen} from "../Resources/codepen.svg";
+
 import Terminal from'./Terminal/Terminal'
 
 let timeoutID = null;
@@ -80,6 +88,8 @@ class App extends PureComponent {
   }
 
   render () {
+    ReactTooltip.hide() ;
+
 
     let id = 0;
     const allTabs = (
@@ -93,7 +103,7 @@ class App extends PureComponent {
               this.terminal.current.sendCommand("close " + tab.toLowerCase());
           }} className="closeX">X</b></li>);
         })}
-        <li id="addTab"onClick={()=>{this.addTab("Terminal")}}>+</li>
+        <li id="addTab"onClick={()=>{this.terminal.current.sendCommand("open terminal" )}}>+</li>
       </li>
     );
 
@@ -101,24 +111,34 @@ class App extends PureComponent {
 
     return (
     <div id="app">
-      <ol start="0" id="navBar">
+      <ol id="navBar">
         <li onClick={()=> this.terminal.current.sendCommand("open aboutMe")}>About</li>
         <li onClick={()=> this.terminal.current.sendCommand("open experience")}>Experience</li>
         <li onClick={()=> this.terminal.current.sendCommand("open work")}>Work</li>
-        <li>Contact Me</li>
+        <li onClick={()=> this.terminal.current.sendCommand("open contactMe")}>Contact Me</li>
       </ol>
       
+      <ul className="links">
+        <li><a href="https://github.com/IliyanID" target="_blank"><Github className="svg"></Github></a></li>
+        <li><a><Instagram className="svg"></Instagram></a></li>
+        <li><a><Twitter className="svg"></Twitter></a></li>
+        <li><a><Linkedin className="svg"></Linkedin></a></li>
+        <li><a><Codepen className="svg"></Codepen></a></li>
+      </ul>
+
+      <div className="emailLine">
+        <div className="email"><a>iliyanid2000@gmail.com</a></div>
+      </div>
       {allTabs}
 
       <Terminal 
         ref={this.terminal}
         addTab = {this.addTab}
         removeTab = {this.removeTab}
-        setTimeoutId = {this.setTimeoutId}>
-        
+        setTimeoutId = {this.setTimeoutId}>   
       </Terminal>
       
-      <p id="footer">Created and Designed by Iliyan Dimitrov</p>
+      <div id="footer">Created and Designed by Iliyan Dimitrov</div>
     </div>
     );
   }
