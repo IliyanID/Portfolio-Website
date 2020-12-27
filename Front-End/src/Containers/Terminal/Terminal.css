@@ -97,6 +97,7 @@
     h2{
         font-family:'2 Lines Regular',monospace;
         color:var(--crymson);
+        height:auto!important;
     }
     .attention{
         font-size:130%;
