@@ -139,8 +139,6 @@ class App extends PureComponent {
 
     let currentDisplayed = this.state.tabs[this.state.tabs.findIndex((tab) => tab.displayed === true)].name;
     console.log("Current Displayed: " + currentDisplayed);
-
-    let page;
     
 
     return (      
