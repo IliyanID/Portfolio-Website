@@ -1,4 +1,4 @@
-import React, { PureComponent , useRef} from 'react';
+import React, { PureComponent } from 'react';
 import ReactTooltip from 'react-tooltip'
 import classNames from 'classnames/bind';
 import styles from './App.css';
@@ -147,15 +147,15 @@ class App extends PureComponent {
       </ol>
       
       <ul className="links">
-        <li><a href="https://github.com/IliyanID" target="_blank"><Github className="svg" title=""></Github></a></li>
-        <li><a href="https://www.instagram.com/iliyanid2000/" target="_blank"><Instagram className="svg" title=""></Instagram></a></li>
-        <li><a href="https://twitter.com/UnknownUnoticed" target="_blank"><Twitter className="svg" title=""></Twitter></a></li>
-        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-43b520202/" target="_blank"><Linkedin className="svg" title=""></Linkedin></a></li>
-        <li><a href="https://codepen.io/iliyanid" target="_blank"><Codepen className="svg" title=""></Codepen></a></li>
+        <li><a href="https://github.com/IliyanID" target="_blank" rel="noreferrer"><Github className="svg" title=""></Github></a></li>
+        <li><a href="https://www.instagram.com/iliyanid2000/" target="_blank" rel="noreferrer"><Instagram className="svg" title=""></Instagram></a></li>
+        <li><a href="https://twitter.com/UnknownUnoticed" target="_blank" rel="noreferrer"><Twitter className="svg" title=""></Twitter></a></li>
+        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-43b520202/" target="_blank" rel="noreferrer"><Linkedin className="svg" title=""></Linkedin></a></li>
+        <li><a href="https://codepen.io/iliyanid" target="_blank" rel="noreferrer"><Codepen className="svg" title=""></Codepen></a></li>
       </ul>
 
       <div className="emailLine">
-        <div className="email"><a>iliyanid2000@gmail.com</a></div>
+        <div className="email"><a href="/">iliyanid2000@gmail.com</a></div>
       </div>
       {allTabs}
 
@@ -166,7 +166,7 @@ class App extends PureComponent {
         setTimeoutId = {this.setTimeoutId}>   
       </Terminal>
       
-      <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer">Created and Designed by Iliyan Dimitrov</a>
+      <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer" rel="noreferrer">Created and Designed by Iliyan Dimitrov</a>
     </div>
     );
   }
