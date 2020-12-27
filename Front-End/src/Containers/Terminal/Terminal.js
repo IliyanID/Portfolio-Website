@@ -85,7 +85,7 @@ const Terminal = forwardRef((props, ref) => {
 
     let key = 0;
     const allTerminalText = (       
-        <div className="css-typing">           
+        <div className={"css-typing "}>           
             {content.arr.map((item)=>{
                 return <Fragment key={key++}>{item}</Fragment>;
             })}
@@ -331,7 +331,7 @@ const Terminal = forwardRef((props, ref) => {
 
 
     return (
-        <div id="main">
+        <div id="main" className={props.display}>
             {allTerminalText}
             <form onSubmit={updateContent}>
                 <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={getTerLine.Value} onChange={updateTerminalLine}/>     

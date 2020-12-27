@@ -137,6 +137,12 @@ class App extends PureComponent {
     );
 
 
+    let currentDisplayed = this.state.tabs[this.state.tabs.findIndex((tab) => tab.displayed === true)].name;
+    console.log("Current Displayed: " + currentDisplayed);
+
+    let page;
+    
+
     return (      
     <div id="app">
       <ol id="navBar">
@@ -158,13 +164,14 @@ class App extends PureComponent {
         <div className="email"><a href="/">iliyanid2000@gmail.com</a></div>
       </div>
       {allTabs}
-
       <Terminal 
         ref={this.terminal}
         addTab = {this.addTab}
         removeTab = {this.removeTab}
-        setTimeoutId = {this.setTimeoutId}>   
+        setTimeoutId = {this.setTimeoutId}
+        display = {currentDisplayed === "Terminal" ? "" : "hideTerminal"}>   
       </Terminal>
+      
       
       <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer" rel="noreferrer">Created and Designed by Iliyan Dimitrov</a>
     </div>
