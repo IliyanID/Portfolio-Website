@@ -21,8 +21,7 @@ class App extends PureComponent {
  
 
   state = {
-    tabs:[],
-    id:0
+    tabs:[{name:"Terminal",displayed:true}]
   };
 
   
@@ -43,22 +42,22 @@ class App extends PureComponent {
       console.log("Adding tabName: " + tabName);
     switch(tabName){   
       case "Terminal":{
-        tempTabs.push("Terminal");
+        tempTabs.push({name:"Terminal",displayed:false});
         break;
       }
 
       case "About":{
-        tempTabs.push("About");
+        tempTabs.push({name:"About",displayed:false});
         break;
       }
 
       case "Experience":{
-        tempTabs.push("Experience");
+        tempTabs.push({name:"Experience",displayed:false});
         break;
       }
 
       case "Work":{
-        tempTabs.push("Work");
+        tempTabs.push({name:"Work",displayed:false});
         break;
       }
       
@@ -70,30 +69,52 @@ class App extends PureComponent {
     return true;
   }
 
-  removeTab = (tab) =>{
+  removeTab = (name) =>{
     if(timeoutID !== null)
       clearTimeout(timeoutID);
 
-    const tempTabs = [...this.state.tabs]
+    const tempTabs = [...this.state.tabs];
+    let index = tempTabs.findIndex((tab)=>tab.displayed === true);
+    tempTabs[index].displayed = false;
+    tempTabs[0].displayed = true;
 
-    let index = tempTabs.indexOf(tab)
+    index = tempTabs.findIndex((tab)=>tab.name === name);
     if(index < 0)
       return false;
     
-      else{
+    else
       tempTabs.splice(index, 1);
-    }
-   
+      
     this.setState({tabs:tempTabs})
-    console.log("id " +this.state.id);
+    
     return true;
   }
 
-  selectTab = (id) =>{
+  selectTab = (name) =>{
     if(timeoutID !== null)
       clearTimeout(timeoutID);
-    console.log("id: " + id +"\nselectedTab: " + this.state.id)
-    this.setState({id:id});
+
+    let tempArr = [...this.state.tabs].reverse();
+    let findIndex = () =>{
+      for(let i = tempArr.length - 1; i >= 0 ;i--){
+        if(tempArr[i].name === name)
+          return i;
+      }
+      return -1;
+    }
+    let index = findIndex();
+    console.log("index " + index);
+
+
+    for(let i = 0; i < tempArr.length; i++){
+      if(i === index){
+        tempArr[i].displayed = true;
+      }
+      else
+        tempArr[i].displayed = false;
+    }
+    tempArr.reverse();
+    this.setState({tabs:tempArr});
   }
 
   render () {
@@ -102,25 +123,20 @@ class App extends PureComponent {
 
     let id = 0;
     let cx = classNames.bind(styles);
-    let classes = cx('indTab',{selectedTab:id===this.state.id});
+    
     const allTabs = (
       <li id="tabs">
-        <li id={id} onClick={()=>this.selectTab(0)} className={classes}>Terminal</li>
-        {this.state.tabs.map((tab) =>{
+        {this.state.tabs.map((tab)=>{
+          let classes = cx('indTab',{selectedTab:tab.displayed});
+          let result = (<li key={id} onClick={()=>this.selectTab(tab.name)} className={classes}>{tab.name}<b onClick={(e)=> {e.stopPropagation();this.removeTab(tab.name);}} className="closeX">X</b></li>);
           id++;
-          classes = cx('indTab',{selectedTab:id===this.state.id});
-          return (<li onClick={()=>this.selectTab(id)} className={classes} key={id}>{tab}<b onClick={()=> {
-            if(tab === "About")
-              this.terminal.current.sendCommand("close aboutMe");
-            else
-              this.terminal.current.sendCommand("close " + tab.toLowerCase());
-          }} className="closeX">X</b></li>);
+          return result;  
         })}
-        <li id="addTab"onClick={()=>{this.terminal.current.sendCommand("open terminal" )}}>+</li>
+        <li id="addTab"onClick={()=>this.terminal.current.sendCommand("open terminal" )}>+</li>
       </li>
     );
 
-    
+
     return (      
     <div id="app">
       <ol id="navBar">
