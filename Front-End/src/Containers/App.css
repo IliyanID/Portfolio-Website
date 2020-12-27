@@ -164,7 +164,7 @@ a{
         margin: 0px auto;
         background-color: var(--fontColor);
     }
-    .email,a{
+    .email,.email a{
         cursor:pointer;
         
         width: 40px;
@@ -180,7 +180,7 @@ a{
         letter-spacing: 5px;
         text-decoration:none;
     }
-        .email:hover,a:hover{
+        .email:hover,.email a:hover{
             margin-top:-7px;
             margin-bottom:287px;
             color:var(--yellow);
