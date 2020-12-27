@@ -87,7 +87,7 @@ a{
         #navBar li::before{
             
             counter-increment:header;
-            content:".0" counter(header) " ";
+            content:"[" counter(header) "] ";
             color:#ffdf00;;
         }
 
