@@ -9,6 +9,11 @@ import {ReactComponent as Instagram} from "../Resources/instagram.svg";
 import {ReactComponent as Codepen} from "../Resources/codepen.svg";
 
 import Terminal from'./Terminal/Terminal'
+import About from '../Components/About/About';
+import ContactMe from '../Components/ContactMe/ContactMe';
+import Experience from '../Components/Experience/Experience';
+import SnakeGame from '../Components/SnakeGame/SnakeGame';
+import Work from '../Components/Work/Work';
 
 let timeoutID = null;
 
@@ -38,25 +43,26 @@ class App extends PureComponent {
     if(tabName !=="Terminal" && tempTabs.indexOf(tabName) !== -1)
       return false;
 
-      console.log("Adding tabName: " + tabName);
+    tempTabs.map((tab)=>tab.displayed = false);
+    console.log("Adding tabName: " + tabName);
     switch(tabName){   
       case "Terminal":{
-        tempTabs.push({name:"Terminal",displayed:false});
+        tempTabs.push({name:"Terminal",displayed:true});
         break;
       }
 
       case "About":{
-        tempTabs.push({name:"About",displayed:false});
+        tempTabs.push({name:"About",displayed:true});
         break;
       }
 
       case "Experience":{
-        tempTabs.push({name:"Experience",displayed:false});
+        tempTabs.push({name:"Experience",displayed:true});
         break;
       }
 
       case "Work":{
-        tempTabs.push({name:"Work",displayed:false});
+        tempTabs.push({name:"Work",displayed:true});
         break;
       }
       
@@ -68,7 +74,7 @@ class App extends PureComponent {
     return true;
   }
 
-  removeTab = (name) =>{
+  removeTab = (id) =>{
     if(timeoutID !== null)
       clearTimeout(timeoutID);
 
@@ -77,8 +83,8 @@ class App extends PureComponent {
     tempTabs[index].displayed = false;
     tempTabs[0].displayed = true;
 
-    index = tempTabs.findIndex((tab)=>tab.name === name);
-    if(index < 0)
+    index = tempTabs.findIndex((tab)=>tab.id === id);
+    if(index <= 0)
       return false;
     
     else
@@ -89,14 +95,14 @@ class App extends PureComponent {
     return true;
   }
 
-  selectTab = (name) =>{
+  selectTab = (id) =>{
     if(timeoutID !== null)
       clearTimeout(timeoutID);
 
     let tempArr = [...this.state.tabs].reverse();
     let findIndex = () =>{
       for(let i = tempArr.length - 1; i >= 0 ;i--){
-        if(tempArr[i].name === name)
+        if(tempArr[i].id === id)
           return i;
       }
       return -1;
@@ -116,16 +122,35 @@ class App extends PureComponent {
     this.setState({tabs:tempArr});
   }
 
+  getContent = () =>{
+    let index = this.state.tabs.findIndex((tab) => tab.displayed);
+    console.log("Selected Index is:  " + index);
+    if(this.state.tabs[index].name === 'About')
+      return <About></About>
+    else if(this.state.tabs[index].name === 'Experience')
+      return <Experience></Experience>
+    else if(this.state.tabs[index].name === 'Work')
+      return <Work></Work>
+    else if(this.state.tabs[index].name === 'ContactMe')
+      return <ContactMe></ContactMe>
+    else if(this.state.tabs[index].name === 'SnakeGame')
+      return <SnakeGame></SnakeGame>
+    else
+      return null;
+
+  }
+
   render () {
 
 
     let id = 0;
     let cx = classNames.bind(styles);
-    
     const allTabs = (
       <li id="tabs">
-        {this.state.tabs.map((tab)=>{
+        {
+        this.state.tabs.map((tab)=>{
           let classes = cx('indTab',{selectedTab:tab.displayed});
+          tab.id = id;
           let result = (<li key={id} onClick={()=>this.selectTab(tab.id)} className={classes}>{tab.name}<b onClick={(e)=> {e.stopPropagation();this.removeTab(tab.id);}} className="closeX">X</b></li>);
           id++;
           return result;  
@@ -134,9 +159,8 @@ class App extends PureComponent {
       </li>
     );
 
-
-    let currentDisplayed = this.state.tabs[this.state.tabs.findIndex((tab) => tab.displayed === true)].name;
-    console.log("Current Displayed: " + currentDisplayed);
+   let content = this.getContent();
+    
     
 
     return (      
@@ -165,8 +189,10 @@ class App extends PureComponent {
         addTab = {this.addTab}
         removeTab = {this.removeTab}
         setTimeoutId = {this.setTimeoutId}
-        display = {currentDisplayed === "Terminal" ? "" : "hideTerminal"}>   
+        display = {this.state.tabs[0].displayed ? "" : "hideTerminal"}>   
       </Terminal>
+      {content}
+
       
       
       <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer" rel="noreferrer">Created and Designed by Iliyan Dimitrov</a>

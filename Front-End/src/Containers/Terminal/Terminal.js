@@ -331,7 +331,7 @@ const Terminal = forwardRef((props, ref) => {
 
 
     return (
-        <div id="main" className={props.display}>
+        <div className={props.display + " main"}>
             {allTerminalText}
             <form onSubmit={updateContent}>
                 <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={getTerLine.Value} onChange={updateTerminalLine}/>     

@@ -1,5 +1,5 @@
 @media only screen and (max-width: 650px) {/*Smaller than 750px*/
-    #main{
+    .main{
         width:95vw;
         height:100vh;
         margin-top:0px;
@@ -13,7 +13,7 @@
     }
 }
 @media only screen and (min-width: 651px) {/*Larger than 751px*/
-    #main{
+    .main{
         width:calc(100vw - 200px);
         height:calc(100vh - 180px);
         margin-top:99px;
@@ -59,7 +59,7 @@
     cursor:default;
 }
 
-#main{
+.main{
     background-color:var(--darkColor);
     position:fixed;
     background-image:linear-gradient(300deg, #000,var(--darkBlue));

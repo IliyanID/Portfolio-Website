@@ -1,12 +1,12 @@
 import react , { Fragment } from 'react';
-import './Experience.css';
+import './ContactMe.css';
 import '../../Containers/Terminal/Terminal.css'
 
-const Experience = () =>{
+const ContactMe = () =>{
     return(
     <div className = "main">
-        <h1>Experience</h1>
+        <h1>Contact Me</h1>
     </div>
     );
 }
-export default Experience;
+export default ContactMe;
