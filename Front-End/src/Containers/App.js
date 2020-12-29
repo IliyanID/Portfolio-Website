@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import ReactTooltip from 'react-tooltip'
 import classNames from 'classnames/bind';
 import styles from './App.css';
 
@@ -21,7 +20,7 @@ class App extends PureComponent {
  
 
   state = {
-    tabs:[{name:"Terminal",displayed:true}]
+    tabs:[{name:"Terminal",displayed:true,id:0}]
   };
 
   
@@ -118,7 +117,6 @@ class App extends PureComponent {
   }
 
   render () {
-    ReactTooltip.hide() ;
 
 
     let id = 0;
@@ -128,7 +126,7 @@ class App extends PureComponent {
       <li id="tabs">
         {this.state.tabs.map((tab)=>{
           let classes = cx('indTab',{selectedTab:tab.displayed});
-          let result = (<li key={id} onClick={()=>this.selectTab(tab.name)} className={classes}>{tab.name}<b onClick={(e)=> {e.stopPropagation();this.removeTab(tab.name);}} className="closeX">X</b></li>);
+          let result = (<li key={id} onClick={()=>this.selectTab(tab.id)} className={classes}>{tab.name}<b onClick={(e)=> {e.stopPropagation();this.removeTab(tab.id);}} className="closeX">X</b></li>);
           id++;
           return result;  
         })}
