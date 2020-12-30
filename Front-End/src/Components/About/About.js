@@ -1,4 +1,4 @@
-import react , { Fragment } from 'react';
+import React from 'react';
 import './About.css';
 import '../../Containers/Terminal/Terminal.css'
 
