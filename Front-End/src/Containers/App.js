@@ -181,7 +181,7 @@ class App extends PureComponent {
       </ul>
 
       <div className="emailLine">
-        <div className="email"><a href="/">iliyanid2000@gmail.com</a></div>
+        <div className="email"><a href="/">dev.iliyan.dimitrov@gmail.com</a></div>
       </div>
       {allTabs}
       <Terminal 

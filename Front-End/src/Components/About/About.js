@@ -1,22 +1,23 @@
 import React from 'react';
 import './About.css';
 import '../../Containers/Terminal/Terminal.css'
-
+import avatar from '../../Resources/avatar.jpg'
 const About = () =>{
     return(
     <div className = "main">
-        <h1><b className="I">[1]</b> About Me<br/>⠀</h1>
+        <div  className="header">
+            <h1><b className="I">[1]</b> About Me</h1>
+        </div>
         <p>Hello! I'm Iliyan, a third year student at Colorado State University studying Computer Science with a focus in Software Engineering<br/>⠀</p>
+        <img className="avatar" src={avatar} alt="avatar"/>
         <p>Here's some technologies that I've worked with:</p>
         <ol>
-            <li>Java</li>
-            <li>Python</li>
-            <li>C++</li>
-            <li>React</li>
-            <li>Angular</li>
+            <li>HTML & (S)CSS</li>
+            <li>Javascript (ES6+)</li>
+            <li>React.js</li>
             <li>Vue</li>
-            <li>Node.js</li>
-            <li>REST Archetecture</li>
+            <li>Angular</li>
+            <li>Workpress</li>
         </ol>
     </div>
     );

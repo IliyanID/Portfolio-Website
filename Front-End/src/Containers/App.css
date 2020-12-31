@@ -177,7 +177,7 @@ a{
         transition:margin .3s, color .3s;
     }
     .email a{
-        letter-spacing: 5px;
+
         text-decoration:none;
     }
         .email:hover,.email a:hover{
