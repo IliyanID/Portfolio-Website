@@ -1,3 +1,17 @@
+:root{
+    --crymson: #da015b;
+    --lightGray: #ffffff70;
+    --borderColor:#da015b5b;
+    --backgroundColor:#172a45;
+    --fontColor:#e6f1ff;
+    --yellow:#ffdf00;
+    --darkBlue:#01014a;
+
+
+    --width:650px;
+}
+
+
 
 @media only screen and (max-width: 650px){/*Smaller than 750px*/
     .links{
@@ -34,15 +48,7 @@
 
 
 
-:root{
-    --crymson: #da015b;
-    --lightGray: #ffffff70;
-    --borderColor:#da015b5b;
-    --backgroundColor:#172a45;
-    --fontColor:#e6f1ff;
-    --yellow:#ffdf00;
-    --darkBlue:#01014a;
-}
+
 
 #app{
     height:100vh;
