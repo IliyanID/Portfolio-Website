@@ -1,7 +1,7 @@
 import React from 'react';
 import './About.css';
 import '../../Containers/Terminal/Terminal.css'
-import avatar from '../../Resources/avatar.jpg'
+
 const About = () =>{
     return(
     <section className = "main section">
