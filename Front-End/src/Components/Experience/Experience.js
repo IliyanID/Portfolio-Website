@@ -5,7 +5,7 @@ import '../../Containers/Terminal/Terminal.css'
 const Experience = () =>{
     return(
     <div className = "main">
-        <h1>Experience</h1>
+        <h1>Nothing to see here :(</h1>
     </div>
     );
 }
