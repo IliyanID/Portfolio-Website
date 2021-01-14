@@ -5,7 +5,7 @@ import '../../Containers/Terminal/Terminal.css'
 const Work = () =>{
     return(
     <div className = "main">
-        <h1>Nothing to see here :(</h1>
+        <h1>This Work Page is under development</h1>
     </div>
     );
 }

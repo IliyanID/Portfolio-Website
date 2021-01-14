@@ -1,0 +1,54 @@
+:root{
+    --tranYellow:#ffdd0063;
+}
+
+
+.main{
+    color:var(--fontColor);
+}
+
+
+
+.jobSelector{
+    float: left;
+    margin-left:calc(50% - 350px);
+    list-style:none;
+
+}
+    .jobSelector li{
+        width:200px;
+        padding:10px 30px;
+        margin:10px 0px;
+        border:2px solid transparent;
+        border-radius:2px;
+        border-left:2px solid var(--yellow);
+    }
+    .jobSelector li:hover{
+        background-color:var(--tranYellow);
+        cursor:pointer;
+    }
+    .jobSelected{
+        border-color:var(--yellow);
+    }
+
+
+.individualExperience{
+
+    float:right;
+    width:40vw;
+    margin-right:calc(50% - 600px);
+
+}
+
+
+.jobDescription{
+    list-style:none;
+}
+    .jobDescription li::before {
+        content: "\25AA";
+        color: var(--yellow);
+        font-weight: bold;
+        display: inline-block; 
+        width: 1em;
+        margin-left: -1em;
+    }
