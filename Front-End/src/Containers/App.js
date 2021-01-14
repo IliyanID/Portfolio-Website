@@ -178,7 +178,7 @@ class App extends PureComponent {
         <li><a href="https://github.com/IliyanID" target="_blank" rel="noreferrer"><Github className="svg" title=""></Github></a></li>
         <li><a href="https://www.instagram.com/iliyanid2000/" target="_blank" rel="noreferrer"><Instagram className="svg" title=""></Instagram></a></li>
         <li><a href="https://twitter.com/UnknownUnoticed" target="_blank" rel="noreferrer"><Twitter className="svg" title=""></Twitter></a></li>
-        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-43b520202/" target="_blank" rel="noreferrer"><Linkedin className="svg" title=""></Linkedin></a></li>
+        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-926550200/" target="_blank" rel="noreferrer"><Linkedin className="svg" title=""></Linkedin></a></li>
         <li><a href="https://codepen.io/iliyanid" target="_blank" rel="noreferrer"><Codepen className="svg" title=""></Codepen></a></li>
       </ul>
 
