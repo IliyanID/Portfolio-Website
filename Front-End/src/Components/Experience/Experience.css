@@ -17,18 +17,16 @@
 }
     .jobSelector li{
         width:200px;
-        padding:10px 30px;
-        margin:10px 0px;
-        border:2px solid transparent;
-        border-radius:2px;
-        border-left:2px solid var(--yellow);
+        margin:0px;
+        padding:20px 30px;
+        border-left:2px solid var(--tranYellow);
     }
     .jobSelector li:hover{
         background-color:var(--tranYellow);
         cursor:pointer;
     }
     .jobSelected{
-        border-color:var(--yellow);
+        border-left:2px solid var(--yellow) !important;
     }
 
 

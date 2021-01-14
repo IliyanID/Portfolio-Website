@@ -35,8 +35,11 @@ const Experience = () =>{
         </div>
     )]];
 
+    let id = 0;
     let jobSelector = experience.map((job) => {
-        return <li>{job[0]}</li>
+        if(id == 0)
+            return <li className = "jobSelected" id={id++}>{job[0]}</li>
+        return <li id={id++}>{job[0]}</li>
     })
     return(
     <div className = "main">
