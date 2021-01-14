@@ -1,9 +1,10 @@
 :root{
     --tranYellow:#ffdd0063;
+    --slate: #beceff;
 }
 
 
-@media only screen and (max-width: 2000px){
+@media only screen and (max-width: 1000px){
     .jobSelector{
         display:block!important;
     }
@@ -12,6 +13,10 @@
     }
     .container{
         width:100%!important;
+    }
+    .title{
+        font-size:5.5vw;
+        width:100%;
     }
 }
 
@@ -37,8 +42,8 @@
     left:50%;
     transform:translate(-50%,-50%);
 
-    width:80%;
-    max-width:700px;
+    width:100%;
+    max-width:800px;
 
 
     z-index:-1;
@@ -75,7 +80,7 @@
 .individualExperience{
 
     float:right;
-    width:400px;
+    width:500px;
  
 
 }
@@ -90,6 +95,7 @@
     .jobDescription li{
         margin: 10px 0px;
         padding-left:13px;
+        color:var(--slate);
     }
     .jobDescription li::before {
         content: "\25AA";

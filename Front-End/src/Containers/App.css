@@ -76,6 +76,8 @@ a{
     z-index:200;
 }
     #navBar li{
+        user-select: none;
+
         z-index:100;
         cursor:pointer;
         display:inline-block;
@@ -210,6 +212,8 @@ a{
     border-radius:10px 10px 0px 0px;
     }
     #tabs li{
+        user-select:none;
+
         display:inline-block;
         margin:0px 5px;
         font-size:19px;

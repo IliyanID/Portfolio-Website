@@ -24,18 +24,30 @@ const Experience = () =>{
         <div className="individualExperience">
             <h3>Delivery Driver <span className="yellow">@ Empire Palace</span></h3>
             <p>August 2019 - January 2021</p>
+            <ul className="jobDescription">
+                <li>Consistenly and reliably arrive on time for my shifts</li>
+                <li>Perform any tasks that are assighned to me</li>
+            </ul>
         </div>
     )],
     ["Texas Roadhouse",(
         <div className="individualExperience">
-                <h3>To-Go Host <span className="yellow">@ Texas Roadhouse</span></h3>
-                <p>September 2016 - August 2020</p>
+            <h3>To-Go Host <span className="yellow">@ Texas Roadhouse</span></h3>
+            <p>September 2016 - August 2020</p>
+            <ul className="jobDescription">
+                <li>Consistenly and reliably arrive on time for my shifts</li>
+                <li>Perform any tasks that are assighned to me</li>
+            </ul>
         </div>
     )],
     ["Colorado History Museum",(
         <div className="individualExperience">
-                <h3>Barista <span className="yellow">@ Colorado History Museum</span></h3>
-                <p>Feburary 2015 - September 2016</p>
+            <h3>Barista <span className="yellow">@ Colorado History Museum</span></h3>
+            <p>Feburary 2015 - September 2016</p>
+            <ul className="jobDescription">
+                <li>Consistenly and reliably arrive on time for my shifts</li>
+                <li>Perform any tasks that are assighned to me</li>
+            </ul>
         </div>
     )]];
 
