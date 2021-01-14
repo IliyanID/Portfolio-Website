@@ -151,7 +151,7 @@ class App extends PureComponent {
       <li id="tabs">
         {
         this.state.tabs.map((tab)=>{
-          let classes = cx('indTab',{selectedTab:tab.displayed});
+          let classes = cx({indTab:tab.id!==0},{terminal:tab.id===0},{selectedTab:tab.displayed});
           tab.id = id;
           let result = (<li key={id} onClick={()=>this.selectTab(tab.id)} className={classes}>{tab.name}<b onClick={(e)=> {e.stopPropagation();this.removeTab(tab.id);}} className="closeX">X</b></li>);
           id++;

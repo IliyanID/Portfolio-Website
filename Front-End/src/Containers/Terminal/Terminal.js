@@ -202,7 +202,7 @@ const Terminal = forwardRef((props, ref) => {
                             if(props.addTab("About"))
                                 tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
                             else
-                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
                             
                             break;
                         }
@@ -211,7 +211,7 @@ const Terminal = forwardRef((props, ref) => {
                             if(props.addTab("Experience"))
                                 tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
                             else
-                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
                             
                             break;
                         }
@@ -220,7 +220,7 @@ const Terminal = forwardRef((props, ref) => {
                             if(props.addTab("Work"))
                                 tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
                             else
-                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
                             
                             break;
                         }
@@ -229,7 +229,7 @@ const Terminal = forwardRef((props, ref) => {
                             if(props.addTab("Terminal"))
                                 tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
                             else
-                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
                             
                             break;
                         }
@@ -238,7 +238,7 @@ const Terminal = forwardRef((props, ref) => {
                             if(props.addTab("Terminal"))
                                 tempArr.push(<p>Opening new {commandSelector[1]} tab ...<br/>⠀</p>);
                             else
-                                tempArr.push(<p>File {commandSelector[1]} is already open<br/>⠀</p>);
+                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
                             
                             break;
                         }

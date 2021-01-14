@@ -211,14 +211,17 @@ a{
 
     border-radius:10px 10px 0px 0px;
     }
-    #tabs li{
+    #tabs li {
+        
         user-select:none;
 
         display:inline-block;
         margin:0px 5px;
         font-size:19px;
     }
-    .indTab{
+    .terminal{
+        z-index:-2000!important;
+
         cursor:pointer;
     
         padding:5px 15px;
@@ -231,6 +234,40 @@ a{
         opacity:.8;
     
         transition: opacity .2s;
+    }
+        .terminal:hover{
+            opacity: 1;
+        }
+    .indTab{
+        z-index:-2000!important;
+
+        cursor:pointer;
+    
+        padding:5px 15px;
+        border-left:2px solid var(--crymson);
+        border-right:2px solid var(--crymson);
+        border-bottom:2px solid var(--crymson);
+        border-top:2px solid var(--crymson);
+        background-color:var(--crymson);
+        border-radius:5px 5px 0px 0px;
+        opacity:.8;
+    
+        transition: opacity .2s;
+
+        transform:translate(-100%,0);
+        animation: newTab 1s;
+        animation-fill-mode:forwards !important;
+    }
+    @keyframes newTab{
+        from{
+            transform:translate(-100%,0);
+
+        }
+        to{
+            transform:translate(0%,0);
+            z-index: 0;
+        }
+
     }
         .indTab:hover{
             opacity:1;
