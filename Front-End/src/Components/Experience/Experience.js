@@ -50,7 +50,7 @@ const Experience = () =>{
     <div className = "experience main">
         <h1>This Experience Page is under development</h1>
         <div>
-            <h2>Where I've Worked</h2>
+            <h2 className="title">Where I've Worked</h2>
             <div className="container">
                 <ul className="jobSelector">
                     {jobSelector}

@@ -15,14 +15,15 @@
     }
 }
 
-h2{
-    font-size:260%!important;
+.title{
+ 
     width:100%;
+    text-align: center;
 }
 .yellow{
     color:var(--yellow);
     font-size:1em;
-    font-weight:bolder
+    font-weight:bolder;
 }
 
 
@@ -49,6 +50,8 @@ h2{
     list-style:none;
     width:300px;
 
+    user-select: none;
+
 }
     .jobSelector li{
         width:200px;
@@ -56,6 +59,8 @@ h2{
         padding:20px 0px 20px 30px;
         border-left:2px solid var(--tranYellow);
         transition:background-color .5s;
+
+
     }
     .jobSelector li:hover{
         background-color:var(--tranYellow);
@@ -63,6 +68,7 @@ h2{
     }
     .jobSelected{
         border-left:2px solid var(--yellow) !important;
+        color:var(--yellow);
     }
 
 
