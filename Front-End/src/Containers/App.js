@@ -35,13 +35,16 @@ class App extends PureComponent {
  
 
   addTab = (tabName) =>{
-    if(timeoutID !== null)
+    if(timeoutID !== undefined)
       clearTimeout(timeoutID);
 
     let tempTabs = [...this.state.tabs];
 
-    if(tabName !=="Terminal" && tempTabs.indexOf(tabName) !== -1)
+    if(tabName !=="Terminal" && tempTabs.findIndex((tab)=>tab.name === tabName) !== -1){
+      let id = tempTabs[tempTabs.findIndex((tab)=>tab.name === tabName)].id;
+      this.selectTab(id);
       return false;
+    }
 
     tempTabs.map((tab)=>tab.displayed = false);
     console.log("Adding tabName: " + tabName);

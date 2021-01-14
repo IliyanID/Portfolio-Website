@@ -12,7 +12,6 @@
 
 
 
-
 @media only screen and (max-width: 980px){
     .jobSelector{
         display:block!important;
@@ -43,6 +42,8 @@
     }
 }
 
+
+
 .title h1{
  
     font-size:40px;
@@ -50,26 +51,28 @@
     color:var(--yellow);
 
     margin-bottom:30px;
-    
 }
-.title::after{
-    content:"";
-    width:calc(100% - 500px);
-    max-width:350px;
-    height:1px;
-    background-color:var(--yellow);
-    display:inline-block;
+    .title::after{
+        content:"";
+        width:calc(100% - 500px);
+        max-width:350px;
+        height:1px;
+        background-color:var(--yellow);
+        display:inline-block;
 
 
-    margin-bottom:8px;
-    margin-left:20px;
+        margin-bottom:8px;
+        margin-left:20px;
+    }
 
-}
+
+
 .yellow{
     color:var(--yellow);
     font-size:1em;
     font-weight:bolder;
 }
+
 
 
 .container{
@@ -84,6 +87,8 @@
 
     z-index:-1;
 }
+
+
 
 .jobSelector{
     float: left;
@@ -100,8 +105,6 @@
         padding:20px 0px 20px 30px;
         border-left:2px solid var(--tranYellow);
         transition:background-color .5s;
-
-
     }
     .jobSelector li:hover{
         background-color:var(--tranYellow);
@@ -113,16 +116,16 @@
     }
 
 
+
 .individualExperience{
 
     float:right;
     width:500px;
- 
-
 }
     .individualExperience p{
         margin:5px 0px 30px 0px;
     }
+
 
 
 .jobDescription{
