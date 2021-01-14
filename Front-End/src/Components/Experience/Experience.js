@@ -1,12 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Experience.css';
 import '../../Containers/Terminal/Terminal.css'
 
 const Experience = () =>{
+    let [curJob, selectJob] = useState(0);
+
+
+
     let experience = 
     [["Freelance",(
         <div className="individualExperience">
-            <h3>Software Engineer @ Freelance</h3>
+            <h3>Software Engineer <span className="yellow">@ Freelance</span></h3>
             <p>January 2018 - Present</p>
             <ul className="jobDescription">
                 <li>Experience in creating simple automation and computational programs utilizing Java</li>
@@ -18,38 +22,41 @@ const Experience = () =>{
     )],
     ["Empire Palace",(
         <div className="individualExperience">
-            <h3>Delivery Driver @ Empire Palace</h3>
+            <h3>Delivery Driver <span className="yellow">@ Empire Palace</span></h3>
             <p>August 2019 - January 2021</p>
         </div>
     )],
     ["Texas Roadhouse",(
         <div className="individualExperience">
-                <h3>To-Go Host @ Texas Roadhouse</h3>
+                <h3>To-Go Host <span className="yellow">@ Texas Roadhouse</span></h3>
                 <p>September 2016 - August 2020</p>
         </div>
     )],
     ["Colorado History Museum",(
         <div className="individualExperience">
-                <h3>Barista @ Colorado History Museum</h3>
+                <h3>Barista <span className="yellow">@ Colorado History Museum</span></h3>
                 <p>Feburary 2015 - September 2016</p>
         </div>
     )]];
 
-    let id = 0;
-    let jobSelector = experience.map((job) => {
-        if(id == 0)
-            return <li className = "jobSelected" id={id++}>{job[0]}</li>
-        return <li id={id++}>{job[0]}</li>
+
+    let jobSelector = experience.map((job,key) => {
+        let result = <li onClick={()=>{console.log(key);selectJob(key)}} key={key}>{job[0]}</li>;
+        if(key === curJob)
+            result =  <li onClick={()=>{selectJob(key)}} className = "jobSelected" key={key}>{job[0]}</li>
+        return result
     })
     return(
-    <div className = "main">
+    <div className = "experience main">
         <h1>This Experience Page is under development</h1>
         <div>
             <h2>Where I've Worked</h2>
-            <ul className="jobSelector">
-                {jobSelector}
-            </ul>
-            {experience[0][1]}
+            <div className="container">
+                <ul className="jobSelector">
+                    {jobSelector}
+                </ul>
+                {experience[curJob][1]}
+            </div>
         </div>
     </div>
     );

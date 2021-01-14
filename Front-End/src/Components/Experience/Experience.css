@@ -3,23 +3,59 @@
 }
 
 
-.main{
-    color:var(--fontColor);
+@media only screen and (max-width: 2000px){
+    .jobSelector{
+        display:block!important;
+    }
+    .individualExperience{
+        display:block!important;
+    }
+    .container{
+        width:100%!important;
+    }
+}
+
+h2{
+    font-size:260%!important;
+    width:100%;
+}
+.yellow{
+    color:var(--yellow);
+    font-size:1em;
+    font-weight:bolder
 }
 
 
+.experience{
+    color:var(--fontColor);
+}
+
+.container{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    width:80%;
+    max-width:700px;
+
+
+    z-index:-1;
+}
 
 .jobSelector{
     float: left;
-    margin-left:calc(50% - 350px);
+
     list-style:none;
+    width:300px;
 
 }
     .jobSelector li{
         width:200px;
         margin:0px;
-        padding:20px 30px;
+        padding:20px 0px 20px 30px;
         border-left:2px solid var(--tranYellow);
+        transition:background-color .5s;
     }
     .jobSelector li:hover{
         background-color:var(--tranYellow);
@@ -33,15 +69,22 @@
 .individualExperience{
 
     float:right;
-    width:40vw;
-    margin-right:calc(50% - 600px);
+    width:400px;
+ 
 
 }
+    .individualExperience p{
+        margin:5px 0px 30px 0px;
+    }
 
 
 .jobDescription{
     list-style:none;
 }
+    .jobDescription li{
+        margin: 10px 0px;
+        padding-left:13px;
+    }
     .jobDescription li::before {
         content: "\25AA";
         color: var(--yellow);

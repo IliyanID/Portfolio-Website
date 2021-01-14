@@ -72,15 +72,18 @@ const Terminal = forwardRef((props, ref) => {
     }
 
 
+
     let timeoutID = setTimeout(() =>{
-        if(getTerLine.blink)
-            setTerLine({Value:(getTerLine.Value + "").replaceAll("▮",""),blink:!getTerLine.blink});
-        
-        else
-            setTerLine({Value: getTerLine.Value + ("▮"),blink:!getTerLine.blink});
-        
+        if(props.inView === true){
+            if(getTerLine.blink)
+                setTerLine({Value:(getTerLine.Value + "").replaceAll("▮",""),blink:!getTerLine.blink});
+            
+            else
+                setTerLine({Value: getTerLine.Value + ("▮"),blink:!getTerLine.blink});
+        }
     },800);
     props.setTimeoutId(timeoutID);
+    
 
 
     let key = 0;
@@ -94,7 +97,7 @@ const Terminal = forwardRef((props, ref) => {
 
 
     let element = document.getElementById("command-line")
-    if(element !== null){
+    if(element !== null && props.inView === true){
         if(element !== document.activeElement)
             element.focus();
     }

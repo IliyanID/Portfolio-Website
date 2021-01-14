@@ -29,10 +29,10 @@ class App extends PureComponent {
   };
 
   
-
   setTimeoutId = (iTimeoutID) =>{
     timeoutID = iTimeoutID;
   }
+ 
 
   addTab = (tabName) =>{
     if(timeoutID !== null)
@@ -141,8 +141,7 @@ class App extends PureComponent {
   }
 
   render () {
-
-
+ 
     let id = 0;
     let cx = classNames.bind(styles);
     const allTabs = (
@@ -189,7 +188,8 @@ class App extends PureComponent {
         addTab = {this.addTab}
         removeTab = {this.removeTab}
         setTimeoutId = {this.setTimeoutId}
-        display = {this.state.tabs[0].displayed ? "" : "hideTerminal"}>   
+        display = {this.state.tabs[0].displayed ? "" : "hideTerminal"}
+        inView = {this.state.tabs[0].displayed}>   
       </Terminal>
       {content}
 
