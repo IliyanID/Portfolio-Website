@@ -60,10 +60,11 @@ const Experience = () =>{
     })
     return(
     <div className = "experience main">
-        <h1>This Experience Page is under development</h1>
         <div>
-            <h2 className="title">Where I've Worked</h2>
             <div className="container">
+                <span className="title">
+                    <h1>Where I've Worked</h1>
+                </span>
                 <ul className="jobSelector">
                     {jobSelector}
                 </ul>

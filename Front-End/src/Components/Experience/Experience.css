@@ -4,26 +4,57 @@
 }
 
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 980px){
     .jobSelector{
         display:block!important;
+        width:2000px!important;
+        height: auto!important;
+        overflow-x:scroll!important;
+        overflow-y:hidden;
     }
+        .jobSelector li{
+            display:inline-block!important;
+            border-left:2px solid transparent!important;
+            border-bottom:2px solid var(--tranYellow);
+            text-align: center;
+            padding:15px!important;
+        }
+        .jobSelected{
+            border-bottom:2px solid var(--yellow) !important;
+        }
     .individualExperience{
         display:block!important;
+        width:90%!important;
     }
     .container{
         width:100%!important;
     }
-    .title{
-        font-size:5.5vw;
-        width:100%;
+    .title h1{
+        margin-left:20px;
     }
 }
 
-.title{
+.title h1{
  
-    width:100%;
-    text-align: center;
+    font-size:40px;
+    display:inline-block;
+    color:var(--yellow);
+
+    margin-bottom:30px;
+    
+}
+.title::after{
+    content:"";
+    width:calc(100% - 500px);
+    max-width:350px;
+    height:1px;
+    background-color:var(--yellow);
+    display:inline-block;
+
+
+    margin-bottom:8px;
+    margin-left:20px;
+
 }
 .yellow{
     color:var(--yellow);
