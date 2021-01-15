@@ -34,6 +34,7 @@
     }
     .container{
         width:100%!important;
+        min-height:500px ;
     }
     .title h1{
         margin-left:20px;
