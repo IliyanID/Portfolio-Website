@@ -55,6 +55,7 @@
     }
     .about{
         height: 350px;
+        max-width: 900px;
     }
 }
 

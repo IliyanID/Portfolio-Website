@@ -167,7 +167,7 @@ a{
         content: "";
         display: block;
     
-        width: 1px;
+        width: 0.1px;
         height: 200px;
         margin: 0px auto;
         background-color: var(--fontColor);
