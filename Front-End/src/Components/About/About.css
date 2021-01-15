@@ -120,11 +120,11 @@
     margin-left: -1em;
   }
 
-a{
+.school{
     color:var(--yellow);
     transition:text-decoration 1s;
 }
-a:hover{
+.school:hover{
     text-decoration: underline!important;
 }
 

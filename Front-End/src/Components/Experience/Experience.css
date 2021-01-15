@@ -13,6 +13,21 @@
 
 
 @media only screen and (max-width: 980px){
+
+    .container{
+        width:100%!important;
+    }
+    .individualExperience{
+        width:calc(100% - 300px)!important;
+    }
+}
+@media only screen and (max-width: 650px){
+    .container{
+        min-height:500px ;
+    }
+    .title h1{
+        margin-left:20px;
+    }
     .jobSelector{
         display:block!important;
         width:2000px!important;
@@ -31,13 +46,6 @@
     .individualExperience{
         display:block!important;
         width:90%!important;
-    }
-    .container{
-        width:100%!important;
-        min-height:500px ;
-    }
-    .title h1{
-        margin-left:20px;
     }
 }
 
