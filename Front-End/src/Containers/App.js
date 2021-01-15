@@ -86,7 +86,11 @@ class App extends PureComponent {
     tempTabs[index].displayed = false;
     tempTabs[0].displayed = true;
 
-    index = tempTabs.findIndex((tab)=>tab.id === id);
+    if(!Number.isInteger(parseFloat(id)))
+      index = tempTabs.findIndex((tab)=>tab.name === id);
+    else
+      index = tempTabs.findIndex((tab)=>tab.id === id);
+      
     if(index <= 0)
       return false;
     
@@ -183,7 +187,7 @@ class App extends PureComponent {
       </ul>
 
       <div className="emailLine">
-        <div className="email"><a href="/">dev.iliyan.dimitrov@gmail.com</a></div>
+        <div className="email"><a href="mailto:dev.iliyan.dimitrov@gmail.com">dev.iliyan.dimitrov@gmail.com</a></div>
       </div>
       {allTabs}
       <Terminal 

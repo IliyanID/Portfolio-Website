@@ -13,7 +13,7 @@ const Terminal = forwardRef((props, ref) => {
                     clearTimeout(timeout)
                 }
 
-                
+
                 clearTimeout(timeoutID);
                 getTerLine.Value = "iliyan@dimitrov:~$ " + command;
                 updateContent();
@@ -58,7 +58,7 @@ const Terminal = forwardRef((props, ref) => {
         
 
         if(num === undefined){
-            tempArr[10] = undefined;
+            tempArr[10] = (<p></p>);
         }
         else
             tempArr[10] = (<p>No User Input Detected Opening About Me Page in {num} Seconds ...{N()}</p>)
@@ -128,6 +128,17 @@ const Terminal = forwardRef((props, ref) => {
             }
             else{
                 getTerLine.Timer -= 1;
+                if(getTerLine.blink){
+                    getTerLine.Value = (getTerLine.Value + "").replaceAll("▮","");
+                    getTerLine.blink = !getTerLine.blink;
+                
+                }
+                else{
+                    getTerLine.Value = getTerLine.Value + ("▮");
+                    getTerLine.blink = !getTerLine.blink;
+                }
+
+
                 console.log(getTerLine.Timer);
                 setCountDown(getTerLine.Timer);
 
@@ -175,7 +186,7 @@ const Terminal = forwardRef((props, ref) => {
 
             case "clear":{
                 if(commandSelector.length <= 1){
-                    starterArr[10] = undefined;
+                    starterArr[10] = (<p></p>);
                     setContent({arr:starterArr});
                     return null;
                 }
