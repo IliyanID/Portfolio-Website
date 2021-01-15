@@ -1,12 +1,19 @@
 import React, {useState, Fragment, useEffect, forwardRef, useImperativeHandle } from 'react';
 import './Terminal.css'
 const Terminal = forwardRef((props, ref) => {
-    const [getTerLine,setTerLine] = useState({Timer:20,Value:"iliyan@dimitrov:~$ ▮",blink:true});
+    const [getTerLine,setTerLine] = useState({Timer:33,Value:"iliyan@dimitrov:~$ ▮",blink:true});
 
     useImperativeHandle(
         ref,
         () => ({
             sendCommand(command) {
+                if(getTerLine.Timer >= 0){
+                    console.log("Entered in updateContent");
+                    setCountDown();
+                    clearTimeout(timeout)
+                }
+
+                
                 clearTimeout(timeoutID);
                 getTerLine.Value = "iliyan@dimitrov:~$ " + command;
                 updateContent();
@@ -45,7 +52,6 @@ const Terminal = forwardRef((props, ref) => {
 
 
     const setCountDown = (num) =>{
-        console.log("Entered setCount with " + num);
         clearTimeout(timeoutID);
         let tempArr = [...content.arr];
         
@@ -64,15 +70,13 @@ const Terminal = forwardRef((props, ref) => {
     let [timeout,setT] = useState();
     useEffect(()=>{
         clearTimeout(timeoutID);
-        console.log("Entered Effect");
           setT(setTimeout(()=>{
             setCountDown();
-            console.log("Entered Timeout");
             clearTimeout(timeoutID);
             getTerLine.Value = "iliyan@dimitrov:~$ 1";
             updateContent();
            
-        },16000))
+        },getTerLine.Timer * 1000))
     },[])
 
 
@@ -95,7 +99,7 @@ const Terminal = forwardRef((props, ref) => {
             e.preventDefault();
 
         clearTimeout(timeoutID);
-        
+
         parseCommand(parseString());
 
         setTerLine({Value:"iliyan@dimitrov:~$ ",blink:true});
@@ -133,7 +137,7 @@ const Terminal = forwardRef((props, ref) => {
             }
                 
         }
-    },800);
+    },(getTerLine.Timer === undefined)?800:1000);
     props.setTimeoutId(timeoutID);
     
 

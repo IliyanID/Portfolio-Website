@@ -239,6 +239,16 @@ to{width:calc(100% - 80px);opacity:1;height:auto;}
     animation-delay:calc(var(--delay) * 5);;
     animation-fill-mode: forwards;   
 }
+.css-typing p:nth-child(11){
+    height:0;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: typewriterIndented var(--typingSpeed) steps(var(--steps), end);
+
+    animation-delay:calc(var(--delay) * 11);;
+    animation-fill-mode: forwards;   
+}
 
 h3{
     font-size:20px;
