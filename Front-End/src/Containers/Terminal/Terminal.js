@@ -1,8 +1,7 @@
 import React, {useState, Fragment, useEffect, forwardRef, useImperativeHandle } from 'react';
 import './Terminal.css'
 const Terminal = forwardRef((props, ref) => {
-    const [getTerLine,setTerLine] = useState({Value:"iliyan@dimitrov:~$ ▮",blink:true});
-
+    const [getTerLine,setTerLine] = useState({Timer:20,Value:"iliyan@dimitrov:~$ ▮",blink:true});
 
     useImperativeHandle(
         ref,
@@ -31,7 +30,8 @@ const Terminal = forwardRef((props, ref) => {
         (<p className="indented"><b className="I">[2]</b> or <b className="I">[open experience]</b>: Opens my previous work experience</p>),
         (<p className="indented"><b className="I">[3]</b> or <b className="I">[open work]</b>: Opens previous projects on GitHub</p>),
         (<p className="indented"><b className="I">[4]</b> or <b className="I">[run contactMe]</b>: Runs contact me program in terminal</p>),
-        (<p className="indented"><b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game{N()}</p>)
+        (<p className="indented"><b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game{N()}</p>),
+        (<p>No User Input Detected Opening About Me Page in {getTerLine.Timer} Seconds ...{N()}</p>)
     ]
     let[content,setContent] = useState({
         arr:starterArr
@@ -44,8 +44,48 @@ const Terminal = forwardRef((props, ref) => {
     },[content.arr])
 
 
+    const setCountDown = (num) =>{
+        console.log("Entered setCount with " + num);
+        clearTimeout(timeoutID);
+        let tempArr = [...content.arr];
+        
+        
+
+        if(num === undefined){
+            tempArr[10] = undefined;
+        }
+        else
+            tempArr[10] = (<p>No User Input Detected Opening About Me Page in {num} Seconds ...{N()}</p>)
+
+        setContent({arr:tempArr});
+    }
+
+
+    let [timeout,setT] = useState();
+    useEffect(()=>{
+        clearTimeout(timeoutID);
+        console.log("Entered Effect");
+          setT(setTimeout(()=>{
+            setCountDown();
+            console.log("Entered Timeout");
+            clearTimeout(timeoutID);
+            getTerLine.Value = "iliyan@dimitrov:~$ 1";
+            updateContent();
+           
+        },16000))
+    },[])
+
+
     const updateTerminalLine = (e) =>{
         clearTimeout(timeoutID);
+        
+        if(getTerLine.Timer >= 0){
+            setCountDown();
+            clearTimeout(timeout)
+        }
+
+
+ 
         setTerLine({Value:("iliyan@dimitrov:~$ "  + parseString(e.target.value)),blink:true});
     }
 
@@ -75,11 +115,23 @@ const Terminal = forwardRef((props, ref) => {
 
     let timeoutID = setTimeout(() =>{
         if(props.inView === true){
-            if(getTerLine.blink)
-                setTerLine({Value:(getTerLine.Value + "").replaceAll("▮",""),blink:!getTerLine.blink});
-            
-            else
-                setTerLine({Value: getTerLine.Value + ("▮"),blink:!getTerLine.blink});
+            if(getTerLine.Timer === undefined){
+                if(getTerLine.blink)
+                    setTerLine({Value:(getTerLine.Value + "").replaceAll("▮",""),blink:!getTerLine.blink});
+                
+                else
+                    setTerLine({Value: getTerLine.Value + ("▮"),blink:!getTerLine.blink});
+            }
+            else{
+                getTerLine.Timer -= 1;
+                console.log(getTerLine.Timer);
+                setCountDown(getTerLine.Timer);
+
+                if(getTerLine.Timer === 0){
+                    setCountDown();
+                }
+            }
+                
         }
     },800);
     props.setTimeoutId(timeoutID);
@@ -119,6 +171,7 @@ const Terminal = forwardRef((props, ref) => {
 
             case "clear":{
                 if(commandSelector.length <= 1){
+                    starterArr[10] = undefined;
                     setContent({arr:starterArr});
                     return null;
                 }
