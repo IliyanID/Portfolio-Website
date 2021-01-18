@@ -25,11 +25,19 @@ class App extends PureComponent {
 
    getRepos = async () => {
     let headers = new Headers();
-    let token = "2980d6a6f5af6781afabf0f310de8b18385f0ae3"
-    token = token.substring(0,token.length-1) + "2";
 
-    headers.set('Authorization', "token " + token);
-    console.log("token: " + token);
+    
+
+    var CryptoJS = require("crypto-js");
+
+        var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX19TqCTLaoOljbd35MI9tZx3QDkwuZa3UJvzwsnzHTJmuX4SjjAb2jqllbJpPWdNrAEXHgjMLgu2cw==", 'password');
+        var originalText = bytes.toString(CryptoJS.enc.Utf8);
+ 
+console.log(originalText); // 'my message'
+
+    headers.set('Authorization', "token " + originalText);
+    console.log("token: " + originalText);
+
     
 
     let url = "https://api.github.com/users/iliyanid/repos";
