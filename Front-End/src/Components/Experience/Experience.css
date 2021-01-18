@@ -8,6 +8,7 @@
 .experience{
     color:var(--fontColor);
     overflow-x:hidden;
+    
 }
 
 
@@ -93,6 +94,9 @@
 
 
     z-index:-1;
+
+    animation: aboutload .5s;
+        animation-fill-mode:forwards !important;
 }
 
 

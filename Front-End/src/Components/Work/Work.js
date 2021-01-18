@@ -35,10 +35,12 @@ const Work = (props) =>{
     return(
     <div className = "main">
         <div className="projects">
-            <h3>Some Things That I've Built</h3>
+            <div className="workHeader">
+                <h3>Some Things That I've Built</h3>
+            </div>
             {content}
+            <button onClick={props.setLoad}className="load">{(props.getLoad) ? "Load Less" : "Load More"}</button>
         </div>
-        <button onClick={props.setLoad}className="load">{(props.getLoad) ? "Load Less" : "Load More"}</button>
     </div>
     );
 }

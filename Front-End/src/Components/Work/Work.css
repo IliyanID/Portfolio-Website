@@ -37,15 +37,26 @@
 
 
 }
-    .projects h3{
+    .workHeader h3{
         font-size:40px;
         display:inline-block;
         color:var(--yellow);
         margin-left:10px;
     }
+        .workHeader::after{
+            content:"";
+            width:calc(100% - (690px));
+            height:1px;
+            background-color:var(--yellow);
+            display:inline-block;
+
+            margin-bottom:8px;
+            margin-left:20px;
+           
+
+        }
     .projects ul{
         list-style:none;
-
     }
         .projects li{
             display:inline-block;
