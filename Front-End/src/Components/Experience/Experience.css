@@ -41,6 +41,7 @@
             text-align: center;
             padding:15px!important;
             margin-top:30px!important;
+            margin-bottom:30px!important;
         }
         .jobSelected{
             border-bottom:2px solid var(--yellow) !important;
