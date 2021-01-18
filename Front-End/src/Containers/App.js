@@ -25,7 +25,8 @@ class App extends PureComponent {
 
    getRepos = async () => {
     let headers = new Headers();
-    headers.set('Authorization', "token 44f190aa66d951ebf143d61dac266404ecf955cd");
+    let token = process.env.TOKEN;
+    headers.set('Authorization', "token " + token);
 
 
     let url = "https://api.github.com/users/iliyanid/repos";
