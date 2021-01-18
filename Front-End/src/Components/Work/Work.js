@@ -1,8 +1,15 @@
-import React  from 'react';
+import React, { useEffect, useState }  from 'react';
 import './Work.css';
 import '../../Containers/Terminal/Terminal.css'
 
-const Work = () =>{
+const Work = (props) =>{
+    let [repos,setRepos] = useState({})
+    useEffect(() =>{
+        console.log(props.repos);
+    },[]);
+
+    
+
     return(
     <div className = "main">
         <h1>This Work Page is under development</h1>

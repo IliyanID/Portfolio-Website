@@ -22,10 +22,27 @@ class App extends PureComponent {
     super(props);
     this.terminal = React.createRef();
   }
+
  
+  coponentDidMount(){
+
+  }
+
+   getRepos = async () => {
+    let url = "https://api.github.com/users/iliyanid/repos";
+    let response = await fetch(url);
+    const rawData = await response.json();
+    let data = [];
+    for(let i = 0; i < rawData.length; i++){
+        data.push({name:rawData[i].name,link:rawData[i].html_url});
+    }
+    this.setState({repos:data});
+  };
+
 
   state = {
-    tabs:[{name:"Terminal",displayed:true,id:0}]
+    tabs:[{name:"Terminal",displayed:true,id:0}],
+    repos:this.getRepos()
   };
 
   
@@ -137,7 +154,7 @@ class App extends PureComponent {
     else if(this.state.tabs[index].name === 'Experience')
       return <Experience></Experience>
     else if(this.state.tabs[index].name === 'Work')
-      return <Work></Work>
+      return <Work repos={this.state.repos}></Work>
     else if(this.state.tabs[index].name === 'ContactMe')
       return <ContactMe></ContactMe>
     else if(this.state.tabs[index].name === 'SnakeGame')
