@@ -6,6 +6,7 @@
     margin-left:50%;
     transform:translate(-50%,0);
     width:90%;
+    max-width:1032px;
 }
     .projects h3{
         font-size:40px;
@@ -14,17 +15,20 @@
     }
     .projects ul{
         list-style:none;
+
     }
         .projects li{
             display:inline-block;
-            border:2px solid var(--fontColor);
+            border:2px solid var(--navy);
             margin: 10px;
             width:300px;
-            height:300px;
-            border-radius:20px;
+            height:350px;
+
             cursor:pointer;
             background-color:var(--navy);
             padding:10px;
+
+
 
             transition:transform .3s;
         }
@@ -32,7 +36,7 @@
                 transform:translate(0px, -5px);               
             }
             .insideContainer{
-
+                display:grid;
             }
                 .logo{
                     fill:var(--yellow);
@@ -52,10 +56,16 @@
 
                     color:var(--fontColor);
                     display:block;
-                    text-align: center;
+                    font-size:20px;
+                    padding:10px 0px;
+                    font-weight: 900;
+                    height:60px;
                 }
                 .description{
                     color:var(--fontColor);
                     font-size:15px;
-                    display:relative;
+                    height:211px;
+                }
+                footer{
+                
                 }
