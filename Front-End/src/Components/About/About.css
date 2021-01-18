@@ -56,17 +56,18 @@
     .about{
         height: 350px;
         max-width: 900px;
-
-        animation: aboutload .5s;
+        opacity:0;
+        animation: aboutload 1s;
         animation-fill-mode:forwards !important;
     }
 }
 
 
 @keyframes aboutload{
-    from{opacity:0;transform:translate(-50%,-30%)}
-    to{opacity:1;transform:translate(-50%,-50%)}
+    from{opacity:0;}
+    to{opacity:1;}
 }
+
 
 .section{
     color:var(--fontColor);
