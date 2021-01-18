@@ -31,12 +31,10 @@ class App extends PureComponent {
     var CryptoJS = require("crypto-js");
 
         var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX19TqCTLaoOljbd35MI9tZx3QDkwuZa3UJvzwsnzHTJmuX4SjjAb2jqllbJpPWdNrAEXHgjMLgu2cw==", 'password');
-        var originalText = bytes.toString(CryptoJS.enc.Utf8);
+        var token = bytes.toString(CryptoJS.enc.Utf8);
  
-console.log(originalText); // 'my message'
 
-    headers.set('Authorization', "token " + originalText);
-    console.log("token: " + originalText);
+    headers.set('Authorization', "token " + token);
 
     
 
