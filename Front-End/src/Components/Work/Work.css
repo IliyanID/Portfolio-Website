@@ -1,0 +1,61 @@
+:root{
+    --navy:#112240;
+}
+
+.projects{
+    margin-left:50%;
+    transform:translate(-50%,0);
+    width:90%;
+}
+    .projects h3{
+        font-size:40px;
+        display:inline-block;
+        color:var(--yellow);
+    }
+    .projects ul{
+        list-style:none;
+    }
+        .projects li{
+            display:inline-block;
+            border:2px solid var(--fontColor);
+            margin: 10px;
+            width:300px;
+            height:300px;
+            border-radius:20px;
+            cursor:pointer;
+            background-color:var(--navy);
+            padding:10px;
+
+            transition:transform .3s;
+        }
+            .projects li:hover{
+                transform:translate(0px, -5px);               
+            }
+            .insideContainer{
+
+            }
+                .logo{
+                    fill:var(--yellow);
+                    height:40px;
+                }
+                    .ext{
+                        float:right;
+                        width:30px;
+                        height:auto;
+                    }
+                    .folder{
+                        float:left;
+                        width:40px;
+                        height:auto;
+                    }
+                .projects a{
+
+                    color:var(--fontColor);
+                    display:block;
+                    text-align: center;
+                }
+                .description{
+                    color:var(--fontColor);
+                    font-size:15px;
+                    display:relative;
+                }

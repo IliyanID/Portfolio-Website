@@ -23,19 +23,20 @@ class App extends PureComponent {
     this.terminal = React.createRef();
   }
 
- 
-  coponentDidMount(){
-
-  }
-
    getRepos = async () => {
     let url = "https://api.github.com/users/iliyanid/repos";
     let response = await fetch(url);
     const rawData = await response.json();
     let data = [];
     for(let i = 0; i < rawData.length; i++){
-        data.push({name:rawData[i].name,link:rawData[i].html_url});
+      //response = await fetch (rawData[i].languages_url)
+      //let languages = await response;
+      let languages = "temp"
+      data.push({name:rawData[i].name,link:rawData[i].html_url,description:rawData[i].description,languages:languages});
     }
+    console.log(data);
+    if(timeoutID !== undefined)
+      clearTimeout(timeoutID);
     this.setState({repos:data});
   };
 
