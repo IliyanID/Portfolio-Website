@@ -29,7 +29,7 @@ class App extends PureComponent {
     const rawData = await response.json();
     let data = [];
 
-    for(let i = 0; i < rawData.length; i++){
+    for(let i = rawData.length - 1; i >=0; i--){
       response = await fetch (rawData[i].languages_url)
       let JSONlanguages = await response.json();
       let languages = "";
@@ -48,8 +48,14 @@ class App extends PureComponent {
   state = {
     tabs:[{name:"Terminal",displayed:true,id:0}],
     load:false,
-    repos:this.getRepos()
+    repos:[{name:"",link:"",description:"",languages:""}]
   };
+
+
+  componentDidMount(){
+    this.getRepos();
+  }
+
 
   setLoad = () =>{
     this.setState({load:!this.state.load})
