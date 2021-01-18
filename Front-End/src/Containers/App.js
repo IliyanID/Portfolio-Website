@@ -25,12 +25,7 @@ class App extends PureComponent {
 
    getRepos = async () => {
     let headers = new Headers();
-<<<<<<< HEAD
     let token = process.env.TOKEN;
-=======
-    let token = "6fbad5ef0a37a63c7a3a188b438656b22f576115_DELETE"
-    token = token.split("_")[0];
->>>>>>> 02451aa3487cdae54ea80cd56de4dc0cf90ad902
     headers.set('Authorization', "token " + token);
 
 
