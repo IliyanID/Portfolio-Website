@@ -7,8 +7,16 @@
 
 @media only screen and (max-width: 650px){/*Smaller than 750px*/
     .projects{
-        width:100%;
+        margin-top:50px;
+        width:100%!important;
     }
+        .projects li{
+            width:87vw!important;
+            height:300px!important;
+        }
+        .description{
+            height:180px!important;
+        }
 }
 
 
