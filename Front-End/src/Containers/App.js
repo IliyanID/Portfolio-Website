@@ -24,13 +24,21 @@ class App extends PureComponent {
   }
 
    getRepos = async () => {
+    let headers = new Headers();
+    headers.set('Authorization', 'Basic ' + btoa("iliyanid" + ":" + "cd4e52094f6b3892a599ab05d8b78c3ab76d7d3e"));
+
+
     let url = "https://api.github.com/users/iliyanid/repos";
-    let response = await fetch(url);
+    let response = await fetch(url,{method: 'GET', headers:headers});
     const rawData = await response.json();
     let data = [];
 
+    console.log(rawData.length)
+    if(rawData.length === undefined)
+      return;
+
     for(let i = rawData.length - 1; i >=0; i--){
-      response = await fetch (rawData[i].languages_url)
+      response = await fetch (rawData[i].languages_url,{method: 'GET', headers:headers})
       let JSONlanguages = await response.json();
       let languages = "";
       for(let [key, value] of Object.entries(JSONlanguages)) 
@@ -38,6 +46,7 @@ class App extends PureComponent {
       //let languages = "temp"
       data.push({name:rawData[i].name,link:rawData[i].html_url,description:rawData[i].description,languages:languages});
     }
+    console.log("Data:")
     console.log(data);
     if(timeoutID !== undefined)
       clearTimeout(timeoutID);
