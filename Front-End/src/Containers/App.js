@@ -25,7 +25,7 @@ class App extends PureComponent {
 
    getRepos = async () => {
     let headers = new Headers();
-    headers.set('Authorization', 'Basic ' + btoa("iliyanid" + ":" + "cd4e52094f6b3892a599ab05d8b78c3ab76d7d3e"));
+    headers.set('Authorization', 'Basic ' + btoa("iliyanid" + ":" + "f6eced3a355bba6f31edbc6d043c872410d0bc4b"));
 
 
     let url = "https://api.github.com/users/iliyanid/repos";
