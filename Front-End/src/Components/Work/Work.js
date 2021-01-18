@@ -32,11 +32,11 @@ const Work = (props) =>{
 
     return(
     <div className = "main">
-        <h1>This Work Page is under development</h1>
         <div className="projects">
             <h3>My Projects</h3>
             {content}
         </div>
+        <button className="loadMore">Load More</button>
     </div>
     );
 }

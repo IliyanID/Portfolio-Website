@@ -28,7 +28,7 @@ class App extends PureComponent {
     let response = await fetch(url);
     const rawData = await response.json();
     let data = [];
-    for(let i = 0; i < rawData.length; i++){
+    for(let i = 0; i < 6; i++){
       //response = await fetch (rawData[i].languages_url)
       //let languages = await response;
       let languages = "temp"

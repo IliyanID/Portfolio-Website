@@ -1,5 +1,6 @@
 :root{
     --navy:#112240;
+    --tranYellow:#ffdd0063;
 }
 
 .projects{
@@ -22,7 +23,7 @@
             border:2px solid var(--navy);
             margin: 10px;
             width:300px;
-            height:350px;
+            height:330px;
 
             cursor:pointer;
             background-color:var(--navy);
@@ -59,13 +60,23 @@
                     font-size:20px;
                     padding:10px 0px;
                     font-weight: 900;
-                    height:60px;
+                    height:50px;
                 }
                 .description{
                     color:var(--fontColor);
                     font-size:15px;
                     height:211px;
                 }
-                footer{
-                
-                }
+    .loadMore{
+        color:var(--yellow);
+        margin-left:50%;
+        transform: translate(-50%,0);
+        border:2px solid var(--yellow);
+        padding:20px;
+        border-radius:20px;
+
+        transition:background-color .3s;
+    }
+        .loadMore:hover{
+            background-color:var(--tranYellow);
+        }
