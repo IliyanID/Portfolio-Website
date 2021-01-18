@@ -28,10 +28,14 @@ class App extends PureComponent {
     let response = await fetch(url);
     const rawData = await response.json();
     let data = [];
-    for(let i = 0; i < 6; i++){
-      //response = await fetch (rawData[i].languages_url)
-      //let languages = await response;
-      let languages = "temp"
+
+    for(let i = 0; i < rawData.length; i++){
+      response = await fetch (rawData[i].languages_url)
+      let JSONlanguages = await response.json();
+      let languages = "";
+      for(let [key, value] of Object.entries(JSONlanguages)) 
+        languages += " " + key
+      //let languages = "temp"
       data.push({name:rawData[i].name,link:rawData[i].html_url,description:rawData[i].description,languages:languages});
     }
     console.log(data);
@@ -43,10 +47,13 @@ class App extends PureComponent {
 
   state = {
     tabs:[{name:"Terminal",displayed:true,id:0}],
+    load:false,
     repos:this.getRepos()
   };
 
-  
+  setLoad = () =>{
+    this.setState({load:!this.state.load})
+  }
   setTimeoutId = (iTimeoutID) =>{
     timeoutID = iTimeoutID;
   }
@@ -155,7 +162,7 @@ class App extends PureComponent {
     else if(this.state.tabs[index].name === 'Experience')
       return <Experience></Experience>
     else if(this.state.tabs[index].name === 'Work')
-      return <Work repos={this.state.repos}></Work>
+      return <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
     else if(this.state.tabs[index].name === 'ContactMe')
       return <ContactMe></ContactMe>
     else if(this.state.tabs[index].name === 'SnakeGame')

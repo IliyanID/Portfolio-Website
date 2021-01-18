@@ -9,16 +9,18 @@ const Work = (props) =>{
     let content = (
         <ul>
             {props.repos.map((obj,index) =>{
+            if(!props.getLoad && index >= 6)
+                return;
             return(
                 <li key={index}>
                     <div className="insideContainer">
                         <div className="logo">
-                            <ExternalLink className="ext"/>
+                            <a href={obj.link} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
                             <Folder className="folder"/>
                         </div>
-                        <a href={obj.link} target="_blank" rel="noreferrer">
+                        <div className="title">
                             {obj.name}
-                        </a>
+                        </div>
                         <div className="description">
                             {obj.description}
                         </div>
@@ -33,10 +35,10 @@ const Work = (props) =>{
     return(
     <div className = "main">
         <div className="projects">
-            <h3>My Projects</h3>
+            <h3>Some Things That I've Built</h3>
             {content}
         </div>
-        <button className="loadMore">Load More</button>
+        <button onClick={props.setLoad}className="load">{(props.getLoad) ? "Load Less" : "Load More"}</button>
     </div>
     );
 }

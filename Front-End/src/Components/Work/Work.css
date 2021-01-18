@@ -1,18 +1,36 @@
 :root{
     --navy:#112240;
     --tranYellow:#ffdd0063;
+    --lessGray:#a8b2d1
 }
+
+
+@media only screen and (max-width: 650px){/*Smaller than 750px*/
+    .projects{
+        width:100%;
+    }
+}
+
+
+@keyframes loadIn {
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
 
 .projects{
     margin-left:50%;
     transform:translate(-50%,0);
     width:90%;
     max-width:1032px;
+
+
 }
     .projects h3{
         font-size:40px;
         display:inline-block;
         color:var(--yellow);
+        margin-left:10px;
     }
     .projects ul{
         list-style:none;
@@ -30,6 +48,9 @@
             padding:10px;
 
 
+            opacity:0;
+            animation: loadIn 1s;
+            animation-fill-mode:forwards !important;
 
             transition:transform .3s;
         }
@@ -43,40 +64,52 @@
                     fill:var(--yellow);
                     height:40px;
                 }
+                    .logo a{
+                        cursor:pointer;
+
+                    }
                     .ext{
                         float:right;
-                        width:30px;
+                        width:20px;
                         height:auto;
+                        fill:var(--lightGray);
+                        cursor:pointer;
                     }
                     .folder{
                         float:left;
                         width:40px;
                         height:auto;
                     }
-                .projects a{
+                .title{
 
                     color:var(--fontColor);
                     display:block;
                     font-size:20px;
                     padding:10px 0px;
                     font-weight: 900;
-                    height:50px;
+                    height:35px;
                 }
                 .description{
-                    color:var(--fontColor);
+                    color:var(--lessGray);
                     font-size:15px;
                     height:211px;
                 }
-    .loadMore{
+                footer{
+                    margin-top:5px;
+                    color:var(--lightGray);
+                    font-size: 12px;
+                }
+    .load{
         color:var(--yellow);
         margin-left:50%;
         transform: translate(-50%,0);
         border:2px solid var(--yellow);
         padding:20px;
         border-radius:20px;
+        cursor:pointer;
 
         transition:background-color .3s;
     }
-        .loadMore:hover{
+        .load:hover{
             background-color:var(--tranYellow);
         }
