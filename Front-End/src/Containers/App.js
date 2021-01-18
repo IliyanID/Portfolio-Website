@@ -16,7 +16,7 @@ import SnakeGame from '../Components/SnakeGame/SnakeGame';
 import Work from '../Components/Work/Work';
 
 let timeoutID = null;
-
+let debug = false;
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -33,6 +33,7 @@ class App extends PureComponent {
         var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX19TqCTLaoOljbd35MI9tZx3QDkwuZa3UJvzwsnzHTJmuX4SjjAb2jqllbJpPWdNrAEXHgjMLgu2cw==", 'password');
         var token = bytes.toString(CryptoJS.enc.Utf8);
  
+        
 
     headers.set('Authorization', "token " + token);
 
@@ -43,7 +44,6 @@ class App extends PureComponent {
     const rawData = await response.json();
     let data = [];
 
-    console.log(rawData.length)
     if(rawData.length === undefined)
       return;
 
@@ -51,13 +51,20 @@ class App extends PureComponent {
       response = await fetch (rawData[i].languages_url,{method: 'GET', headers:headers})
       let JSONlanguages = await response.json();
       let languages = "";
-      for(let [key, value] of Object.entries(JSONlanguages)) 
+      for(let [key] of Object.entries(JSONlanguages)) 
         languages += " " + key
-      //let languages = "temp"
-      data.push({name:rawData[i].name,link:rawData[i].html_url,description:rawData[i].description,languages:languages});
+      data.push({name:rawData[i].name,link:rawData[i].html_url,description:rawData[i].description,languages:languages,size:rawData[i].size});
     }
-    console.log("Data:")
-    console.log(data);
+
+
+    data.sort((obj1, obj2)=>{return( obj2.size - obj1.size)});
+
+    if(debug){
+      console.log(token);
+      console.log("Data:")
+      console.log(data);
+    }
+
     if(timeoutID !== undefined)
       clearTimeout(timeoutID);
     this.setState({repos:data});
@@ -67,7 +74,7 @@ class App extends PureComponent {
   state = {
     tabs:[{name:"Terminal",displayed:true,id:0}],
     load:false,
-    repos:[{name:"",link:"",description:"",languages:""}]
+    repos:[{name:"",link:"",description:"",languages:"",size:0}]
   };
 
 

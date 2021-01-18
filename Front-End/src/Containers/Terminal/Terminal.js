@@ -8,7 +8,6 @@ const Terminal = forwardRef((props, ref) => {
         () => ({
             sendCommand(command) {
                 if(getTerLine.Timer >= 0){
-                    console.log("Entered in updateContent");
                     setCountDown();
                     clearTimeout(timeout)
                 }
@@ -139,7 +138,6 @@ const Terminal = forwardRef((props, ref) => {
                 }
 
 
-                console.log(getTerLine.Timer);
                 setCountDown(getTerLine.Timer);
 
                 if(getTerLine.Timer === 0){
