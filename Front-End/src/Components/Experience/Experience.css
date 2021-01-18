@@ -33,6 +33,7 @@
         display:block!important;
         width:2000px!important;
         height: auto!important;
+        margin-top:0px!important;
     }
         .jobSelector li{
             display:inline-block!important;
@@ -49,6 +50,7 @@
     .individualExperience{
         display:block!important;
         width:90%!important;
+        margin-top:0px!important;
     }
 }
 
@@ -59,8 +61,7 @@
     font-size:40px;
     display:inline-block;
     color:var(--yellow);
-
-    margin-bottom:30px;
+    margin-bottom:50px;
 }
     .title::after{
         content:"";
@@ -112,7 +113,7 @@
     user-select: none;
 
     overflow-y:scroll!important;
-
+    margin-top:50px;
 }
     .jobSelector li{
         width:200px;
@@ -136,6 +137,7 @@
 
     float:right;
     width:500px;
+    margin-top:50px;
 }
     .individualExperience p{
         margin:5px 0px 30px 0px;
