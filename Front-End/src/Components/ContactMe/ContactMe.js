@@ -17,14 +17,19 @@ const ContactMe = () =>{
             message: message,
            }
 
-        emailjs.send('service_ocq50ip', 'template_ew0t8ol', templateParams, 'user_m0QGP3CClZeBUJkrNaonS')
-      .then((result) => {
-          alert("Email Sent Succesfully")
-          console.log(result.text);
-      }, (error) => {
-          alert("Email Not Sent");
-          console.log(error.text);
-      });
+        if(email !== "" && subject !== "" && message !== ""){
+            emailjs.send('service_ocq50ip', 'template_ew0t8ol', templateParams, 'user_m0QGP3CClZeBUJkrNaonS')
+            .then((result) => {
+                alert("Email Sent Succesfully")
+                console.log(result.text);
+            }, (error) => {
+                alert("Email Not Sent");
+                console.log(error.text);
+            });
+        }
+        else{
+            alert("Please fill in all Fields");
+        }
 
       document.getElementById("email").value = "";
       document.getElementById("subject").value = "";
