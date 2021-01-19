@@ -240,7 +240,7 @@ const Terminal = forwardRef((props, ref) => {
 
              case "4":{
                 getTerLine.Value = "iliyan@dimitrov:~$ run contactMe";
-                return parseCommand("run contactMe")
+                return parseCommand("open contactMe")
              }
 
              case "5":{
