@@ -249,7 +249,7 @@ class App extends PureComponent {
       </ul>
 
       <div className="emailLine">
-        <div className="email"><a href="mailto:dev.iliyan.dimitrov@gmail.com">dev.iliyan.dimitrov@gmail.com</a></div>
+        <div className="email"><span onClick={()=> this.terminal.current.sendCommand("open contactMe")}>dev.iliyan.dimitrov@gmail.com</span></div>
       </div>
       {allTabs}
       <Terminal 
