@@ -4,6 +4,10 @@
     top:50%;
     transform:translate(-50%,-50%);
     text-align: center;
+
+    opacity:0;
+    animation: loadIn 1s;
+    animation-fill-mode:forwards !important;
 }
 .input{
     background-color:var(--fontColor);
