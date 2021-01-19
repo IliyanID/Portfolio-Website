@@ -22,6 +22,9 @@ const ContactMe = () =>{
             .then((result) => {
                 alert("Email Sent Succesfully")
                 console.log(result.text);
+                document.getElementById("email").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("content").value = "";
             }, (error) => {
                 alert("Email Not Sent");
                 console.log(error.text);
@@ -31,9 +34,7 @@ const ContactMe = () =>{
             alert("Please fill in all Fields");
         }
 
-      document.getElementById("email").value = "";
-      document.getElementById("subject").value = "";
-      document.getElementById("content").value = "";
+
     }
     return(
     <div className = "main">
