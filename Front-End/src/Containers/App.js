@@ -125,6 +125,11 @@ class App extends PureComponent {
         tempTabs.push({name:"Work",displayed:true});
         break;
       }
+
+      case "Contact":{
+        tempTabs.push({name:"Contact",displayed:true});
+        break;
+      }
       
       default :{
         return false;
@@ -195,7 +200,7 @@ class App extends PureComponent {
       return <Experience></Experience>
     else if(this.state.tabs[index].name === 'Work')
       return <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
-    else if(this.state.tabs[index].name === 'ContactMe')
+    else if(this.state.tabs[index].name === 'Contact')
       return <ContactMe></ContactMe>
     else if(this.state.tabs[index].name === 'SnakeGame')
       return <SnakeGame></SnakeGame>
