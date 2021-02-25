@@ -210,6 +210,8 @@ a{
     z-index:2;
 
     border-radius:10px 10px 0px 0px;
+
+    cursor:grab;
     }
     #tabs li {
         

@@ -30,10 +30,12 @@ class App extends PureComponent {
 
     var CryptoJS = require("crypto-js");
 
-        var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX19TqCTLaoOljbd35MI9tZx3QDkwuZa3UJvzwsnzHTJmuX4SjjAb2jqllbJpPWdNrAEXHgjMLgu2cw==", 'password');
+
+        var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX1/k+Orjfh69RJU2zSJPngZuikVOBmBG7c8r9nC2XeuIJqD/MqDFTgIkPTsiep1gpbKpVnxMKM132Q==", 'password');
         var token = bytes.toString(CryptoJS.enc.Utf8);
  
         
+
 
     headers.set('Authorization', "token " + token);
 
@@ -41,11 +43,26 @@ class App extends PureComponent {
 
     let url = "https://api.github.com/users/iliyanid/repos";
     let response = await fetch(url,{method: 'GET', headers:headers});
-    const rawData = await response.json();
+    let rawData = await response.json();
     let data = [];
 
-    if(rawData.length === undefined)
-      return;
+    if(rawData.length === undefined){
+      headers = new Headers();
+
+     
+      
+
+      url = "https://api.github.com/users/iliyanid/repos";
+      response = await fetch(url,{method: 'GET', headers:headers});
+      rawData = await response.json();
+      data = [];
+      console.log("Failed to use authentication key")
+        if(rawData.length === undefined){
+          return
+        }
+        
+    }
+      
 
     for(let i = rawData.length - 1; i >=0; i--){
       response = await fetch (rawData[i].languages_url,{method: 'GET', headers:headers})
