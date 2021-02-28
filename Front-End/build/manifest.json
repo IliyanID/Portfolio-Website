@@ -2,7 +2,11 @@
   "short_name": "Iliyan Dimitrov",
   "name": "Create React App Sample",
   "icons": [
-   
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
   ],
   "start_url": ".",
   "display": "standalone",
