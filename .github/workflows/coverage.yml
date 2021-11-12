@@ -31,10 +31,7 @@ jobs:
       run: echo "full_sha1=$(git cat-file -p HEAD | grep parent | tail -1 | cut -d' ' -f2)" >> $GITHUB_ENV 
  
     - name: Install client dependencies
-      run: cache_dependencies client
-
-    - name: Install server dependencies
-      run: cache_dependencies server
+      run: cd Front-End && npm install
 
     - name: Prepare Codeclimate reporting tools
       env:
