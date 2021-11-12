@@ -52,7 +52,21 @@ const terminalSubmit = (e,allPackages) =>{
     allPackages.setCommand('')
 }
 
-const packageAll = () =>{
+const ComponentDidMount = (allPackages) =>{
+    return useEffect(()=>{
+        allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
+    },[])
+}
+const ScrollIntoViewOnTerminalUpdate = (allPackages) =>{
+    return useEffect(()=>{
+        let element = document.getElementById("command-line")
+        if(element !== null){
+            element.scrollIntoView();
+        }
+    },[allPackages.content])
+}
+
+const PackageAll = (props) =>{
     const [os] = useState(new OS())
     const [command,setCommand] = useState('');
     const [path,setPath] = useState(os.terminalString);
@@ -88,17 +102,12 @@ const packageAll = () =>{
     return allPackages
 }
 
+
 const Terminal = (props) => {
-    const allPackages = packageAll()
-    useEffect(()=>{
-        allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
-    },[])
-    useEffect(()=>{
-        let element = document.getElementById("command-line")
-        if(element !== null){
-            element.scrollIntoView();
-        }
-    },[allPackages.content])
+
+    const allPackages = PackageAll(props);
+    ComponentDidMount(allPackages);
+    ScrollIntoViewOnTerminalUpdate(allPackages);
 
     return (
         <div className={props.display + " main"}>
@@ -110,7 +119,7 @@ const Terminal = (props) => {
                 }
             </div>
             <form onSubmit={(e)=>terminalSubmit(e,allPackages)}>
-                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={inputRef}/>     
+                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
                 <p>⠀</p>  
             </form>
         </div>       
