@@ -1,5 +1,5 @@
-{
-  "name": "my-app",
+  {
+  "name": "iliyan-dimitrov",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,8 +20,46 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --coverageDirectory=${BUILD_DIRECTORY_PREFIX}/target/coverage/client/",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
+    "@babel/plugin-transform-async-to-generator": "^7.8.3",
+    "@babel/plugin-transform-object-assign": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/runtime": "^7.9.6",
+    "@babel/standalone": "^7.9.6",
+    "@jest/globals": "^26.6.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "11.2.6",
+    "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.2.1",
+    "autoprefixer": "^9.7.6",
+    "babel-jest": "^26.0.1",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.2.0",
+    "core-js": "^3.8.2",
+    "css-loader": "^3.5.3",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "5.3.2",
+    "husky": "^4.3.8",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.0.1",
+    "jest-fetch-mock": "^3.0.3",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "react-icons": "^4.2.0",
+    "regenerator-runtime": "^0.13.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "webpack": "5.51.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +79,32 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "sass": "^1.30.0"
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/**.{js,jsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/coverage/*",
+      "/dist/*",
+      "/node_modules/*",
+      "/schemas/*",
+      "/templates/*",
+      "/test/*",
+      "/webpack.config.js"
+    ],
+    "testURL": "http://localhost/",
+    "moduleNameMapper": {
+      "^.+\\.(png|svg|gif|jpg|jpeg)$": "<rootDir>/test/jestConfig/require_stub.js",
+      "^.+\\.(css|scss)$": "<rootDir>/test/jestConfig/require_stub.js"
+    },
+    "automock": false,
+    "setupFiles": [
+      "<rootDir>/test/jestConfig/setupJest.js"
+    ],
+    "transform": {
+      "^.+\\.jsx$": "babel-jest",
+      "^.+\\.js$": "babel-jest"
+    }
   }
 }
