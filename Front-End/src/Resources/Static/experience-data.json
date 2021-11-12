@@ -1,0 +1,70 @@
+[
+    {
+        "company" : "Freelance",
+        "title" : "Software Engineer",
+        "duration" : "January 2018 - Present",
+        "description" : 
+        [
+            "Experience in creating simple automation and computational programs utilizing Java",
+            "Utilized web scraping to create compolex website traversal programs",
+            "Worked on creating full blown website with custom front and back ends"
+        ]
+        
+    },
+    {
+        "company" : "Colorado State University",
+        "title" : "Undergraduate Research Assistant",
+        "duration" : "September 2021 - Present",
+        "description" : 
+        [
+            "Assist in research related to software security"
+        ]
+        
+    },
+    {
+        "company" : "Travelport",
+        "title" : "Software Engineer",
+        "duration" : "May 2021 - August 2021",
+        "description" : 
+        [
+            "Worked within an Agile team utilizing a SCRUM workflow to complete stories assigned to me.",
+            "Created a web automation tool GUI utilizing React which is being used by hundreds of employees within the company.",
+            "Assisted in setting up effective CI/CD pipelines for teams using GitHub actions.",
+            "Created POC migration of CI/CD pipelines in AzureDevOps to Github Actions."
+        ]
+        
+    },
+    {
+        "company" : "Empire Palace",
+        "title" : "Delivery Driver",
+        "duration" : "August 2019 - January 2021",
+        "description" : 
+        [
+            "Consistenly and reliably arrive on time for my shifts",
+            "Perform any tasks that are assighned to me"
+        ]
+        
+    },
+    {
+        "company" : "Colorado History Museum",
+        "title" : "Barista",
+        "duration" : "Feburary 2015 - September 2016",
+        "description" : 
+        [
+            "Consistenly and reliably arrive on time for my shifts",
+            "Perform any tasks that are assighned to me"
+        ]
+        
+    },
+    {
+        "company" : "Texas Roadhouse",
+        "title" : "To-Go Host",
+        "duration" : "September 2016 - August 2020",
+        "description" : 
+        [
+            "Consistenly and reliably arrive on time for my shifts",
+            "Perform any tasks that are assighned to me"
+        ]
+        
+    }
+]
