@@ -149,11 +149,10 @@ class App extends PureComponent {
     return result;
   }
 
-  render () {
- 
+  allTabs(){
     let id = 0;
     let cx = classNames.bind(styles);
-    const allTabs = (
+    return (
       <li id="tabs">
         {
         this.state.tabs.map((tab)=>{
@@ -166,11 +165,10 @@ class App extends PureComponent {
         <li id="addTab"onClick={()=>this.terminal.current.sendCommand("open terminal" )}>+</li>
       </li>
     );
+  }
 
+  render () {
    let content = this.getContent();
-    
-    
-
     return (      
     <div id="app">
       <ol id="navBar">
@@ -189,9 +187,9 @@ class App extends PureComponent {
       </ul>
 
       <div className="emailLine">
-        <div className="email"><span onClick={()=> this.terminal.current.sendCommand("open contactMe")}>dev.iliyan.dimitrov@gmail.com</span></div>
+        <div className="email"><span onClick={()=> this.addTab("Contact")}>dev.iliyan.dimitrov@gmail.com</span></div>
       </div>
-      {allTabs}
+      {this.allTabs()}
       <Terminal 
         ref={this.terminal}
         addTab = {this.addTab}
@@ -200,9 +198,6 @@ class App extends PureComponent {
         inView = {this.state.tabs[0].displayed}>   
       </Terminal>
       {content}
-
-      
-      
       <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer" rel="noreferrer">Created and Designed by Iliyan Dimitrov</a>
     </div>
     );
