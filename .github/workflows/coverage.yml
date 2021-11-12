@@ -48,5 +48,5 @@ jobs:
         CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
       run: |
         ls ./Front-End
-        ./cc-test-reporter after-build --coverage-input-type clover -p ./target/coverage/client/clover.xml --exit-code $?
+        ./cc-test-reporter after-build --coverage-input-type clover  /home/runner/work/Portfolio-Website/Portfolio-Website/Front-End/target/coverage/client/clover.xml --exit-code $?
 
