@@ -1,6 +1,6 @@
 import React, {useState, Fragment, useEffect, useRef } from 'react';
 import './Terminal.css'
-import { OS } from './OS'
+import  OS  from './OS'
 import CommandParser from './CommandParser'
 import { entryText } from '../../Resources/Static/entryText'
 

@@ -142,8 +142,6 @@ class App extends PureComponent {
       result = <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
     else if(this.state.tabs[index].name === 'Contact')
       result = <ContactMe></ContactMe>
-    else if(this.state.tabs[index].name === 'SnakeGame')
-      result = <SnakeGame></SnakeGame>
 
     return result;
   }

@@ -15,7 +15,7 @@ const saveData = (tree) => {
     localStorage.setItem('iliyan-dimitrov-files',stringFileStructure)
 }
 
-export class OS extends React.Component{
+export default class OS extends React.Component{
     user = 'guest'
     tree
     currentDirectory
@@ -28,14 +28,6 @@ export class OS extends React.Component{
         initializeLocalStorage();
         this.tree = JSON.parse(localStorage.getItem('iliyan-dimitrov-files'))
         this.currentDirectory = this.tree
-    }
-
-
-
-    help(){
-        return {
-            name:"ls"
-        }
     }
 
     ls(){
@@ -175,4 +167,5 @@ export class OS extends React.Component{
         window.location.reload();
     }
 }
+
 
