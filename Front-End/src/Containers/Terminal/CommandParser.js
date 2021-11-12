@@ -1,7 +1,58 @@
 import React from 'react'
 import helpDescriptions from '../../Resources/Static/helpDescriptions.json'
 
-
+let allCommands = [
+    {
+        command:'clear',
+        arguments:1,
+        runFunction:(allPackages)=>{return 'clear'}
+    },
+    {
+        command:'help',
+        arguments:1,
+        runFunction:(allPackages)=>helpArray()
+    },
+    {
+        command:'ls',
+        arguments:1,
+        runFunction:(allPackages)=>handleLS(allPackages)
+    },
+    {
+        command:'cd',
+        arguments:2,
+        runFunction:(allPackages)=>handleCD(allPackages)
+    },
+    {
+        command:'mkdir',
+        arguments:2,
+        runFunction:(allPackages)=>allPackages.os.mkdir(allPackages.commandSelector[1],allPackages.path)
+    },
+    {
+        command:'rm',
+        arguments:2,
+        runFunction:(allPackages)=>allPackages.os.rm(allPackages.commandSelector[1],allPackages.path)
+    },
+    {
+        command:'touch',
+        arguments:2,
+        runFunction:(allPackages)=>allPackages.os.touch(allPackages.commandSelector[1],allPackages.path)
+    },
+    {
+        command:'open',
+        arguments:2,
+        runFunction:(allPackages)=>handleOPEN(allPackages)
+    },
+    {
+        command:'su',
+        arguments:2,
+        runFunction:(allPackages)=>handleSU(allPackages)
+    },
+    {
+        command:'reset',
+        arguments:1,
+        runFunction:(allPackages)=>allPackages.os.reset()
+    }
+]
 
 const ParseCommand = (command,allPackages) =>{
     let commandSelector = command.split(" ")
@@ -12,13 +63,12 @@ const ParseCommand = (command,allPackages) =>{
         commandSelector:commandSelector,
     }
     
-    let allCommands = getAllCommands(allPackages)
     let foundCommand = false;
     allCommands.map((commandObj)=>{
         if(commandObj.command === commandSelector[0]){
             foundCommand = true;
             if(numberOfCommands === commandObj.arguments){
-                result = commandObj.runFunction();
+                result = commandObj.runFunction(allPackages);
                 return result
             }
             else{
@@ -38,64 +88,8 @@ const ParseCommand = (command,allPackages) =>{
     return result
 }
 
-const getAllCommands = (allPackages)=>{
-    const { os, path,commandSelector } = allPackages
-    let commands = [
-        {
-            command:'clear',
-            arguments:1,
-            runFunction:()=>{return 'clear'}
-        },
-        {
-            command:'help',
-            arguments:1,
-            runFunction:helpArray
-        },
-        {
-            command:'ls',
-            arguments:1,
-            runFunction:()=>handleLS(os)
-        },
-        {
-            command:'cd',
-            arguments:2,
-            runFunction:()=>handleCD(allPackages)
-        },
-        {
-            command:'mkdir',
-            arguments:2,
-            runFunction:()=>os.mkdir(commandSelector[1],path)
-        },
-        {
-            command:'rm',
-            arguments:2,
-            runFunction:()=>os.rm(commandSelector[1],path)
-        },
-        {
-            command:'touch',
-            arguments:2,
-            runFunction:()=>os.touch(commandSelector[1],path)
-        },
-        {
-            command:'open',
-            arguments:2,
-            runFunction:()=>handleOPEN(allPackages)
-        },
-        {
-            command:'su',
-            arguments:2,
-            runFunction:()=>handleSU(allPackages)
-        },
-        {
-            command:'reset',
-            arguments:1,
-            runFunction:()=>os.reset()
-        }
-    ]
-    return commands;
-}
-
-const handleLS = (os) =>{
+const handleLS = (allPackages) =>{
+    const { os } = allPackages;
     let result = []
     let respond = os.ls();
     respond.map((item)=>{
