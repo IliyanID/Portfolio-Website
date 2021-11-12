@@ -27,9 +27,7 @@ describe('Terminal', () => {
           renderer.create(
             <Experience/>,
           );
-          renderer.create(
-            <Work/>,
-          );
+  
 
     });
 });
