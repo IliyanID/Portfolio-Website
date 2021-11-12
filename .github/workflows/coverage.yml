@@ -22,11 +22,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Set up java (jdk-11)
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-
     - name: Log originating commit ID
       run: echo "full_sha1=$(git cat-file -p HEAD | grep parent | tail -1 | cut -d' ' -f2)" >> $GITHUB_ENV 
  
@@ -43,7 +38,7 @@ jobs:
         ./cc-test-reporter before-build
 
     - name: Run client tests
-      run: cd Front-End && npm test
+      run: cd Front-End && sudo npm test
       
 
     - name: Finish and report Codeclimate statistics
