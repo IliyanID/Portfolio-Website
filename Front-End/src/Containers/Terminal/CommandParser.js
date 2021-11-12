@@ -55,36 +55,27 @@ let allCommands = [
 ]
 
 const ParseCommand = (command,allPackages) =>{
-    let commandSelector = command.split(" ")
+    allPackages={...allPackages,commandSelector:command.split(" "),}
     let result = [];
-    let numberOfCommands = commandSelector.length
-    allPackages={
-        ...allPackages,
-        commandSelector:commandSelector,
-    }
     
     let foundCommand = false;
     allCommands.map((commandObj)=>{
-        if(commandObj.command === commandSelector[0]){
+        if(commandObj.command === allPackages.commandSelector[0]){
             foundCommand = true;
-            if(numberOfCommands === commandObj.arguments){
+            if(allPackages.commandSelector.length === commandObj.arguments){
                 result = commandObj.runFunction(allPackages);
                 return result
             }
             else{
-                result = rejectCommand(numberOfCommands,commandObj.arguments)
+                result = rejectCommand(allPackages.commandSelector.length,commandObj.arguments)
                 return result;
             }
         }
     })
 
-    if(!foundCommand){
-        result = []
-        result.push(<p>{command} is not a recognized command</p>);
-        result.push(<p>Type "help" for list of commands<br/>⠀</p>);     
-  
-    }     
-    
+    if(!foundCommand)
+        result = [<p>{command} is not a recognized command</p>,<p>Type "help" for list of commands<br/>⠀</p>]
+   
     return result
 }
 
