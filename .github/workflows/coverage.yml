@@ -38,7 +38,7 @@ jobs:
 
     - name: Run client tests
       run: |
-        sudo npm run test --Front-End
+        sudo npm run test --prefix Front-End
       
 
     - name: Finish and report Codeclimate statistics
