@@ -1,6 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
 import CommandParser from '../../src/Containers/Terminal/CommandParser';
-import OS from '../../src/Containers/Terminal/Os'
 
 describe('CommandParser', () => {
     let os = {
