@@ -12,7 +12,6 @@ import Terminal from'./Terminal/Terminal'
 import About from '../Components/About/About';
 import ContactMe from '../Components/ContactMe/ContactMe';
 import Experience from '../Components/Experience/Experience';
-import SnakeGame from '../Components/SnakeGame/SnakeGame';
 import Work from '../Components/Work/Work';
 
 import getRepos from '../util/getRepos'

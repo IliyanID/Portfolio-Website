@@ -13,6 +13,7 @@ const getRepos = async () => {
 
 
     headers.set('Authorization', "token " + token);
+    headers.set('User-Agent', "anything " + token);
 
     
 
