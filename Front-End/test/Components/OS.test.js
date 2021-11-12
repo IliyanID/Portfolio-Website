@@ -35,7 +35,8 @@ describe('OS', () => {
     })
 
     it('test cd', () => {
-        expect(os.cd('./root',path)).toBeDefined()
+        expect(os.cd('./root/data',path)).toBeDefined()
+        expect(os.cd('../..',path)).toBeDefined()
         expect(os.cd('..',path)).toBeDefined()
     })
 
@@ -51,9 +52,9 @@ describe('OS', () => {
         expect(os.open('file')).toBeDefined()
     })
     it('test rm', () => {
-        os.rm('root',path)
+        os.rm('file',path)
     })
-    
+
     it('test su', () => {
         os.su('user')
         expect(os.user).toEqual('user')
