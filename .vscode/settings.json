@@ -1,0 +1,3 @@
+{
+    "jest.jestCommandLine": "cd Front-End && .\\node_modules\\.bin\\jest"
+}
