@@ -6,10 +6,9 @@ on: push
 
 jobs:
   test-coverage:
+    runs-on: ubuntu-latest
     environment:
         CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
-    runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
