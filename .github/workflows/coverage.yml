@@ -43,7 +43,7 @@ jobs:
         ./cc-test-reporter before-build
 
     - name: Run client tests
-      run: npm test --prefix client
+      run: cd Front-End && npm test
       
 
     - name: Finish and report Codeclimate statistics
