@@ -134,20 +134,19 @@ class App extends PureComponent {
 
   getContent = () =>{
     let index = this.state.tabs.findIndex((tab) => tab.displayed);
-    console.log("Selected Index is:  " + index);
+    let result = null;
     if(this.state.tabs[index].name === 'About')
-      return <About></About>
+      result = <About></About>
     else if(this.state.tabs[index].name === 'Experience')
-      return <Experience></Experience>
+      result = <Experience></Experience>
     else if(this.state.tabs[index].name === 'Work')
-      return <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
+      result = <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
     else if(this.state.tabs[index].name === 'Contact')
-      return <ContactMe></ContactMe>
+      result = <ContactMe></ContactMe>
     else if(this.state.tabs[index].name === 'SnakeGame')
-      return <SnakeGame></SnakeGame>
-    else
-      return null;
+      result = <SnakeGame></SnakeGame>
 
+    return result;
   }
 
   render () {
