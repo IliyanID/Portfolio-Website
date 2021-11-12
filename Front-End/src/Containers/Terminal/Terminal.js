@@ -52,7 +52,7 @@ const terminalSubmit = (e,allPackages) =>{
     allPackages.setCommand('')
 }
 
-const Terminal = (props) => {
+const packageAll = () =>{
     const [os] = useState(new OS())
     const [command,setCommand] = useState('');
     const [path,setPath] = useState(os.terminalString);
@@ -85,16 +85,20 @@ const Terminal = (props) => {
         content:content,setContent:setContent,
         inputRef:inputRef,blink:blink,interval:interval
     }
+    return allPackages
+}
 
+const Terminal = (props) => {
+    const allPackages = packageAll()
     useEffect(()=>{
-        interval.current.id = setInterval(interval.current.function,1000);
+        allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
     },[])
     useEffect(()=>{
         let element = document.getElementById("command-line")
         if(element !== null){
             element.scrollIntoView();
         }
-    },[content])
+    },[allPackages.content])
 
     return (
         <div className={props.display + " main"}>
