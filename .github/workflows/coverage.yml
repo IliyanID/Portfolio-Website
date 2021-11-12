@@ -47,7 +47,6 @@ jobs:
         GIT_BRANCH: "main"
         CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
       run: |
-        ls
         ls ./Front-End
-        ./cc-test-reporter format-coverage -t clover ./Front-End/target/coverage/client/clover.xml --output "codeclimate.js.json"
-        ./cc-test-reporter after-build --input "codeclimate.js.json"
+        ./cc-test-reporter after-build --coverage-input-type ./Front-End/target/coverage/client/clover.xml clover --exit-code $?
+
