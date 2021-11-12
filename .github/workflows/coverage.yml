@@ -6,7 +6,8 @@ on: push
 
 jobs:
   test-coverage:
-
+    environment:
+        CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
     runs-on: ubuntu-latest
 
     strategy:
@@ -38,7 +39,9 @@ jobs:
         ./cc-test-reporter before-build
 
     - name: Run client tests
-      run: cd Front-End && sudo npm test
+      run: |
+        ./cc-test-reporter before-build
+        cd Front-End && sudo npm test
       
 
     - name: Finish and report Codeclimate statistics
@@ -46,5 +49,5 @@ jobs:
         GIT_COMMIT_SHA: ${{ env.full_sha1 }} 
         GIT_BRANCH: "main"
       run: |
-        ./cc-test-reporter format-coverage -t clover ./Front-End/target/coverage/client/clover.xml --output "codeclimate.js.json"
-        ./cc-test-reporter upload-coverage --input "codeclimate.js.json"
+        ./cc-test-reporter format-coverage -t clover ./target/coverage/client/clover.xml --output "codeclimate.js.json"
+        ./cc-test-reporter after-build --input "codeclimate.js.json"
