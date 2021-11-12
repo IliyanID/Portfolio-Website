@@ -1,0 +1,67 @@
+[
+    {
+        "type" : "file",
+        "name" : "aboutMe.data",
+        "path" : "iliyan@dimitrov:~$",
+        "privileges" : ["read","write"],
+        "contents":"../../Components/About/About.js",
+        "owner" : []
+    },
+    {
+        "type" : "file",
+        "name" : "experience.data",
+        "path" : "iliyan@dimitrov:~$",
+        "privileges" : ["read","write"],
+        "contents":"../../Components/Experience/Experience.js",
+        "owner" : []
+    },
+    {
+        "type" : "file",
+        "name" : "work.data",
+        "path" : "iliyan@dimitrov:~$",
+        "privileges" : ["read","write"],
+        "contents" : "../../Components/Work/Work.js",
+        "owner" : []
+    },
+    {
+        "type" : "file",
+        "name" : "snakeGame.exe",
+        "path" : "iliyan@dimitrov:~$",
+        "contents" : "../../Components/SnakeGame/SnakeGame.js",
+        "privileges" : ["read","write","execute"],
+        "owner" : []
+    },
+    {
+        "type" : "folder",
+        "name" : "root",
+        "path" : "iliyan@dimitrov:~$",
+        "owner" : "iliyan",
+        "children":
+            [
+                {
+                    "type" : "file",
+                    "name" : "overwrite.exe",
+                    "path" : "/root",
+                    "contents":"",
+                    "privileges" : ["read","write","execute"],
+                    "owner" : ["root","iliyan"]
+                },
+                {
+                    "type" : "folder",
+                    "name" : "data",
+                    "path" : "/root",
+                    "owner" : ["root"],
+                    "children":[
+                        {
+                            "type" : "file",
+                            "name" : "passwords.dat",
+                            "contents" : "guest\nguestPassword\niliyan\nmyFavoritePassword",
+                            "path" : "/data",
+                            "privileges" : ["read","write"],
+                            "owner" : ["root"]
+                        }
+                    ]
+                }
+            ]
+    }
+]

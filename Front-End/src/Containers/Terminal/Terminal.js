@@ -1,412 +1,115 @@
-import React, {useState, Fragment, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, {useState, Fragment, useEffect, useRef } from 'react';
 import './Terminal.css'
-const Terminal = forwardRef((props, ref) => {
-    const [getTerLine,setTerLine] = useState({Timer:33,Value:"iliyan@dimitrov:~$ ▮",blink:true});
+import { OS } from './OS'
+import CommandParser from './CommandParser'
 
-    useImperativeHandle(
-        ref,
-        () => ({
-            sendCommand(command) {
-                if(getTerLine.Timer >= 0){
-                    setCountDown();
-                    clearTimeout(timeout)
-                }
+const starterArr = [
+    (<h2>Iliyan Dimitrov</h2>),
+    (<h3>This is a Fully Interactive Portfolio Page with a Linux Insprired Terminal<br/></h3>),
 
+    (<p>To Use the Portfolio Either <u className="attention">Use the Navigation</u></p>),
+    (<p>Or <u className="attention">Explore the Terminal</u><br/></p>),
 
-                clearTimeout(timeoutID);
-                getTerLine.Value = "iliyan@dimitrov:~$ " + command;
-                updateContent();
-            }
-         }),
-     )
+    (<p>To Begin, Type:</p>),
+    (<p className="indented"><b className="I">[1]</b> or <b className="I">[open aboutMe]</b>: Opens about me</p>),
+    (<p className="indented"><b className="I">[2]</b> or <b className="I">[open experience]</b>: Opens my previous work experience</p>),
+    (<p className="indented"><b className="I">[3]</b> or <b className="I">[open work]</b>: Opens previous projects on GitHub</p>),
+    (<p className="indented"><b className="I">[4]</b> or <b className="I">[open contactMe]</b>: Runs contact me program in terminal</p>),
+    (<p className="indented"><b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game<br/></p>),
+    (<p>No User Input Detected Opening About Me Page in  Seconds ...<br/></p>)
+]
 
+const updateTerminalLine = (e,allPackages) =>{
+    clearInterval(allPackages.interval.current.id)
+    allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000)
 
-    const N = () =>{return (<Fragment><br/>⠀</Fragment>);}
+    let input = e.target.value;
+    input = input.replaceAll('▮','') 
 
+    if(input.length >= allPackages.path.length){
+        allPackages.setCommand(input.substring(allPackages.path.length));
+    }
+}
 
-    const starterArr = [
-        (<h2>Iliyan Dimitrov</h2>),
-        (<h3>This is a Fully Interactive Portfolio Page with a Linux Insprired Terminal{N()}</h3>),
+const terminalSubmit = (e,allPackages) =>{
+    e.preventDefault();
 
-        (<p>To Use the Portfolio Either <u className="attention">Use the Navigation</u></p>),
-        (<p>Or <u className="attention">Explore the Terminal</u>{N()}</p>),
+    let tempArr = [...allPackages.content]
+    tempArr.push(<p>{allPackages.path + allPackages.command}</p>);
 
-        (<p>To Begin, Type:</p>),
-        (<p className="indented"><b className="I">[1]</b> or <b className="I">[open aboutMe]</b>: Opens about me</p>),
-        (<p className="indented"><b className="I">[2]</b> or <b className="I">[open experience]</b>: Opens my previous work experience</p>),
-        (<p className="indented"><b className="I">[3]</b> or <b className="I">[open work]</b>: Opens previous projects on GitHub</p>),
-        (<p className="indented"><b className="I">[4]</b> or <b className="I">[open contactMe]</b>: Runs contact me program in terminal</p>),
-        (<p className="indented"><b className="I">[5]</b> or <b className="I">[run snakeGame]</b>: Runs the terminal snake game{N()}</p>),
-        (<p>No User Input Detected Opening About Me Page in {getTerLine.Timer} Seconds ...{N()}</p>)
-    ]
-    let[content,setContent] = useState({
-        arr:starterArr
-    });
+    let commands = allPackages.command.split('&&')
+   
+    commands.map((indivCommand)=>{
+        let addition = CommandParser(indivCommand.trim(),allPackages)
+
+        if(addition === null)
+            tempArr = starterArr 
+        else
+            tempArr = tempArr.concat(addition)
+    }
+    )
+    allPackages.setContent(tempArr)
+    allPackages.setCommand('')
+}
+
+const Terminal = (props) => {
+    const [os] = useState(new OS())
+    const [command,setCommand] = useState('');
+    const [path,setPath] = useState(os.terminalString);
+    const[content,setContent] = useState(starterArr);
+
+    const inputRef = useRef(null);
+    const blink = useRef(false)
+    const interval = useRef({
+        id:0,
+        function:()=>{
+            if(!props.inView && inputRef.current && blink.current !== null)
+                return
+
+            inputRef.current.focus();
+
+            if(blink.current)
+                inputRef.current.value = inputRef.current.value.replaceAll('▮','');          
+            else
+                inputRef.current.value = inputRef.current.value + '▮'
+            
+            blink.current = !blink.current
+            
+            
+        }
+    })
+    let allPackages={
+        os:os,
+        command:command,setCommand:setCommand,
+        path:path,setPath:setPath,
+        content:content,setContent:setContent,
+        inputRef:inputRef,blink:blink,interval:interval
+    }
+
+    useEffect(()=>{
+        interval.current.id = setInterval(interval.current.function,1000);
+    },[])
     useEffect(()=>{
         let element = document.getElementById("command-line")
         if(element !== null){
             element.scrollIntoView();
         }
-    },[content.arr])
-
-
-    const setCountDown = (num) =>{
-        clearTimeout(timeoutID);
-        let tempArr = [...content.arr];
-        
-        
-
-        if(num === undefined){
-            tempArr[10] = (<p></p>);
-        }
-        else
-            tempArr[10] = (<p>No User Input Detected Opening About Me Page in {num} Seconds ...{N()}</p>)
-
-        setContent({arr:tempArr});
-    }
-
-
-    let [timeout,setT] = useState();
-    useEffect(()=>{
-        clearTimeout(timeoutID);
-          setT(setTimeout(()=>{
-            setCountDown();
-            clearTimeout(timeoutID);
-            getTerLine.Value = "iliyan@dimitrov:~$ 1";
-            updateContent();
-           
-        },getTerLine.Timer * 1000))
-    },[])
-
-
-    const updateTerminalLine = (e) =>{
-        clearTimeout(timeoutID);
-        
-        if(getTerLine.Timer >= 0){
-            setCountDown();
-            clearTimeout(timeout)
-        }
-
-
- 
-        setTerLine({Value:("iliyan@dimitrov:~$ "  + parseString(e.target.value)),blink:true});
-    }
-
-
-    const updateContent =(e) =>{
-        if(e !== undefined)
-            e.preventDefault();
-
-        clearTimeout(timeoutID);
-
-        parseCommand(parseString());
-
-        setTerLine({Value:"iliyan@dimitrov:~$ ",blink:true});
-    }
-
-
-    const parseString = (input)=>{
-        
-        let bufferIndex = 19;
-        if(input !== undefined)
-            return input.substring(bufferIndex).replaceAll("▮","");
-        else
-            return getTerLine.Value.substring(bufferIndex).replaceAll("▮","");
-    }
-
-
-
-    let timeoutID = setTimeout(() =>{
-        if(props.inView === true){
-            if(getTerLine.Timer === undefined){
-                if(getTerLine.blink)
-                    setTerLine({Value:(getTerLine.Value + "").replaceAll("▮",""),blink:!getTerLine.blink});
-                
-                else
-                    setTerLine({Value: getTerLine.Value + ("▮"),blink:!getTerLine.blink});
-            }
-            else{
-                getTerLine.Timer -= 1;
-                if(getTerLine.blink){
-                    getTerLine.Value = (getTerLine.Value + "").replaceAll("▮","");
-                    getTerLine.blink = !getTerLine.blink;
-                
-                }
-                else{
-                    getTerLine.Value = getTerLine.Value + ("▮");
-                    getTerLine.blink = !getTerLine.blink;
-                }
-
-
-                setCountDown(getTerLine.Timer);
-
-                if(getTerLine.Timer === 0){
-                    setCountDown();
-                }
-            }
-                
-        }
-    },(getTerLine.Timer === undefined)?800:1000);
-    props.setTimeoutId(timeoutID);
-    
-
-
-    let key = 0;
-    const allTerminalText = (       
-        <div className={"css-typing "}>           
-            {content.arr.map((item)=>{
-                return <Fragment key={key++}>{item}</Fragment>;
-            })}
-        </div>
-    )
-
-
-    let element = document.getElementById("command-line")
-    if(element !== null && props.inView === true){
-        if(element !== document.activeElement)
-            element.focus();
-    }
-
- 
-    const parseCommand = (command) =>{
-        clearTimeout(timeoutID);
-
-        let commandSelector = command.split(" ")
-
-        let tempArr = [...content.arr];
-        tempArr.push(<p>iliyan@dimitrov:~$ {parseString()}</p>);
-
-        switch(commandSelector[0]){
-            case "":{
-                tempArr.push(<p>iliyan@dimitrov:~$ {parseString()}</p>);
-                break;
-            }
-
-            case "clear":{
-                if(commandSelector.length <= 1){
-                    starterArr[10] = (<p></p>);
-                    setContent({arr:starterArr});
-                    return null;
-                }
-                else{
-                    tempArr.push(<p>iliyan@dimitrov:~$ {parseString()}</p>);
-                    tempArr.push(<p>Unknown Argument: {commandSelector[1]}<br/>⠀</p>);
-                }
-                break;
-            }
-
-            case "help":{
-                if(commandSelector.length <= 1){
-                    tempArr.push(<p  className="indented"><b className="I">[clear]</b>: clears command window</p>);
-                    tempArr.push(<p  className="indented"><b className="I">[ls]</b>: list all files</p>);
-                    tempArr.push(<p  className="indented"><b className="I">[run argument]</b>: run a specific program</p>);
-                    tempArr.push(<p  className="indented"><b className="I">[close argument]</b>: close a specific  program or file</p>);
-                    tempArr.push(<p  className="indented"><b className="I">[open argument]</b>: open a specific document<br/>⠀</p>);
-                }
-                else{ 
-                    tempArr.push(<p>Unknown Argument: {commandSelector[1]}<br/>⠀</p>);                   
-                }
-                
-                break;
-            }
-
-            case "ls":{
-                if(commandSelector.length <= 1){
-                    tempArr.push(<p  className="indented">File: aboutMe</p>);
-                    tempArr.push(<p  className="indented">File: experience</p>);
-                    tempArr.push(<p  className="indented">File: work</p>);
-                    tempArr.push(<p  className="indented">Program: snakeGame<br/>⠀</p>);
-                }
-                else{ 
-                    tempArr.push(<p>Unknown Argument: {commandSelector[1]}<br/>⠀</p>);                   
-                }
-                break;
-            }
-
-            case "1":{
-                getTerLine.Value = "iliyan@dimitrov:~$ open aboutMe";
-                return parseCommand("open aboutMe")
-            }
-
-            case "2":{
-                getTerLine.Value = "iliyan@dimitrov:~$ open experience";
-                return parseCommand("open experience")
-             }
-
-             case "3":{
-                getTerLine.Value = "iliyan@dimitrov:~$ open work";
-                return parseCommand("open work")
-             }
-
-             case "4":{
-                getTerLine.Value = "iliyan@dimitrov:~$ run contactMe";
-                return parseCommand("open contactMe")
-             }
-
-             case "5":{
-                getTerLine.Value = "iliyan@dimitrov:~$ run snakeGame";
-                return parseCommand("run snakeGame")
-             }
-            case "run":{
-                if(commandSelector.length <= 1)
-                    tempArr.push(<p>Error Expected Argument run [argument]<br/>⠀</p>);
-
-                else{ 
-                    tempArr.push(<p>Running Program: {commandSelector[1]} ...<br/>⠀</p>);                   
-                }
-                break;
-            }
-
-            case "open":{
-
-                if(commandSelector.length <= 1)
-                    tempArr.push(<p>Error Expected Argument open [argument]<br/>⠀</p>);
-
-                else{ 
-                    switch(commandSelector[1]){
-                        case "aboutMe":{
-                            if(props.addTab("About"))
-                                tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
-                            
-                            break;
-                        }
-
-                        case "experience":{
-                            if(props.addTab("Experience"))
-                                tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
-                            
-                            break;
-                        }
-
-                        case "work":{
-                            if(props.addTab("Work"))
-                                tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
-                            
-                            break;
-                        }
-
-                        case "contactMe":{
-                            if(props.addTab("Contact"))
-                                tempArr.push(<p>Opening File: {commandSelector[1]} ...<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
-                            
-                            break;
-                        }
-
-                        case "terminal":{
-                            if(props.addTab("Terminal"))
-                                tempArr.push(<p>Opening new {commandSelector[1]} tab ...<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>File {commandSelector[1]} is already open redirecting...<br/>⠀</p>);
-                            
-                            break;
-                        }
-
-                        default:{
-                            tempArr.push(<p>Couldn't Find file: {commandSelector[1]}<br/>⠀</p>);
-                            break;
-                        }
-                    }
-
-                                       
-                }
-                break;
-            }
-
-            case "close":{
-                let argument = commandSelector[1];
-
-                if(commandSelector.length <= 1)
-                    tempArr.push(<p>Error Expected Argument close [argument]<br/>⠀</p>);
-
-                else{ 
-
-                    switch(argument){
-                        case "aboutMe":{
-                            if(props.removeTab("About"))
-                                tempArr.push(<p>aboutMe has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>aboutMe is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        case "experience":{
-                            if(props.removeTab("Experience"))
-                                tempArr.push(<p>experience has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>experence is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        case "work":{
-                            if(props.removeTab("Work"))
-                                tempArr.push(<p>work has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>work is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        case "contactMe":{
-                            if(props.removeTab("Terminal"))
-                                tempArr.push(<p>contactMe has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>contactMe is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        case "snakeGame":{
-                            if(props.removeTab("Terminal"))
-                                tempArr.push(<p>snakeGame has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>snakeGame is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        case "terminal":{
-                            if(props.removeTab("Terminal"))
-                                tempArr.push(<p>Terminal has been closed<br/>⠀</p>);
-                            else
-                                tempArr.push(<p>New Terminal Tab is not open<br/>⠀</p>);
-                            break;
-                        }
-
-                        default:{
-                            tempArr.push(<p>{argument} does not exist<br/>⠀</p>);
-                        }
-                    }
-                    
-                }
-                break;
-            }
-
-            default:
-                tempArr.push(<p>{parseString()} is not a recognized command</p>);
-                tempArr.push(<p>Type "help" for list of commands<br/>⠀</p>);                
-                break;
-        }
-
-        setContent({arr:tempArr});
-    }
-
-
-   
-
+    },[content])
 
     return (
         <div className={props.display + " main"}>
-            {allTerminalText}
-            <form onSubmit={updateContent}>
-                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={getTerLine.Value} onChange={updateTerminalLine}/>     
+            <div className={"css-typing "}>           
+                {
+                    allPackages.content.map((item,key)=>{
+                        return <Fragment key={key}>{item}</Fragment>;
+                    })
+                }
+            </div>
+            <form onSubmit={(e)=>terminalSubmit(e,allPackages)}>
+                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={inputRef}/>     
                 <p>⠀</p>  
             </form>
         </div>       
     );
-})
+}
 export default Terminal;
