@@ -49,5 +49,5 @@ jobs:
       run: |
         ls
         ls ./Front-End
-        ./cc-test-reporter format-coverage -t clover ./target/coverage/client/clover.xml --output "codeclimate.js.json"
+        ./cc-test-reporter format-coverage -t clover ./Front-End/target/coverage/client/clover.xml --output "codeclimate.js.json"
         ./cc-test-reporter after-build --input "codeclimate.js.json"

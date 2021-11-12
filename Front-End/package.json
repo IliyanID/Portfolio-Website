@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --coverageDirectory=${BUILD_DIRECTORY_PREFIX}/target/coverage/client/",
+    "test": "jest --coverageDirectory=./target/coverage/client/",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
