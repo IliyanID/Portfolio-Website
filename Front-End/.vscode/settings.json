@@ -5,5 +5,14 @@
         "xtree": "cpp",
         "xstring": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "files.watcherExclude": {
+        "**/.idea/**": true,
+        "**/bin/server/**": true,
+        "**/server/.m2/**": true,
+        "**/target/**": true,
+    },
+    "jest.showCoverageOnLoad": true,
+    "jest.rootPath":"Front-End",
+
 }
