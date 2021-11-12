@@ -7,8 +7,6 @@ on: push
 jobs:
   test-coverage:
     runs-on: ubuntu-latest
-    environment:
-        CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
     strategy:
       matrix:
         node-version: [14.x]
@@ -27,11 +25,12 @@ jobs:
  
     - name: Install client dependencies
       run: cd Front-End && npm install
-
+    
     - name: Prepare Codeclimate reporting tools
       env:
         GIT_COMMIT_SHA: ${{ env.full_sha1 }} 
         GIT_BRANCH: ${{ github.head_ref }}
+        CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
@@ -39,7 +38,6 @@ jobs:
 
     - name: Run client tests
       run: |
-        ./cc-test-reporter before-build
         cd Front-End && sudo npm test
       
 
@@ -47,6 +45,7 @@ jobs:
       env:
         GIT_COMMIT_SHA: ${{ env.full_sha1 }} 
         GIT_BRANCH: "main"
+        CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
       run: |
         ./cc-test-reporter format-coverage -t clover ./target/coverage/client/clover.xml --output "codeclimate.js.json"
         ./cc-test-reporter after-build --input "codeclimate.js.json"
