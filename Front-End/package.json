@@ -91,7 +91,9 @@
       "/schemas/*",
       "/templates/*",
       "/test/*",
-      "/webpack.config.js"
+      "/webpack.config.js",
+      "/util/getRepos.js",
+      "/src/Containers/App.js"
     ],
     "testURL": "http://localhost/",
     "moduleNameMapper": {
