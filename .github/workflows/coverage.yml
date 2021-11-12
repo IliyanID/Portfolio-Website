@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: verify_workflows
+
 
     - name: Set up node.js (${{ matrix.node-version }})
       uses: actions/setup-node@v1
