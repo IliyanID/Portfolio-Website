@@ -54,7 +54,5 @@ jobs:
         GIT_COMMIT_SHA: ${{ env.full_sha1 }} 
         GIT_BRANCH: "main"
       run: |
-        ./cc-test-reporter format-coverage -t jacoco target/site/jacoco/jacoco.xml --output "codeclimate.java.json"
         ./cc-test-reporter format-coverage -t clover target/coverage/client/clover.xml --output "codeclimate.js.json"
-        ./cc-test-reporter sum-coverage --output "codeclimate.combined.json" codeclimate.*.json
-        ./cc-test-reporter upload-coverage --input "codeclimate.combined.json"
+        ./cc-test-reporter upload-coverage --input "codeclimate.js.json"
