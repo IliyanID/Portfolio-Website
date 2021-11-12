@@ -7,7 +7,7 @@ on: push
 jobs:
   test-coverage:
 
-    runs-on: [linux, x64]
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
