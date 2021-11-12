@@ -1,33 +1,34 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { render } from '@testing-library/react';
+import React from 'react'; 
 import { describe, it } from '@jest/globals';
-import App from '../../src/Containers/App';
+import { render, screen } from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
 import Terminal from '../../src/Containers/Terminal/Terminal';
-import About from '../../src/Components/About/About';
-import ContactMe from '../../src/Components/ContactMe/ContactMe';
-import Experience from '../../src/Components/Experience/Experience';
-import Work from '../../src/Components/Work/Work';
 
 describe('Terminal', () => {
+    let addTab;
+    beforeEach(()=>{
+      addTab = (i)=>jest.fn();
+      render(<Terminal addTab={addTab} inView={true} display={''}/>)
+    })
+    window.HTMLElement.prototype.scrollIntoView = jest.fn()
+    jest.setTimeout(30000);
     it('render Terminal', () => {
-        let app = new App()
-        renderer.create(
-            <>{app.render}</>,
-          );
-          renderer.create(
-            <Terminal/>,
-          );
-          renderer.create(
-            <About/>,
-          );
-          renderer.create(
-            <ContactMe/>,
-          );
-          renderer.create(
-            <Experience/>,
-          );
-  
 
+      userEvent.type(screen.getByRole('terminalInput'), "ls{enter}");
+
+      jest.useFakeTimers();
+      jest.advanceTimersByTime(3000);
+    });
+    it('test ls command', () => {
+      userEvent.type(screen.getByRole('terminalInput'), "ls{enter}");
+    });
+    it('test cd command', () => {
+      userEvent.type(screen.getByRole('terminalInput'), "cd ./root{enter}");
+    });
+    it('test clear command', () => {
+      userEvent.type(screen.getByRole('terminalInput'), "clear{enter}");
+    });
+    it('test delete', () => {
+      userEvent.type(screen.getByRole('terminalInput'), "{backspace}{enter}");
     });
 });

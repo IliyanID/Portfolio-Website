@@ -104,7 +104,7 @@ const Terminal = (props) => {
                 }
             </div>
             <form onSubmit={(e)=>terminalSubmit(e,allPackages)}>
-                <input id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
+                <input role='terminalInput' id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
                 <p>⠀</p>  
             </form>
         </div>       
