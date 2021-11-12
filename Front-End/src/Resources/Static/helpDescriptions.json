@@ -1,0 +1,33 @@
+[
+    {
+        "command":"clear",
+        "description":"clears command window"
+    },
+    {
+        "command":"ls",
+        "description":"list all files"
+    },
+    {
+        "command":"cd directory_name",
+        "description":"navigate directory"
+    },
+    {
+        "command":"mkdir directory_name",
+        "description":"create directory"
+    },
+    {
+        "command":"touch file_name",
+        "description":"create file"
+    },
+    {
+        "command":"open file_name",
+        "description":"open a file"
+    },
+    {
+        "command":"reset",
+        "description":"reset all files"
+    },
+    {
+        "command":"su user_name",
+        "description":"switch users"}
+]
