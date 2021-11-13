@@ -1,3 +1,18 @@
 {
-    "jest.jestCommandLine": "cd Front-End && .\\node_modules\\.bin\\jest"
+    "files.associations": {
+        "iostream": "cpp",
+        "xhash": "cpp",
+        "xtree": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp"
+    },
+    "files.watcherExclude": {
+        "**/.idea/**": true,
+        "**/bin/server/**": true,
+        "**/server/.m2/**": true,
+        "**/target/**": true,
+    },
+    "jest.showCoverageOnLoad": true,
+    "jest.rootPath":"client",
+
 }

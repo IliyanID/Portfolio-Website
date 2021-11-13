@@ -24,7 +24,7 @@ jobs:
       run: echo "full_sha1=$(git cat-file -p HEAD | grep parent | tail -1 | cut -d' ' -f2)" >> $GITHUB_ENV 
  
     - name: Install client dependencies
-      run: cd Front-End && npm install
+      run: cd client && npm install
     
     - name: Prepare Codeclimate reporting tools
       env:
@@ -38,7 +38,7 @@ jobs:
 
     - name: Run client tests
       run: |
-        sudo npm run test --prefix Front-End
+        sudo npm run test --prefix client
       
 
     - name: Finish and report Codeclimate statistics
@@ -47,7 +47,7 @@ jobs:
         GIT_BRANCH: "master"
         CC_TEST_REPORTER_ID: 043f9f3a879dc8091105e8640c9a3dc7f811e5af0e89e677288cb3fc2b33fb3f
       run: |
-        sudo mv /home/runner/work/Portfolio-Website/Portfolio-Website/Front-End/target/coverage/client/clover.xml .
+        sudo mv /home/runner/work/Portfolio-Website/Portfolio-Website/client/target/coverage/client/clover.xml .
         ls
         ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
 
