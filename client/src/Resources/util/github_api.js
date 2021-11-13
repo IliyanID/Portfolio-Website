@@ -3,15 +3,9 @@ const getRepos = async () => {
 
     
 
-    var CryptoJS = require("crypto-js");
-
-
-        var bytes  = CryptoJS.AES.decrypt("U2FsdGVkX1/k+Orjfh69RJU2zSJPngZuikVOBmBG7c8r9nC2XeuIJqD/MqDFTgIkPTsiep1gpbKpVnxMKM132Q==", 'password');
-        var token = bytes.toString(CryptoJS.enc.Utf8);
+   
+    let token = process.env.GITHUB_API_KEY
  
-        
-
-
     headers.set('Authorization', "token " + token);
     headers.set('User-Agent', "anything " + token);
 

@@ -14,7 +14,7 @@ import ContactMe from '../Components/ContactMe/ContactMe';
 import Experience from '../Components/Experience/Experience';
 import Work from '../Components/Work/Work';
 
-import getRepos from '../Resources/util/getRepos'
+import github_api from '../Resources/util/github_api'
 
 class App extends PureComponent {
   state = {
@@ -25,12 +25,11 @@ class App extends PureComponent {
 
 
   componentDidMount(){
-    getRepos().then((result)=>{
+    github_api().then((result)=>{
       this.setState(result)
     });
     
   }
-
 
   setLoad = () =>{
     this.setState({load:!this.state.load})
@@ -46,7 +45,6 @@ class App extends PureComponent {
     }
 
     tempTabs.map((tab)=>tab.displayed = false);
-    console.log("Adding tabName: " + tabName);
     switch(tabName){   
       case "Terminal":{
         tempTabs.push({name:"Terminal",displayed:true});
@@ -117,7 +115,6 @@ class App extends PureComponent {
       return -1;
     }
     let index = findIndex();
-    console.log("index " + index);
 
 
     for(let i = 0; i < tempArr.length; i++){
@@ -150,7 +147,7 @@ class App extends PureComponent {
     let id = 0;
     let cx = classNames.bind(styles);
     return (
-      <li id="tabs">
+      <ol id="tabs">
         {
         this.state.tabs.map((tab)=>{
           let classes = cx({indTab:tab.id!==0},{terminal:tab.id===0},{selectedTab:tab.displayed});
@@ -160,7 +157,7 @@ class App extends PureComponent {
           return result;  
         })}
         <li id="addTab"onClick={()=>this.terminal.current.sendCommand("open terminal" )}>+</li>
-      </li>
+      </ol>
     );
   }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Work.css';
 import '../../Containers/Terminal/Terminal.css'
 
@@ -9,7 +9,7 @@ const content = (props)=>{
     let result = <ul>
     {props.repos.map((obj,index) =>{
         if(props.getLoad || index < 6)
-            return(<li key={index}>
+            return(<li key={`work-element-${index}`}>
                 <div className="insideContainer">
                     <div className="logo">
                         <a href={(obj.link)?obj.link:''} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
@@ -27,7 +27,7 @@ const content = (props)=>{
                 </div>
             </li>)
         else
-            return <></>
+            return <Fragment key={`work-element-${index}`}></Fragment>
     })}
     </ul>
     if (props.test)

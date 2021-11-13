@@ -2,13 +2,27 @@ import React, {useState, Fragment, useEffect, useRef } from 'react';
 import './Terminal.css'
 import  OS  from './OS'
 import CommandParser from './CommandParser'
-import { entryText } from '../../Resources/constants/entryText'
+import starter_command_descriptions  from '../../Resources/constants/starter_command_descriptions.json'
 
+const create_initial_text = ()=>{
+    let result = 
+    [
+        <h2>Iliyan Dimitrov</h2>,
+        <h3>This is a Fully Interactive Portfolio Page with a Linux Insprired Terminal<br/></h3>,
+
+        <p>To Use the Portfolio Either <u className="attention">Use the Navigation</u></p>,
+        <p>Or <u className="attention">Explore the Terminal</u><br/><br/></p>,
+
+        <p>To Begin, Type:</p>
+    ]
+    starter_command_descriptions.forEach((command_obj,index)=>{
+        result.push(<p className="indented"><b className="I">[{index+1}]</b> or <b className="I">[open {command_obj.name}]</b>: {command_obj.description}</p>)
+    })
+    result.push(<br/>)
+    return result;
+}
 
 const updateTerminalLine = (e,allPackages) =>{
-    clearInterval(allPackages.interval.current.id)
-    allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000)
-
     let input = e.target.value;
     input = input.replaceAll('▮','') 
 
@@ -24,11 +38,12 @@ const terminalSubmit = (e,allPackages) =>{
     tempArr.push(<p>{allPackages.path + allPackages.command}</p>);
 
     let commands = allPackages.command.split('&&')
-   
     commands.forEach((indivCommand)=>{
+        if(indivCommand === '')
+            return
         let addition = CommandParser(indivCommand.trim(),allPackages)
         if(addition === 'clear')
-            tempArr = entryText;
+            tempArr = create_initial_text();
         else
             tempArr = tempArr.concat(addition)
     }
@@ -37,25 +52,22 @@ const terminalSubmit = (e,allPackages) =>{
     allPackages.setCommand('')
 }
 
-const ComponentDidMount = (allPackages) =>{
+const Handle_allPackages = (allPackages) =>{
     return useEffect(()=>{
+        if(allPackages.interval.current.id !== 0)
+            clearInterval(allPackages.interval.current.id)
         allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
+
+        allPackages.inputRef.current.scrollIntoView();
     },[allPackages])
 }
-const ScrollIntoViewOnTerminalUpdate = (allPackages) =>{
-    return useEffect(()=>{
-        let element = document.getElementById("command-line")
-        if(element !== null){
-            element.scrollIntoView();
-        }
-    },[allPackages.content])
-}
+
 
 const PackageAll = (props) =>{
     const [os] = useState(new OS())
     const [command,setCommand] = useState('');
     const [path,setPath] = useState(os.terminalString);
-    const[content,setContent] = useState(entryText);
+    const[content,setContent] = useState(create_initial_text());
 
     const inputRef = useRef(null);
     const blink = useRef(false)
@@ -91,8 +103,7 @@ const PackageAll = (props) =>{
 const Terminal = (props) => {
 
     const allPackages = PackageAll(props);
-    ComponentDidMount(allPackages);
-    ScrollIntoViewOnTerminalUpdate(allPackages);
+    Handle_allPackages(allPackages);
 
     return (
         <div className={props.display + " main"}>
@@ -104,7 +115,7 @@ const Terminal = (props) => {
                 }
             </div>
             <form onSubmit={(e)=>terminalSubmit(e,allPackages)}>
-                <input data-testid='terminalInput' id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
+                <input data-testid='terminalInput' type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
                 <p>⠀</p>  
             </form>
         </div>       
