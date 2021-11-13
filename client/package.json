@@ -93,7 +93,7 @@
       "/templates/*",
       "/test/*",
       "/webpack.config.js",
-      "/util/getRepos.js",
+      "/util/github_api.js",
       "/src/Containers/App.js"
     ],
     "testURL": "http://localhost/",
