@@ -12,18 +12,15 @@ const content = (props)=>{
             return(<li key={`work-element-${index}`}>
                 <div className="insideContainer">
                     <div className="logo">
-                        <a href={(obj.link)?obj.link:''} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
+                        <a href={obj.link} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
                         <Folder className="folder"/>
                     </div>
-                    <div className="title">
-                        {(obj.name)?obj.name:''}
-                    </div>
-                    <div className="description">
-                        {(obj.description)?obj.description:''}
-                    </div>
-                    <footer>
-                        {(obj.languages)?obj.languages:''}
-                    </footer>
+                    
+                    <div className="title">{obj.name}</div>
+
+                    <div className="description">{obj.description}</div>
+
+                    <footer>{obj.languages}</footer>
                 </div>
             </li>)
         else
@@ -32,8 +29,7 @@ const content = (props)=>{
     </ul>
     if (props.test)
         return <></>
-    else 
-        return result
+    return result
 }
 
 const Work = (props) =>{

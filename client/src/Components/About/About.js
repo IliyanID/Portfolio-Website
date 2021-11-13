@@ -16,18 +16,22 @@ const About = () =>{
                 <br/>⠀
                 </p>
                 <p>Here are a few technologies I've worked with recently:<br/>⠀</p>
-                <ol className="technologies">
-                    <li>HTML & (S)CSS</li>
-                    <li>JavaScript (ES10+)</li>
-                    <li>React</li>
-                    <li>Vue</li>
-                    <li>Angular</li>
-                    <li>Wordpress</li>
-                </ol>
+                {getTechnologies()}
             </div>
             <div className="avatar"></div>
         </div>
     </section>
     );
+}
+
+const getTechnologies = () =>{
+    return <ol className="technologies">
+                <li>HTML & (S)CSS</li>
+                <li>JavaScript (ES10+)</li>
+                <li>React</li>
+                <li>Vue</li>
+                <li>Angular</li>
+                <li>Wordpress</li>
+            </ol>
 }
 export default About;

@@ -62,13 +62,20 @@ const Handle_allPackages = (allPackages) =>{
     },[allPackages])
 }
 
-
-const PackageAll = (props) =>{
+const PackageStates = () =>{
     const [os] = useState(new OS())
     const [command,setCommand] = useState('');
     const [path,setPath] = useState(os.terminalString);
     const[content,setContent] = useState(create_initial_text());
+    return {
+        os:os,
+        command,setCommand,
+        path,setPath,
+        content,setContent
+    }
+}
 
+const PackageRefs = (props) =>{
     const inputRef = useRef(null);
     const blink = useRef(false)
     const interval = useRef({
@@ -89,12 +96,21 @@ const PackageAll = (props) =>{
             
         }
     })
+    return {
+        inputRef:inputRef,
+        blink:blink,
+        interval:interval
+    }
+}
+
+
+const PackageAll = (props) =>{
+    const packagedStates = PackageStates();
+    const packagedRefs = PackageRefs(props);
     let allPackages={
-        os:os,
-        command:command,setCommand:setCommand,
-        path:path,setPath:setPath,
-        content:content,setContent:setContent,
-        inputRef:inputRef,blink:blink,interval:interval
+        ...packagedStates,
+        ...packagedRefs,
+        ...props
     }
     return allPackages
 }

@@ -35,7 +35,6 @@ const submit = (e) =>{
         emailjs.send('service_ocq50ip', 'template_ew0t8ol', templateParams, 'user_m0QGP3CClZeBUJkrNaonS')
         .then((result) => {
             alert("Email Sent Succesfully")
-            console.log(result.text);
             document.getElementById("email").value = "";
             document.getElementById("subject").value = "";
             document.getElementById("content").value = "";

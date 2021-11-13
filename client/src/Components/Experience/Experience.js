@@ -4,13 +4,7 @@ import './Experience.css';
 import '../../Containers/Terminal/Terminal.css'
 
 const Experience = () =>{
-    let [curJob, selectJob] = useState(0);
-    let jobSelector = experience_data.map((job,index)=>{
-        let result = <li onClick={()=>{selectJob(index)}} key={index}>{job.company}</li>;
-        if(index === curJob)
-            result =  <li onClick={()=>{selectJob(index)}} className = "jobSelected" key={index}>{job.company}</li>
-        return result
-    })
+    const { jobSelector, curJob } = JobSelector();
 
     return(
     <div className = "experience main">
@@ -36,4 +30,16 @@ const Experience = () =>{
     </div>
     );
 }
+
+const JobSelector = () =>{
+    let [curJob, selectJob] = useState(0);
+    let jobSelector = experience_data.map((job,index)=>{
+        let result = <li onClick={()=>{selectJob(index)}} key={index}>{job.company}</li>;
+        if(index === curJob)
+            result =  <li onClick={()=>{selectJob(index)}} className = "jobSelected" key={index}>{job.company}</li>
+        return result
+    })
+    return {jobSelector,curJob};
+}
+
 export default Experience;
