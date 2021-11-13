@@ -2,12 +2,6 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames/bind';
 import styles from './App.css';
 
-import {ReactComponent as Github} from "../Resources/icons/github.svg";
-import {ReactComponent as Linkedin} from "../Resources/icons/linkedin.svg";
-import {ReactComponent as Twitter} from "../Resources/icons/twitter.svg";
-import {ReactComponent as Instagram} from "../Resources/icons/instagram.svg";
-import {ReactComponent as Codepen} from "../Resources/icons/codepen.svg";
-
 import Terminal from'./Terminal/Terminal'
 import About from '../Components/About/About';
 import ContactMe from '../Components/ContactMe/ContactMe';
@@ -15,6 +9,7 @@ import Experience from '../Components/Experience/Experience';
 import Work from '../Components/Work/Work';
 
 import github_api from '../Resources/util/github_api'
+import links_icons from '../Resources/constants/links_icons'
 
 class App extends PureComponent {
   state = {
@@ -173,11 +168,12 @@ class App extends PureComponent {
       </ol>
       
       <ul className="links">
-        <li><a href="https://github.com/IliyanID" target="_blank" rel="noreferrer"><Github className="svg" title=""></Github></a></li>
-        <li><a href="https://www.instagram.com/iliyanid2000/" target="_blank" rel="noreferrer"><Instagram className="svg" title=""></Instagram></a></li>
-        <li><a href="https://twitter.com/UnknownUnoticed" target="_blank" rel="noreferrer"><Twitter className="svg" title=""></Twitter></a></li>
-        <li><a href="https://www.linkedin.com/in/iliyan-dimitrov-926550200/" target="_blank" rel="noreferrer"><Linkedin className="svg" title=""></Linkedin></a></li>
-        <li><a href="https://codepen.io/iliyanid" target="_blank" rel="noreferrer"><Codepen className="svg" title=""></Codepen></a></li>
+        {
+          links_icons.map((LinkObj,index)=>{
+            const Icon = LinkObj.icon;
+            return <li key={`link-key-${index}`}><a href={LinkObj.link} target="_blank" rel="noreferrer"><Icon className="svg" title=""/></a></li>
+          })
+        }
       </ul>
 
       <div className="emailLine">
