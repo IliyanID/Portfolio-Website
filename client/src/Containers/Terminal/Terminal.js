@@ -56,6 +56,8 @@ const Handle_allPackages = (allPackages) =>{
     return useEffect(()=>{
         if(allPackages.interval.current.id !== 0)
             clearInterval(allPackages.interval.current.id)
+        if(!allPackages.inView)
+            return
         allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
 
         allPackages.inputRef.current.scrollIntoView();
