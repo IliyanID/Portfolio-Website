@@ -92,12 +92,13 @@ export default class OS extends React.Component{
         }
     }
 
-    mkdir(parameters,path){
+    mkdir(allPackages){
+        const { path, commandSelector } = allPackages
         let absoluteSystemPath = path.split('/')
         this.currentDirectory.push(
             {
                 "type" : "folder",
-                "name" : parameters,
+                "name" : commandSelector[1],
                 "path" : "/" + absoluteSystemPath[absoluteSystemPath.length - 2],
                 "privileges" : ["read","write","execute"],
                 "owner" : [this.user],
@@ -109,12 +110,13 @@ export default class OS extends React.Component{
         
     }
 
-    touch(parameters,path){
+    touch(allPackages){
+        const { path, commandSelector } = allPackages
         let absoluteSystemPath = path.split('/')
         this.currentDirectory.push(
             {
                 "type" : "file",
-                "name" : parameters,
+                "name" : commandSelector[1],
                 "path" : "/" + absoluteSystemPath[absoluteSystemPath.length - 2],
                 "privileges" : ["read","write","execute"],
                 "owner" : [this.user]
@@ -129,10 +131,12 @@ export default class OS extends React.Component{
 
     }
 
-    rm(parameters,path){
+    rm(allPackages){
+        const { path, commandSelector } = allPackages
+        let fileName = commandSelector[1]
         let absoluteSystemPath = path.split('/')
-        parameters = parameters.replaceAll('*','.*')
-        let removedItem = this.currentDirectory.findIndex((el)=>el.name.match(parameters))
+        fileName = fileName.replaceAll('*','.*')
+        let removedItem = this.currentDirectory.findIndex((el)=>el.name.match(fileName))
         while(removedItem >= 0){
 
             let permissions = this.currentDirectory[removedItem].owner
@@ -143,7 +147,7 @@ export default class OS extends React.Component{
                 this.tree[absoluteSystemPath] = this.currentDirectory
                 saveData(this.tree)
             }
-            removedItem = this.currentDirectory.findIndex((el)=>(el.name.match(parameters) && permissionsCheck)) 
+            removedItem = this.currentDirectory.findIndex((el)=>(el.name.match(fileName) && permissionsCheck)) 
         }
     }
 

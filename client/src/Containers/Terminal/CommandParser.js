@@ -25,17 +25,17 @@ let allCommands = [
     {
         command:'mkdir',
         arguments:2,
-        runFunction:(allPackages)=>allPackages.os.mkdir(allPackages.commandSelector[1],allPackages.path)
+        runFunction:(allPackages)=>allPackages.os.mkdir(allPackages)
     },
     {
         command:'rm',
         arguments:2,
-        runFunction:(allPackages)=>allPackages.os.rm(allPackages.commandSelector[1],allPackages.path)
+        runFunction:(allPackages)=>allPackages.os.rm(allPackages)
     },
     {
         command:'touch',
         arguments:2,
-        runFunction:(allPackages)=>allPackages.os.touch(allPackages.commandSelector[1],allPackages.path)
+        runFunction:(allPackages)=>allPackages.os.touch(allPackages)
     },
     {
         command:'open',

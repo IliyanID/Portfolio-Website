@@ -1,27 +1,9 @@
 import { describe, it, expect } from '@jest/globals';
 import CommandParser from '../../src/Containers/Terminal/CommandParser';
+import allPackages_MOCK from '../Resources/allPackages_MOCK'
 
 describe('CommandParser', () => {
-    let os = {
-        user:'guest',
-        tree:[],
-        currentDirectory:[],
-        terminalString:'',
-        ls:()=>{return [{type:'folder',name:'name'},{type:'file',name:'name2'}]},
-        cd:(a,b)=>{return ' '},
-        mkdir:(a,b)=>{return []},
-        touch:(a,b)=>{return []},
-        rm:(a,b)=>{return false},
-        su:()=>{return []},
-        open:(a)=>{},
-        reset:()=>{return []}
-    }
-    let path = ''
-    let setPath = (newPath)=> path;
-    let allPackages = {
-        os:os,
-        path:path,setPath:setPath
-    }
+    const allPackages = {...allPackages_MOCK}
 
     it('test clear', () => {
         expect(CommandParser('clear',allPackages)).toEqual('clear')
