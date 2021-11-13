@@ -5,8 +5,8 @@
   "scripts": {
     "start": "create_key.sh && react-scripts start",
     "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
-    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/",
-    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/",
+    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/ --silent",
+    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/ --silent",
     "eject": "react-scripts eject"
   },
   "dependencies": {
