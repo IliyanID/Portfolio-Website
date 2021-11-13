@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "create_key.sh && react-scripts build",
+    "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
+    "build-win" : "create_key.sh && react-scripts build",
     "test": "jest --coverageDirectory=./target/coverage/client/",
     "eject": "react-scripts eject"
   },
