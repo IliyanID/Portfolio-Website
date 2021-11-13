@@ -154,7 +154,7 @@ class App extends PureComponent {
           id++;
           return result;  
         })}
-        <li id="addTab"onClick={()=>this.terminal.current.sendCommand("open terminal" )}>+</li>
+        <li id="addTab">+</li>
       </ol>
     );
   }
