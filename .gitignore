@@ -32,7 +32,7 @@ server/*.iml
 
 # Coverage Files, Bundled Files, Dependencies
 api_key.json
-
+**/build/**
 client/dist
 client/dist/
 */node_modules
