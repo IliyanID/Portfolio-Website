@@ -1,14 +1,15 @@
 import React, { Fragment } from 'react';
+import { useToggle } from '../../Resources/util/useToggle'
 import './Work.css';
 import '../../Containers/Terminal/Terminal.css'
 
 import {ReactComponent as ExternalLink} from "../../Resources/icons/external-link.svg";
 import {ReactComponent as Folder} from "../../Resources/icons/folder.svg";
 
-const content = (props)=>{
+const all_projects= (props,showAllRepos)=>{
     let result = <ul>
     {props.repos.map((obj,index) =>{
-        if(props.getLoad || index < 6)
+        if(showAllRepos || index < 6)
             return(<li key={`work-element-${index}`}>
                 <div className="insideContainer">
                     <div className="logo">
@@ -33,15 +34,15 @@ const content = (props)=>{
 }
 
 const Work = (props) =>{
-    let currentContent = content(props)
+    const [showAllRepos,toggleShowAllRepos] = useToggle(false);
     return(
     <div className = "main">
         <div className="projects">
             <div className="workHeader">
                 <h3>Some Things That I've Built</h3>
             </div>
-            {currentContent}
-            <button onClick={props.setLoad}className="load">{(props.getLoad) ? "Load Less" : "Load More"}</button>
+            {all_projects(props,showAllRepos)}
+            <button onClick={toggleShowAllRepos}className="load">{(showAllRepos) ? "Load Less" : "Load More"}</button>
         </div>
     </div>
     );
