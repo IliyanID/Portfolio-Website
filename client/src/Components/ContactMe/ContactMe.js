@@ -6,13 +6,13 @@ import emailjs from 'emailjs-com';
 const ContactMe = () =>{
     return(
     <div className = "main">
-        <form role='submitEmail' onSubmit={submit}className="contactForm">
+        <form onSubmit={submit}className="contactForm">
             <h3>Contact Me</h3>
             <p>If you have a question or simply want to say hello.</p>
-            <input role='email' className="input" id="email" type="email" placeholder="Your Email"></input>
-            <input role='subject' className="input" id="subject" type="text" placeholder="What You Want to Talk About"></input>
-            <textarea role='text-box' id="content"></textarea>
-            <input role='submitButton' type="submit" className="Submit" value="Submit"></input>
+            <input data-testid='email' className="input" id="email" type="email" placeholder="Your Email"></input>
+            <input data-testid='subject' className="input" id="subject" type="text" placeholder="What You Want to Talk About"></input>
+            <textarea data-testid='text-box' id="content"></textarea>
+            <input data-testid='submitButton' type="submit" className="Submit" value="Submit"></input>
         </form>
     </div>
     );

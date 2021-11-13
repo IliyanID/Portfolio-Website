@@ -54,7 +54,7 @@ export default class OS extends React.Component{
         for(let name in temp.splice(0,1)){
             name = temp[name]
             let index = -1;
-            subDirectory.map((item,ind)=>{
+            subDirectory.forEach((item,ind)=>{
                 if(item.name === name && item.type === 'folder')
                     index = ind
             })
@@ -90,7 +90,6 @@ export default class OS extends React.Component{
             result = result.replaceAll(' ','')
             return result.substring(1) + ' ' 
         }
-        return ""
     }
 
     mkdir(parameters,path){

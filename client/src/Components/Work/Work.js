@@ -9,23 +9,25 @@ const content = (props)=>{
     let result = <ul>
     {props.repos.map((obj,index) =>{
         if(props.getLoad || index < 6)
-        return<li key={index}>
-            <div className="insideContainer">
-                <div className="logo">
-                    <a href={(obj.link)?obj.link:''} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
-                    <Folder className="folder"/>
+            return(<li key={index}>
+                <div className="insideContainer">
+                    <div className="logo">
+                        <a href={(obj.link)?obj.link:''} target="_blank" rel="noreferrer"><ExternalLink className="ext"/></a>
+                        <Folder className="folder"/>
+                    </div>
+                    <div className="title">
+                        {(obj.name)?obj.name:''}
+                    </div>
+                    <div className="description">
+                        {(obj.description)?obj.description:''}
+                    </div>
+                    <footer>
+                        {(obj.languages)?obj.languages:''}
+                    </footer>
                 </div>
-                <div className="title">
-                    {(obj.name)?obj.name:''}
-                </div>
-                <div className="description">
-                    {(obj.description)?obj.description:''}
-                </div>
-                <footer>
-                    {(obj.languages)?obj.languages:''}
-                </footer>
-            </div>
-        </li>
+            </li>)
+        else
+            return <></>
     })}
     </ul>
     if (props.test)

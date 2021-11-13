@@ -15,14 +15,14 @@ describe('ContactMe', () => {
     })
     window.HTMLElement.prototype.scrollIntoView = jest.fn()
     it('submit empty contactMe', () => {
-        fireEvent.click(screen.getByRole('submitButton'))
+        fireEvent.click(screen.getByTestId('submitButton'))
     })
     it('submit none contactMe', async () => {
-      fireEvent.change(screen.getByRole('email'), { target: { value: 'test@test.com' } });
-      fireEvent.change(screen.getByRole('subject'), { target: { value: '40 -105' } });
-      fireEvent.change(screen.getByRole('text-box'), { target: { value: '40 -105' } });
+      fireEvent.change(screen.getByTestId('email'), { target: { value: 'test@test.com' } });
+      fireEvent.change(screen.getByTestId('subject'), { target: { value: '40 -105' } });
+      fireEvent.change(screen.getByTestId('text-box'), { target: { value: '40 -105' } });
       await waitFor(()=>{
-        fireEvent.click(screen.getByRole('submitButton'))
+        fireEvent.click(screen.getByTestId('submitButton'))
       })
       const a = () => new Promise(setImmediate);
       await a()

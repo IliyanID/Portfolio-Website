@@ -59,7 +59,7 @@ const ParseCommand = (command,allPackages) =>{
     let result = [];
     
     let foundCommand = false;
-    allCommands.map((commandObj)=>{
+    allCommands.forEach((commandObj)=>{
         if(commandObj.command === allPackages.commandSelector[0]){
             foundCommand = true;
             if(allPackages.commandSelector.length === commandObj.arguments){

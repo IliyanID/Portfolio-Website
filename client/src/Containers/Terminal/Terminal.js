@@ -25,7 +25,7 @@ const terminalSubmit = (e,allPackages) =>{
 
     let commands = allPackages.command.split('&&')
    
-    commands.map((indivCommand)=>{
+    commands.forEach((indivCommand)=>{
         let addition = CommandParser(indivCommand.trim(),allPackages)
         if(addition === 'clear')
             tempArr = entryText;
@@ -40,7 +40,7 @@ const terminalSubmit = (e,allPackages) =>{
 const ComponentDidMount = (allPackages) =>{
     return useEffect(()=>{
         allPackages.interval.current.id = setInterval(allPackages.interval.current.function,1000);
-    },[])
+    },[allPackages])
 }
 const ScrollIntoViewOnTerminalUpdate = (allPackages) =>{
     return useEffect(()=>{
@@ -104,7 +104,7 @@ const Terminal = (props) => {
                 }
             </div>
             <form onSubmit={(e)=>terminalSubmit(e,allPackages)}>
-                <input role='terminalInput' id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
+                <input data-testid='terminalInput' id="command-line" type="text" autoFocus spellCheck="false" autoComplete="off" value={allPackages.path + allPackages.command} onChange={(e)=>updateTerminalLine(e,allPackages)} ref={allPackages.inputRef}/>     
                 <p>⠀</p>  
             </form>
         </div>       

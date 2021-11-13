@@ -14,21 +14,21 @@ describe('Terminal', () => {
     jest.setTimeout(30000);
     it('render Terminal', () => {
 
-      userEvent.type(screen.getByRole('terminalInput'), "ls{enter}");
+      userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
 
       jest.useFakeTimers();
       jest.advanceTimersByTime(3000);
     });
     it('test ls command', () => {
-      userEvent.type(screen.getByRole('terminalInput'), "ls{enter}");
+      userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
     });
     it('test cd command', () => {
-      userEvent.type(screen.getByRole('terminalInput'), "cd ./root{enter}");
+      userEvent.type(screen.getByTestId('terminalInput'), "cd ./root{enter}");
     });
     it('test clear command', () => {
-      userEvent.type(screen.getByRole('terminalInput'), "clear{enter}");
+      userEvent.type(screen.getByTestId('terminalInput'), "clear{enter}");
     });
     it('test delete', () => {
-      userEvent.type(screen.getByRole('terminalInput'), "{backspace}{enter}");
+      userEvent.type(screen.getByTestId('terminalInput'), "{backspace}{enter}");
     });
 });
