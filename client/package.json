@@ -19,10 +19,10 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "create_key.sh && react-scripts start",
     "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
-    "build-win" : "create_key.sh && react-scripts build",
-    "test": "jest --coverageDirectory=./target/coverage/client/",
+    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/",
+    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
