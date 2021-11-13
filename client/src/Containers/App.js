@@ -156,6 +156,7 @@ class App extends PureComponent {
     );
   }
 
+  
   render () {
    let content = this.getContent();
     return (      
