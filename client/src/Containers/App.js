@@ -13,21 +13,28 @@ import links_icons from '../Resources/constants/links_icons'
 
 class App extends PureComponent {
   state = {
-    tabs:[{name:"Terminal",displayed:true,id:0}],
-    load:false,
-    repos:[{name:"",link:"",description:"",languages:"",size:0}]
+    tabs:[
+      {
+        name:"Terminal"
+        ,displayed:true,
+        id:0
+      }
+    ],
+    repos:[
+      {
+        name:"",
+        link:"",
+        description:"",
+        languages:"",
+        size:0
+      }
+    ]
   };
-
 
   componentDidMount(){
     github_api().then((result)=>{
       this.setState(result)
     });
-    
-  }
-
-  setLoad = () =>{
-    this.setState({load:!this.state.load})
   }
 
   addTab = (tabName) =>{
@@ -75,8 +82,6 @@ class App extends PureComponent {
   }
 
   removeTab = (id) =>{
- 
-
     const tempTabs = [...this.state.tabs];
     let index = tempTabs.findIndex((tab)=>tab.displayed === true);
     tempTabs[index].displayed = false;
@@ -99,8 +104,6 @@ class App extends PureComponent {
   }
 
   selectTab = (id) =>{
-
-
     let tempArr = [...this.state.tabs].reverse();
     let findIndex = () =>{
       for(let i = tempArr.length - 1; i >= 0 ;i--){
@@ -123,7 +126,7 @@ class App extends PureComponent {
     this.setState({tabs:tempArr});
   }
 
-  getContent = () =>{
+  DisplayCurrentWindow = () =>{
     let index = this.state.tabs.findIndex((tab) => tab.displayed);
     let result = null;
     if(this.state.tabs[index].name === 'About')
@@ -131,14 +134,14 @@ class App extends PureComponent {
     else if(this.state.tabs[index].name === 'Experience')
       result = <Experience></Experience>
     else if(this.state.tabs[index].name === 'Work')
-      result = <Work repos={this.state.repos} setLoad={this.setLoad} getLoad={this.state.load}></Work>
+      result = <Work repos={this.state.repos}></Work>
     else if(this.state.tabs[index].name === 'Contact')
       result = <ContactMe></ContactMe>
 
     return result;
   }
 
-  allTabs(){
+  TerminalTabs(){
     let id = 0;
     let cx = classNames.bind(styles);
     return (
@@ -156,39 +159,51 @@ class App extends PureComponent {
     );
   }
 
-  
+  LeftBarLinks(){
+    return <ul className="links">
+            {
+              links_icons.map((LinkObj,index)=>{
+                const Icon = LinkObj.icon;
+                return <li key={`link-key-${index}`}><a href={LinkObj.link} target="_blank" rel="noreferrer"><Icon className="svg" title=""/></a></li>
+              })
+            }
+          </ul>
+  }
+
+  RightBarEmail(){
+    return <div className="emailLine">
+            <div className="email"><span onClick={()=> this.addTab("Contact")}>dev.iliyan.dimitrov@gmail.com</span></div>
+           </div>
+  }
+
+  navigationButtons(){
+    return  <ol id="navBar">
+              <li onClick={()=> this.addTab("About")}>About</li>
+              <li onClick={()=> this.addTab("Experience")}>Experience</li>
+              <li onClick={()=> this.addTab("Work")}>Work</li>
+              <li onClick={()=> this.addTab("Contact")}>Contact Me</li>
+            </ol>
+  }
+
+
   render () {
-   let content = this.getContent();
     return (      
     <div id="app">
-      <ol id="navBar">
-        <li onClick={()=> this.addTab("About")}>About</li>
-        <li onClick={()=> this.addTab("Experience")}>Experience</li>
-        <li onClick={()=> this.addTab("Work")}>Work</li>
-        <li onClick={()=> this.addTab("Contact")}>Contact Me</li>
-      </ol>
+      {this.navigationButtons()}
       
-      <ul className="links">
-        {
-          links_icons.map((LinkObj,index)=>{
-            const Icon = LinkObj.icon;
-            return <li key={`link-key-${index}`}><a href={LinkObj.link} target="_blank" rel="noreferrer"><Icon className="svg" title=""/></a></li>
-          })
-        }
-      </ul>
+      {this.LeftBarLinks()}
 
-      <div className="emailLine">
-        <div className="email"><span onClick={()=> this.addTab("Contact")}>dev.iliyan.dimitrov@gmail.com</span></div>
-      </div>
-      {this.allTabs()}
+      {this.RightBarEmail()}
+
+      {this.TerminalTabs()}
+
       <Terminal 
-        ref={this.terminal}
         addTab = {this.addTab}
         removeTab = {this.removeTab}
         display = {this.state.tabs[0].displayed ? "" : "hideTerminal"}
         inView = {this.state.tabs[0].displayed}>   
       </Terminal>
-      {content}
+      {this.DisplayCurrentWindow()}
       <a href="https://github.com/IliyanID/PortfolioWebsite" target="_blank" id="footer" rel="noreferrer">Created and Designed by Iliyan Dimitrov</a>
     </div>
     );
