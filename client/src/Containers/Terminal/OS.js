@@ -61,7 +61,6 @@ export default class OS extends React.Component{
             if(index >= 0)
                 subDirectory = subDirectory[index].children;
         }        
-        console.log(numberOfReversals)
 
 
         if(numberOfReversals <= 0){
