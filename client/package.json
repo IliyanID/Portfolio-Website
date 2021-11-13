@@ -2,6 +2,13 @@
   "name": "iliyan-dimitrov",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "create_key.sh && react-scripts start",
+    "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
+    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/",
+    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.2",
@@ -17,13 +24,6 @@
     "react-tooltip": "^4.2.11",
     "react-typing-effect": "^2.0.4",
     "web-vitals": "^0.2.4"
-  },
-  "scripts": {
-    "start": "create_key.sh && react-scripts start",
-    "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
-    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/",
-    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/",
-    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -108,6 +108,11 @@
     "transform": {
       "^.+\\.jsx$": "babel-jest",
       "^.+\\.js$": "babel-jest"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "nohup git commit -a -m'Automatic Preliminary Push Commit'&  npm run test-win && find . -type f -name 'nohup.out' -delete"
     }
   }
 }

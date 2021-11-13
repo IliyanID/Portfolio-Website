@@ -47,7 +47,6 @@ export default class OS extends React.Component{
         for(let i = 0; i < numberOfReversals; i++){
             absoluteSystemPath.pop()
         }
-        console.log(absoluteSystemPath)
 
         let temp = [...absoluteSystemPath]
         let subDirectory = this.tree;
