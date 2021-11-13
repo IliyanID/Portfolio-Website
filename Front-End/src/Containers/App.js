@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import classNames from 'classnames/bind';
 import styles from './App.css';
 
-import {ReactComponent as Github} from "../Resources/github.svg";
-import {ReactComponent as Linkedin} from "../Resources/linkedin.svg";
-import {ReactComponent as Twitter} from "../Resources/twitter.svg";
-import {ReactComponent as Instagram} from "../Resources/instagram.svg";
-import {ReactComponent as Codepen} from "../Resources/codepen.svg";
+import {ReactComponent as Github} from "../Resources/icons/github.svg";
+import {ReactComponent as Linkedin} from "../Resources/icons/linkedin.svg";
+import {ReactComponent as Twitter} from "../Resources/icons/twitter.svg";
+import {ReactComponent as Instagram} from "../Resources/icons/instagram.svg";
+import {ReactComponent as Codepen} from "../Resources/icons/codepen.svg";
 
 import Terminal from'./Terminal/Terminal'
 import About from '../Components/About/About';
@@ -14,7 +14,7 @@ import ContactMe from '../Components/ContactMe/ContactMe';
 import Experience from '../Components/Experience/Experience';
 import Work from '../Components/Work/Work';
 
-import getRepos from '../util/getRepos'
+import getRepos from '../Resources/util/getRepos'
 
 class App extends PureComponent {
   state = {

@@ -106,7 +106,7 @@
 
 
     border-radius: 10px;
-    background-image:linear-gradient(var(--overlay),var(--overlay)), url("../../Resources/avatar.jpg");
+    background-image:linear-gradient(var(--overlay),var(--overlay)), url("../../Resources/images/avatar.jpg");
 }
 
 

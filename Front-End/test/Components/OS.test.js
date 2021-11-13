@@ -1,6 +1,6 @@
 import { describe, it, expect } from '@jest/globals';
 import  OS  from '../../src/Containers/Terminal/OS'
-import defaultFiles from '../../src/Resources/Static/defaultFiles.json'
+import defaultFiles from '../../src/Resources/constants/defaultFiles.json'
 
 describe('OS', () => {
     var localStorageMock = (function() {

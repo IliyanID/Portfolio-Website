@@ -2,8 +2,8 @@ import React from 'react';
 import './Work.css';
 import '../../Containers/Terminal/Terminal.css'
 
-import {ReactComponent as ExternalLink} from "../../Resources/external-link.svg";
-import {ReactComponent as Folder} from "../../Resources/folder.svg";
+import {ReactComponent as ExternalLink} from "../../Resources/icons/external-link.svg";
+import {ReactComponent as Folder} from "../../Resources/icons/folder.svg";
 
 const content = (props)=>{
     let result = <ul>

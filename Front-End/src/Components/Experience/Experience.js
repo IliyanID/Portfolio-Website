@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import experience_data from '../../Resources/Static/experience-data.json';
+import experience_data from '../../Resources/constants/experience-data.json';
 import './Experience.css';
 import '../../Containers/Terminal/Terminal.css'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import helpDescriptions from '../../Resources/Static/helpDescriptions.json'
+import helpDescriptions from '../../Resources/constants/help-descriptions.json'
 
 let allCommands = [
     {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import defaultFiles from '../../Resources/Static/defaultFiles.json'
+import defaultFiles from '../../Resources/constants/defaultFiles.json'
 
 const initializeLocalStorage = () =>{
     let tree = localStorage.getItem('iliyan-dimitrov-files');
