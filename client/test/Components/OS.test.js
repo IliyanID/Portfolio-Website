@@ -1,11 +1,11 @@
 import { describe, it, expect } from '@jest/globals';
 import  OS  from '../../src/Containers/Terminal/OS'
-import defaultFiles from '../../src/Resources/constants/defaultFiles.json'
+import default_files from '../../src/Resources/constants/default_files.json'
 
 describe('OS', () => {
     var localStorageMock = (function() {
         var store = {
-            "iliyan-dimitrov-files":JSON.stringify(defaultFiles)
+            "iliyan-dimitrov-files":JSON.stringify(default_files)
         };
         return {
           getItem: function(key) {

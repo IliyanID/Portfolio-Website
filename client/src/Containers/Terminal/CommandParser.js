@@ -1,5 +1,5 @@
 import React from 'react'
-import helpDescriptions from '../../Resources/constants/help-descriptions.json'
+import help_descriptions from '../../Resources/constants/help_descriptions.json'
 
 let allCommands = [
     {
@@ -134,7 +134,7 @@ const handleSU = (allPackages) =>{
 }
 
 const helpArray = () =>{
-    let result = helpDescriptions.map((commandObj)=>{
+    let result = help_descriptions.map((commandObj)=>{
         return <p className="indented">
                     <b className='I'>[{commandObj.command}] </b>
                     : {commandObj.description}

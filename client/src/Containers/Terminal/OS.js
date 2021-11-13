@@ -1,13 +1,13 @@
 import React from 'react'
 
-import defaultFiles from '../../Resources/constants/defaultFiles.json'
+import default_files from '../../Resources/constants/default_files.json'
 
 const initializeLocalStorage = () =>{
     let tree = localStorage.getItem('iliyan-dimitrov-files');
     if(tree !== null)
         return
     
-    saveData(defaultFiles)
+    saveData(default_files)
 }
 
 const saveData = (tree) => {
@@ -162,7 +162,7 @@ export default class OS extends React.Component{
     }
     
     reset(){
-        saveData(defaultFiles)
+        saveData(default_files)
         window.location.reload();
     }
 }
