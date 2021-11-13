@@ -20,7 +20,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "make_key" : "echo '{\"key\":\"$GITHUB_API_KEY\"}' > ./src/Resources/util/api_key.json",
+    "build": "npm run make_key && react-scripts build",
     "test": "jest --coverageDirectory=./target/coverage/client/",
     "eject": "react-scripts eject"
   },

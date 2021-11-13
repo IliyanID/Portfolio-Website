@@ -1,22 +1,25 @@
+import api_key from './api_key.json'
+
 const packageAll = () =>{
   let headers = new Headers();
-  const token = process.env.GITHUB_API_KEY;
+  const token = api_key.key
   const all_repos_url = 'https://api.github.com/users/iliyanid/repos'
-
   headers.set('Authorization', "token " + token);
 
-  const use_private_key = () =>{
-    headers = new Headers()
-    headers.set('Authorization', "token " + token);
+  const allPackages = {
+    headers:headers,token:token,url:all_repos_url
   }
 
-  const use_public_key = () =>{
-    headers = new Headers();
-  }
-  return{
-    headers:headers,use_private_key:use_private_key,use_public_key:use_public_key,
-    token:token, url:all_repos_url
-  }
+  return allPackages;
+}
+
+const use_private_key = (allPackages) =>{
+  allPackages.headers = new Headers()
+  allPackages.headers.set('Authorization', "token " + allPackages.token);
+}
+
+const use_public_key = (allPackages) =>{
+  allPackages.headers = new Headers();
 }
 
 const sleep = async(duration) =>{
@@ -27,10 +30,10 @@ const send_api_call = async(allPackages) => {
   let response = await fetch(allPackages.url,{method: 'GET', headers:allPackages.headers});
 
   if(response.ok){
-    return JSON.parse(response)
+    return response.json();
   }
   else{
-    allPackages.use_public_key();
+    use_public_key(allPackages);
     await sleep(1000)
     return send_api_call(allPackages)
   }
@@ -45,7 +48,7 @@ const github_api = async () => {
   for(let i = 0; i < all_repositories.length; i++){
     let indiv_repo = all_repositories[i]
 
-    allPackages.use_private_key();
+    use_private_key(allPackages);
     allPackages.url = indiv_repo.languages_url
     const languages_json = await send_api_call(allPackages)
 
@@ -64,7 +67,7 @@ const github_api = async () => {
   }
 
 
-  result_data.sort((repo1, repo2)=>{return( repo1.size - repo2.size)});
+  result_data.sort((repo1, repo2)=>{return( repo2.size - repo1.size)});
 
   return {repos:result_data};
 }

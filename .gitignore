@@ -31,7 +31,7 @@ server/*.iml
 .idea/
 
 # Coverage Files, Bundled Files, Dependencies
-
+api_key.json
 
 client/dist
 client/dist/
