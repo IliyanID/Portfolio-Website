@@ -7,28 +7,17 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/62a87248-ea51-44de-aa54-0b75d4b39ac9/deploy-status)](https://app.netlify.com/sites/iliyandimitrov/deploys)
 ## 🛠 Installation & Set Up
 
-1. Install the React
+
+1. Install dependencies
 
    ```sh
-   sudo apt install React
+   npm install
    ```
 
-2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
+2. Start the development server
 
    ```sh
-   nvm install
-   ```
-
-3. Install dependencies
-
-   ```sh
-   yarn
-   ```
-
-4. Start the development server
-
-   ```sh
-   npm start
+   npm run start
    ```
 
 ## 🚀 Building and Running for Production
