@@ -11,7 +11,7 @@
 1. Install dependencies
 
    ```sh
-   npm install --pefix client
+   npm install --prefix client
    ```
 
 2. Start the development server
