@@ -11,13 +11,13 @@
 1. Install dependencies
 
    ```sh
-   npm install
+   npm install --pefix client
    ```
 
 2. Start the development server
 
    ```sh
-   npm run start
+   npm run start --prefix client
    ```
 
 ## 🚀 Building and Running for Production
@@ -25,11 +25,11 @@
 1. Generate a full static production build
 
    ```sh
-   npm run build
+   npm run build --prefix client
    ```
 
 1. Preview the site as it will appear once deployed
 
    ```sh
-   npm run serve
+   npm run serve -- prefix client
    ```
