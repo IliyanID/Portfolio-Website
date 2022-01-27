@@ -7,28 +7,38 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/62a87248-ea51-44de-aa54-0b75d4b39ac9/deploy-status)](https://app.netlify.com/sites/iliyandimitrov/deploys)
 ## 🛠 Installation & Set Up
 
-
-1. Install dependencies
+1. Enter Client Directory
 
    ```sh
-   npm install --prefix client
+   cd client
    ```
 
-2. Start the development server
+2. Install dependencies
 
    ```sh
-   npm run start --prefix client
+   npm install
+   ```
+
+3. Start the development server
+
+   ```sh
+   npm run start
    ```
 
 ## 🚀 Building and Running for Production
-
-1. Generate a full static production build
+1. Enter Client Direcotory
 
    ```sh
-   npm run build --prefix client
+   cd client
    ```
 
-1. Preview the site as it will appear once deployed
+2. Generate a full static production build
+
+   ```sh
+   npm run build
+   ```
+
+3. Preview the site as it will appear once deployed
 
    ```sh
    npm run serve -- prefix client
