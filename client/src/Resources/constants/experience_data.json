@@ -33,5 +33,20 @@
             "Created POC migration of CI/CD pipelines in AzureDevOps to Github Actions."
         ]
         
+    },
+        {
+        "company" : "Rocky Mountain Senior Care",
+        "title" : "Lead Software Engineer",
+        "duration" : "July 2022 - Feburary 2023",
+        "description" : 
+        [
+            "Worked as a lead software developer. In charge of developing, planning, and managing projects utilizing a Agile workflow.",
+            "Maintained existing applications written in PHP CodeIgniter and Angular.",
+            "Created and developed new applications and features in React.js, Node.js, and MongoDB utilizing TypeScript.",
+            "Containerized existing and new applications and developed and deployed them so that they followed high availability principles.",
+            "Created new features like Electric Medication Prescribing that followed external industry APIs, standards and regulations",
+            "Created and maintained CI/CD pipelines for code testing, staging, and production."
+        ]
+        
     }
 ]
