@@ -1,66 +1,24 @@
 {
-  "name": "iliyan-dimitrov",
-  "version": "0.1.0",
+  "name": "client",
+  "version": "2.0.0",
   "private": true,
-  "scripts": {
-    "start": "create_key.sh && react-scripts start",
-    "build": "chmod +x create_key.sh && ./create_key.sh && react-scripts build",
-    "test-linux": "chmod +x create_key.sh && ./create_key.sh && jest --coverageDirectory=./target/coverage/client/ --silent",
-    "test-win": "create_key.sh && jest --coverageDirectory=./target/coverage/client/ --silent",
-    "eject": "react-scripts eject"
-  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.2",
-    "@testing-library/user-event": "^12.2.2",
-    "classnames": "^2.2.6",
-    "crypto-js": "^4.0.0",
-    "emailjs-com": "^2.6.4",
-    "nodemailer": "^6.4.17",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "react-test-renderer": "^17.0.2",
-    "react-tooltip": "^4.2.11",
-    "react-typing-effect": "^2.0.4",
-    "web-vitals": "^0.2.4"
+    "@emailjs/browser": "^3.12.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "classnames": "^2.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
-    "@babel/plugin-transform-async-to-generator": "^7.8.3",
-    "@babel/plugin-transform-object-assign": "^7.8.3",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/runtime": "^7.9.6",
-    "@babel/standalone": "^7.9.6",
-    "@jest/globals": "^26.6.2",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "11.2.6",
-    "@testing-library/react-hooks": "^7.0.2",
-    "@testing-library/user-event": "^13.2.1",
-    "autoprefixer": "^9.7.6",
-    "babel-jest": "^26.0.1",
-    "babel-loader": "^8.1.0",
-    "clean-webpack-plugin": "^3.0.0",
-    "concurrently": "^5.2.0",
-    "core-js": "^3.8.2",
-    "css-loader": "^3.5.3",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "5.3.2",
-    "husky": "^4.3.8",
-    "jest-cli": "^26.0.1",
-    "jest-fetch-mock": "^3.0.3",
-    "postcss-loader": "^3.0.0",
-    "precss": "^4.0.0",
-    "react-icons": "^4.2.0",
-    "regenerator-runtime": "^0.13.5",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "4.44.2",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "serve": "serve -s build"
   },
   "eslintConfig": {
     "extends": [
@@ -80,39 +38,7 @@
       "last 1 safari version"
     ]
   },
-  "jest": {
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "**/**.{js,jsx}"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/coverage/*",
-      "/dist/*",
-      "/node_modules/*",
-      "/schemas/*",
-      "/templates/*",
-      "/test/*",
-      "/webpack.config.js",
-      "/util/github_api.js",
-      "/src/Containers/App.js"
-    ],
-    "testURL": "http://localhost/",
-    "moduleNameMapper": {
-      "^.+\\.(png|svg|gif|jpg|jpeg)$": "<rootDir>/test/jestConfig/require_stub.js",
-      "^.+\\.(css|scss)$": "<rootDir>/test/jestConfig/require_stub.js"
-    },
-    "automock": false,
-    "setupFiles": [
-      "<rootDir>/test/jestConfig/setupJest.js"
-    ],
-    "transform": {
-      "^.+\\.jsx$": "babel-jest",
-      "^.+\\.js$": "babel-jest"
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "nohup git commit -a -m'Automatic Preliminary Push Commit'&  npm run test-win && find . -type f -name 'nohup.out' -delete"
-    }
+  "devDependencies": {
+    "serve": "^14.2.1"
   }
 }

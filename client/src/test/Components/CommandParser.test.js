@@ -1,5 +1,5 @@
 import { describe, it, expect } from '@jest/globals';
-import CommandParser from '../../src/Containers/Terminal/CommandParser';
+import CommandParser from '../../Containers/Terminal/CommandParser';
 import allPackages_MOCK from '../Resources/allPackages_MOCK'
 
 describe('CommandParser', () => {

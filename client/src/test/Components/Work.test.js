@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { describe, it } from '@jest/globals';
 import { render } from '@testing-library/react'
-import Work from '../../src/Components/Work/Work';
+import Work from '../../Components/Work/Work';
 
 
 describe('Work', () => {

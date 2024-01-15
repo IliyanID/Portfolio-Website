@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { describe, it } from '@jest/globals';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from "@testing-library/user-event";
-import Terminal from '../../src/Containers/Terminal/Terminal';
+import Terminal from '../../Containers/Terminal/Terminal';
 
 describe('Terminal', () => {
     let addTab;
@@ -14,21 +14,31 @@ describe('Terminal', () => {
     jest.setTimeout(30000);
     it('render Terminal', () => {
 
-      userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
+      act(()=>{
+        userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
+      })
 
       jest.useFakeTimers();
       jest.advanceTimersByTime(3000);
     });
     it('test ls command', () => {
-      userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
+      act(()=>{
+        userEvent.type(screen.getByTestId('terminalInput'), "ls{enter}");
+      })
     });
     it('test cd command', () => {
-      userEvent.type(screen.getByTestId('terminalInput'), "cd ./root{enter}");
+      act(()=>{
+        userEvent.type(screen.getByTestId('terminalInput'), "cd ./root{enter}");
+      })
     });
     it('test clear command', () => {
+      act(()=>{
       userEvent.type(screen.getByTestId('terminalInput'), "clear{enter}");
+    })
     });
     it('test delete', () => {
-      userEvent.type(screen.getByTestId('terminalInput'), "{backspace}{enter}");
+      act(()=>{
+        userEvent.type(screen.getByTestId('terminalInput'), "{backspace}{enter}");
+      })
     });
 });

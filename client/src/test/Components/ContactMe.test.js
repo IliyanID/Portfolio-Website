@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { describe, it } from '@jest/globals';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import ContactMe from '../../src/Components/ContactMe/ContactMe';
+import ContactMe from '../../Components/ContactMe/ContactMe';
 
 describe('ContactMe', () => {
     global.fetch = jest.fn(() =>
@@ -24,8 +24,5 @@ describe('ContactMe', () => {
       await waitFor(()=>{
         fireEvent.click(screen.getByTestId('submitButton'))
       })
-      const a = () => new Promise(setImmediate);
-      await a()
-      
   })
 });

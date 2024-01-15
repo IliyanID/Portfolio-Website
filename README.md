@@ -16,13 +16,13 @@
 2. Install dependencies
 
    ```sh
-   npm install
+   pnpm install
    ```
 
 3. Start the development server
 
    ```sh
-   npm run start
+   pnpm run start
    ```
 
 ## 🚀 Building and Running for Production
@@ -35,11 +35,11 @@
 2. Generate a full static production build
 
    ```sh
-   npm run build
+   pnpm run build
    ```
 
 3. Preview the site as it will appear once deployed
 
    ```sh
-   npm run serve -- prefix client
+   pnpm run serve
    ```

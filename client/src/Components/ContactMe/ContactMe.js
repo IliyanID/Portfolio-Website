@@ -1,7 +1,7 @@
 import React from 'react';
 import './ContactMe.css';
 import '../../Containers/Terminal/Terminal.css'
-import emailjs from 'emailjs-com';
+import emailjs from '@emailjs/browser';
 
 const ContactMe = () =>{
     return(

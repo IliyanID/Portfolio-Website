@@ -1,6 +1,6 @@
 import { describe, it, expect } from '@jest/globals';
-import  OS  from '../../src/Containers/Terminal/OS'
-import default_files from '../../src/Resources/constants/default_files.json'
+import  OS  from '../../Containers/Terminal/OS'
+import default_files from '../../Resources/constants/default_files.json'
 import allPackages_MOCK from '../Resources/allPackages_MOCK'
 
 describe('OS', () => {

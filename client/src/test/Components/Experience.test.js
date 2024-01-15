@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { describe, it } from '@jest/globals';
 import { render, screen, fireEvent } from '@testing-library/react'
-import Experience from '../../src/Components/Experience/Experience';
+import Experience from '../../Components/Experience/Experience';
 
 describe('Experience', () => {
     beforeEach(()=>{
